@@ -289,16 +289,15 @@ Proof of concept exploring the use of CQL (Clinical Quality Language) on ROR (Fr
 
 <h3 id="architecture-technique">Architecture technique</h3>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CQL source (.cql)
-    ↓ base64
-Library (FHIR resource)  ←── Measure (FHIR resource)
-    ↓                              ↓
-HAPI FHIR JPA Server  ←── POST $evaluate-measure
-    ↓
-MeasureReport (résultat)
-</code></pre></div></div>
+<ol>
+  <li><strong>Écriture</strong> — le CQL est rédigé dans un fichier <code class="language-plaintext highlighter-rouge">.cql</code></li>
+  <li><strong>Packaging</strong> — le CQL est encodé en base64 et embarqué dans une ressource <code class="language-plaintext highlighter-rouge">Library</code></li>
+  <li><strong>Référencement</strong> — une ressource <code class="language-plaintext highlighter-rouge">Measure</code> référence la <code class="language-plaintext highlighter-rouge">Library</code> et définit les populations (<code class="language-plaintext highlighter-rouge">InitialPopulation</code>, <code class="language-plaintext highlighter-rouge">Denominator</code>, <code class="language-plaintext highlighter-rouge">Numerator</code>)</li>
+  <li><strong>Évaluation</strong> — l'opération <code class="language-plaintext highlighter-rouge">$evaluate-measure</code> déclenche l'exécution du CQL par le moteur Clinical Reasoning de HAPI FHIR</li>
+  <li><strong>Résultat</strong> — un <code class="language-plaintext highlighter-rouge">MeasureReport</code> retourne les comptes et le score</li>
+</ol>
 
-<p>Le moteur CQL est intégré à HAPI FHIR via le module <strong>Clinical Reasoning</strong> (<code class="language-plaintext highlighter-rouge">hapi.fhir.cr.enabled: true</code>).</p>
+<p>Le moteur CQL est intégré nativement à HAPI FHIR via le module <strong>Clinical Reasoning</strong> (<code class="language-plaintext highlighter-rouge">hapi.fhir.cr.enabled: true</code>), sans outil externe.</p>
 
 <h3 id="cas-dusages">Cas d'usages</h3>
 
@@ -414,7 +413,7 @@ docker compose down
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://esante.gouv.fr">Agence du Numérique en Santé (ANS) - 2-10 Rue d&#39;Oradour-sur-Glane, 75015 Paris</a>.  
           Package ans.fhir.fr.test-cql#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-06-24 08:14:00 +0000">
+  <span title="2026-06-24 08:18:00 +0000">
     2026-06-24
   </span>
 
