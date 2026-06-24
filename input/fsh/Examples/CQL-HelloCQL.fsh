@@ -7,11 +7,13 @@ Alias: $measure-population = http://terminology.hl7.org/CodeSystem/measure-popul
 Instance: HelloCQL
 InstanceOf: Library
 Usage: #definition
-* url = "http://poc-cql/Library/HelloCQL"
+* url = "https://interop.esante.gouv.fr/ig/fhir/test-cql/Library/HelloCQL"
 * version = "1.0.0"
 * name = "HelloCQL"
 * title = "Hello CQL — exemple générique"
+* description = "Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus"
 * status = #active
+* experimental = true
 * type = $library-type#logic-library
 * content
   * contentType = #text/cql
