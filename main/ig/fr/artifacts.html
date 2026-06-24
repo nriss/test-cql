@@ -46,8 +46,8 @@
 	  <script src="assets/js/prism.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
-    <style type="text/css">h2{--heading-prefix:"3"}
-    h3,h4,h5,h6{--heading-prefix:"3.0"}</style>
+    <style type="text/css">h2{--heading-prefix:"4"}
+    h3,h4,h5,h6{--heading-prefix:"4"}</style>
     <div id="segment-header" class="segment">  <!-- segment-header -->
       <div class="container">  <!-- container -->
 
@@ -105,10 +105,10 @@
     <a href="index.html">Accueil</a>
   </li>
   <li>
-    <a href="artifacts.html">Ressources de conformité</a>
+    <a href="poc-cql.html">Documentation POC</a>
   </li>
   <li>
-    <a target="_blank" href="https://interop.esante.gouv.fr/ig/documentation/">Documentation</a>
+    <a href="artifacts.html">Ressources de conformité</a>
   </li>
   <li>
     <a href="change-log.html">Historique</a>
@@ -151,8 +151,6 @@
 
             <a href="#bottom">bas de page</a>
 
-          | <a href="StructureDefinition-fr-patient.html">suivant &gt;</a>
-
           </span>
 
         </ul>
@@ -184,173 +182,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
      class="markdown-toc"
      data-fhir="generated">
    <p>Contenu:</p>
-   <ul>
-      <li>
-         <a href="#1">Structures: Profils de ressources</a>
-      </li>
-      <li>
-         <a href="#2">Structures: Définitions de l'extension</a>
-      </li>
-      <li>
-         <a href="#3">Terminologie: Jeux de valeurs (ValueSets)</a>
-      </li>
-      <li>
-         <a href="#4">Terminologie: Systèmes de codes (CodeSystems)</a>
-      </li>
-      <li>
-         <a href="#5">Exemple: Exemples d'instances</a>
-      </li>
-   </ul>
+   <ul/>
 </div>
 <div xmlns="http://www.w3.org/1999/xhtml"
      xmlns:f="http://hl7.org/fhir"
      xmlns:html="http://www.w3.org/1999/xhtml"
      data-fhir="generated">
    <p>Cette page fournit une liste des artefacts FHIR définis dans le cadre de ce guide de mise en œuvre.</p>
-   <a name="1"> </a>
-   <h3>Structures: Profils de ressources </h3>
-    <p>Ils définissent les contraintes sur les ressources FHIR pour les systèmes conformes à ce guide d'implémentation.</p>
-<table class="grid">
-      <col style="width:20%"/>
-      <tbody>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-fr-patient.html"
-                  title="StructureDefinition/fr-patient">
-                  <span title="StructureDefinition/fr-patient">Patient français
-</span>
-               </a>
-            </td>
-            <td>
-<p>Description du patient français</p>
-</td>
-         </tr>
-      </tbody>
-   </table>
-   <a name="2"> </a>
-   <h3>Structures: Définitions de l'extension </h3>
-    <p>Ils définissent des contraintes sur les types de données FHIR pour les systèmes conformes à ce guide d'implémentation.</p>
-<table class="grid">
-      <col style="width:20%"/>
-      <tbody>
-         <tr>
-            <td style="column-width:30%">
-               <a href="StructureDefinition-EyeColor.html"
-                  title="StructureDefinition/EyeColor">
-                  <span title="StructureDefinition/EyeColor">EyeColor
-</span>
-               </a>
-            </td>
-            <td>
-<p>Eye color extension</p>
-</td>
-         </tr>
-      </tbody>
-   </table>
-   <a name="3"> </a>
-   <h3>Terminologie: Jeux de valeurs (ValueSets) </h3>
-    <p>Ils définissent des ensembles de codes utilisés par les systèmes conformes au présent guide d'implémentation.</p>
-<table class="grid">
-      <col style="width:20%"/>
-      <tbody>
-         <tr>
-            <td style="column-width:30%">
-               <a href="ValueSet-EyeColorVS.html" title="ValueSet/EyeColorVS">
-                  <span title="ValueSet/EyeColorVS">EyeColor Value Set
-</span>
-               </a>
-            </td>
-            <td>
-<p>Different eye colors.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="ValueSet-MeltingPotVS.html" title="ValueSet/MeltingPotVS">
-                  <span title="ValueSet/MeltingPotVS">Melting Pot Value Set
-</span>
-               </a>
-            </td>
-            <td>
-<p>Melting Pot Value Set.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="ValueSet-ModifiedAdministrativeGender.html"
-                  title="ValueSet/ModifiedAdministrativeGender">
-                  <span title="ValueSet/ModifiedAdministrativeGender">ModifiedAdministrativeGender
-</span>
-               </a>
-            </td>
-            <td>
-<p>AdministrativeGender without unknown code</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="ValueSet-TypeCarteVS.html" title="ValueSet/TypeCarteVS">
-                  <span title="ValueSet/TypeCarteVS">Type Carte Value Set
-</span>
-               </a>
-            </td>
-            <td>
-<p>Type Carte Value Set.</p>
-</td>
-         </tr>
-      </tbody>
-   </table>
-   <a name="4"> </a>
-   <h3>Terminologie: Systèmes de codes (CodeSystems) </h3>
-    <p>Ils définissent les nouveaux systèmes de codes utilisés par les systèmes conformes au présent guide d'implémentation.</p>
-<table class="grid">
-      <col style="width:20%"/>
-      <tbody>
-         <tr>
-            <td style="column-width:30%">
-               <a href="CodeSystem-competence-code-system.html"
-                  title="CodeSystem/competence-code-system">
-                  <span title="CodeSystem/competence-code-system">Compétences CodeSystem
-</span>
-               </a>
-            </td>
-            <td>
-<p>Compétences des professionnels de santé.</p>
-</td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="CodeSystem-type-carte-code-system.html"
-                  title="CodeSystem/type-carte-code-system">
-                  <span title="CodeSystem/type-carte-code-system">Type de carte
-</span>
-               </a>
-            </td>
-            <td>
-<p>Type de carte professionnelle et personnelle.</p>
-</td>
-         </tr>
-      </tbody>
-   </table>
-   <a name="5"> </a>
-   <h3>Exemple: Exemples d'instances </h3>
-    <p>Il s'agit d'exemples d'instances qui montrent à quoi peuvent ressembler les données produites et consommées par des systèmes conformes au présent guide d'implémentation.</p>
-<table class="grid">
-      <col style="width:20%"/>
-      <tbody>
-         <tr>
-            <td style="column-width:30%">
-               <a href="Patient-frpatient-exemple.html" title="Patient/frpatient-exemple">
-                  <span title="Patient/frpatient-exemple">frpatient-exemple
-</span>
-               </a>
-            </td>
-            <td>
-<p>Exemple d'un patient français</p>
-</td>
-         </tr>
-      </tbody>
-   </table>
 </div>
 
 </div>
@@ -383,7 +221,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
               </td>
               <td style="text-align:var(--ig-right);">&#xA0;
 
-                <a href="StructureDefinition-fr-patient.html">suivant ></a>
+                <span style="visibility:hidden">suivant ></span>
 
               </td>
             </tr>
@@ -399,7 +237,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://esante.gouv.fr">Agence du Numérique en Santé (ANS) - 2-10 Rue d&#39;Oradour-sur-Glane, 75015 Paris</a>.  
           Le package ans.fhir.fr.test-cql#0.1.0 est basé sur <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Date de génération : 
-  <span title="2026-06-24 08:05:00 +0000">
+  <span title="2026-06-24 08:11:00 +0000">
     2026-06-24
   </span>
 

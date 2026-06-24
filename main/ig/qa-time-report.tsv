@@ -1,32 +1,12 @@
-Source File	Size	loadResources	load	generateSnapshots	load-configure	scan	loadDepInfo	loadInfo	checkR4R4B	generateNarratives	validate	loadLists	checkConformanceResources	checkConformanceResources2	checkConformanceResources3	generateLogicalMaps	validateExpressions	scanForUsageStats	checkURLsUnique	processProvenanceDetails	translate	generate1	generate2	generateLogicals	makeDependencies	generateExampleZip	generateValidationPack	scanProfilesForR5	scanExamplesForR5
-/fsh-generated/resources/ImplementationGuide-ans.fhir.fr.test-cql.json	4826	-	0	0	0	0	0	0	20	89	0	0	0	0	0	0	0	0	0	0	9	133	243	0	0	0	4	0	2
-fsh-generated/resources/CodeSystem-competence-code-system.json	6322	6	0	0	1	0	0	0	1	29	0	0	0	0	0	0	0	0	0	0	6	66	356	0	0	0	2	0	0
-fsh-generated/resources/CodeSystem-type-carte-code-system.json	1010	2	0	0	0	0	0	0	1	5	0	0	1	0	0	0	0	0	0	0	3	17	108	0	0	0	1	0	0
-fsh-generated/resources/Patient-frpatient-exemple.json	455	2	0	0	0	0	0	0	0	311	0	0	0	0	0	0	0	0	0	0	3	8	20	0	0	0	0	0	0
-fsh-generated/resources/StructureDefinition-EyeColor.json	1317	3	0	13	0	0	0	0	0	71	0	0	0	0	0	0	0	1	0	0	1	75	712	0	0	0	3	0	0
-fsh-generated/resources/StructureDefinition-fr-patient.json	2356	4	0	71	0	0	0	0	0	51	0	0	1	0	1	0	0	1	0	0	1	317	886	0	0	0	16	0	2
-fsh-generated/resources/ValueSet-EyeColorVS.json	671	2	0	0	0	0	0	0	1	4383	0	0	0	0	0	0	0	0	0	0	2	13	6211	0	0	0	0	0	0
-fsh-generated/resources/ValueSet-MeltingPotVS.json	887	2	0	0	0	0	0	0	0	199	0	0	0	0	0	0	0	0	0	0	3	19	281	0	0	0	1	0	0
-fsh-generated/resources/ValueSet-ModifiedAdministrativeGender.json	648	2	0	0	1	0	0	0	0	5	0	0	0	0	0	0	0	0	0	0	2	14	79	0	0	0	1	0	0
-fsh-generated/resources/ValueSet-TypeCarteVS.json	421	2	0	0	0	0	0	0	0	3	0	0	0	0	1	0	0	0	0	0	2	11	71	0	0	0	0	0	0
-/fsh-generated/includes/menu.xml	1234	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
-/fsh-generated/includes/fsh-link-references.md	453	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
-/input/data/features.yml	164	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/input/pagecontent/autres_ressources.md	155	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/input/pagecontent/spec-technique-flux-alimentation.md	99	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
-/input/pagecontent/spec-technique-vue-ensemble.md	96	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/input/pagecontent/spec-technique-flux-consommation.md	101	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/input/pagecontent/annexe-securite.md	900	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
-/input/pagecontent/spec-fonctionnelle-alimentation.md	61	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/input/pagecontent/change-log.md	330	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/input/pagecontent/annexe-downloads.md	1751	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
-/input/pagecontent/translationinfo.md	59	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/input/pagecontent/spec-fonctionnelle-intro.md	82	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/input/pagecontent/index.md	2090	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
-/input/pagecontent/spec-technique-intro.md	111	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/template/config	0	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/template/config/_config.yml	140	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/input/images	0	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
-/input/images/ci-sis-logo.png	61365	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/input/images/anImage.png	36288	-	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
-/temp/pages/_includes/artifacts.xml	7166	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	2	0	0	0	0	0	0
+Source File	Size	load	generateSnapshots	load-configure	scan	loadDepInfo	loadInfo	checkR4R4B	generateNarratives	validate	loadLists	checkConformanceResources	checkConformanceResources2	checkConformanceResources3	generateLogicalMaps	validateExpressions	scanForUsageStats	checkURLsUnique	processProvenanceDetails	translate	generate1	generate2	generateLogicals	makeDependencies	generateExampleZip	generateValidationPack	scanProfilesForR5	scanExamplesForR5
+/fsh-generated/resources/ImplementationGuide-ans.fhir.fr.test-cql.json	2797	0	0	0	0	0	0	17	86	0	0	0	0	1	0	0	1	0	0	13	130	135	0	0	0	4	0	2
+/fsh-generated/includes/menu.xml	1186	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+/input/data/features.yml	164	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/poc-cql.md	2253	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+/input/pagecontent/change-log.md	330	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/pagecontent/index.md	2090	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+/template/config	0	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/template/config/_config.yml	140	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/images	0	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+/input/images/ci-sis-logo.png	61365	-	-	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0
+/temp/pages/_includes/artifacts.xml	695	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	0	0	0	0	0	0	0
