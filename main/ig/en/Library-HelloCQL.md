@@ -1,6 +1,6 @@
-# Bibliothèque CQL — Hello CQL - POC CQL - ROR v0.1.0
+# Hello CQL — exemple générique - POC CQL - ROR v0.1.0
 
-## Library: Bibliothèque CQL — Hello CQL (Experimental) 
+## Library: Hello CQL — exemple générique (Experimental) 
 
  
 Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus 
@@ -55,7 +55,7 @@ Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus
       "code" : "logic-library"
     }]
   },
-  "date" : "2026-06-24T08:33:06+00:00",
+  "date" : "2026-06-24T08:34:08+00:00",
   "publisher" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
   "contact" : [{
     "name" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",

@@ -1,6 +1,6 @@
-# Patient exemple — Sophie Petit - POC CQL - ROR v0.1.0
+# pat-petit - POC CQL - ROR v0.1.0
 
-## Example Patient: Patient exemple — Sophie Petit
+## Example Patient: pat-petit
 
 -------
 

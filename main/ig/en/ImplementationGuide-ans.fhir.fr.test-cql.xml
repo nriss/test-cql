@@ -12,7 +12,7 @@
   <name value="TestCQL"/>
   <title value="POC CQL - ROR"/>
   <status value="draft"/>
-  <date value="2026-06-24T08:33:06+00:00"/>
+  <date value="2026-06-24T08:34:08+00:00"/>
   <publisher value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
   <contact>
     <name value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
@@ -640,19 +640,8 @@
       <reference>
         <reference value="Library/HelloCQL"/>
       </reference>
-      <name value="Bibliothèque CQL — Hello CQL"/>
-      <description value="Bibliothèque CQL de l'exemple générique (cas 01) — règle de proportion de patients âgés de 65 ans et plus."/>
-      <exampleBoolean value="false"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Measure"/>
-      </extension>
-      <reference>
-        <reference value="Measure/Patients65Plus"/>
-      </reference>
-      <name value="Mesure — patients ≥ 65 ans"/>
-      <description value="Mesure FHIR évaluant la proportion de patients âgés de 65 ans et plus dans la population."/>
+      <name value="Hello CQL — exemple générique"/>
+      <description value="Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>
@@ -660,10 +649,9 @@
         <valueString value="Patient"/>
       </extension>
       <reference>
-        <reference value="Patient/pat-martin"/>
+        <reference value="Patient/pat-bernard"/>
       </reference>
-      <name value="Patient exemple — Jean Martin"/>
-      <description value="Patient de test né en 1945, inclus dans le numérateur (&gt;= 65 ans)."/>
+      <name value="pat-bernard"/>
       <exampleBoolean value="true"/>
     </resource>
     <resource>
@@ -673,8 +661,7 @@
       <reference>
         <reference value="Patient/pat-dubois"/>
       </reference>
-      <name value="Patient exemple — Marie Dubois"/>
-      <description value="Patient de test née en 1958, incluse dans le numérateur (&gt;= 65 ans)."/>
+      <name value="pat-dubois"/>
       <exampleBoolean value="true"/>
     </resource>
     <resource>
@@ -682,21 +669,9 @@
         <valueString value="Patient"/>
       </extension>
       <reference>
-        <reference value="Patient/pat-bernard"/>
+        <reference value="Patient/pat-martin"/>
       </reference>
-      <name value="Patient exemple — Pierre Bernard"/>
-      <description value="Patient de test né en 1990, exclu du numérateur (&lt; 65 ans)."/>
-      <exampleBoolean value="true"/>
-    </resource>
-    <resource>
-      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
-        <valueString value="Patient"/>
-      </extension>
-      <reference>
-        <reference value="Patient/pat-thomas"/>
-      </reference>
-      <name value="Patient exemple — Lucie Thomas"/>
-      <description value="Patient de test née en 1938, incluse dans le numérateur (&gt;= 65 ans)."/>
+      <name value="pat-martin"/>
       <exampleBoolean value="true"/>
     </resource>
     <resource>
@@ -706,9 +681,28 @@
       <reference>
         <reference value="Patient/pat-petit"/>
       </reference>
-      <name value="Patient exemple — Sophie Petit"/>
-      <description value="Patient de test née en 2000, exclue du numérateur (&lt; 65 ans)."/>
+      <name value="pat-petit"/>
       <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Patient"/>
+      </extension>
+      <reference>
+        <reference value="Patient/pat-thomas"/>
+      </reference>
+      <name value="pat-thomas"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Measure"/>
+      </extension>
+      <reference>
+        <reference value="Measure/Patients65Plus"/>
+      </reference>
+      <name value="Proportion de patients âgés de 65 ans et plus"/>
+      <exampleBoolean value="false"/>
     </resource>
     <page>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">

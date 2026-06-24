@@ -1,6 +1,6 @@
-# Patient exemple — Lucie Thomas - POC CQL - ROR v0.1.0
+# pat-thomas - POC CQL - ROR v0.1.0
 
-## Example Patient: Patient exemple — Lucie Thomas
+## Example Patient: pat-thomas
 
 -------
 

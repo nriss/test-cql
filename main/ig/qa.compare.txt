@@ -1,10 +1,10 @@
 TestCQL : Validation Results
 =========================================
 
-err = 2, warn = 10, info = 1
+err = 2, warn = 16, info = 1
 $--
 Generated $--. FHIR version $-- for ans.fhir.fr.test-cql#$-- (canonical = https://interop.esante.gouv.fr/ig/fhir/test-cql)
- Build Errors : 0 / 3 / 0
+ Build Errors : 0 / 9 / 0
  /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/ImplementationGuide-ans.fhir.fr.test-cql : 0 / 0 / 1
  /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Library-HelloCQL : 0 / 2 / 1
  /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus : 2 / 5 / 2
@@ -15,6 +15,12 @@ Generated $--. FHIR version $-- for ans.fhir.fr.test-cql#$-- (canonical = https:
  /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-thomas : 0 / 0 / 1
 </table>
 == n/a ==
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Measure/Patients65Plus.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-bernard.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-dubois.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-martin.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-petit.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-thomas.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
 WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml, cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 4: An HTML fragment from the set [globals-table.xhtml, globals-table.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 5: An HTML fragment from the set [expansion-params.xhtml, expansion-params.xhtml] is not included anywhere in the produced implementation guide

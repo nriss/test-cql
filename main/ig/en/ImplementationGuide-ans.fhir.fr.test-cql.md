@@ -14,7 +14,7 @@
   "name" : "TestCQL",
   "title" : "POC CQL - ROR",
   "status" : "draft",
-  "date" : "2026-06-24T08:33:06+00:00",
+  "date" : "2026-06-24T08:34:08+00:00",
   "publisher" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
   "contact" : [{
     "name" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
@@ -865,20 +865,8 @@
       "reference" : {
         "reference" : "Library/HelloCQL"
       },
-      "name" : "Bibliothèque CQL — Hello CQL",
-      "description" : "Bibliothèque CQL de l'exemple générique (cas 01) — règle de proportion de patients âgés de 65 ans et plus.",
-      "exampleBoolean" : false
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Measure"
-      }],
-      "reference" : {
-        "reference" : "Measure/Patients65Plus"
-      },
-      "name" : "Mesure — patients ≥ 65 ans",
-      "description" : "Mesure FHIR évaluant la proportion de patients âgés de 65 ans et plus dans la population.",
+      "name" : "Hello CQL — exemple générique",
+      "description" : "Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus",
       "exampleBoolean" : false
     },
     {
@@ -887,10 +875,9 @@
         "valueString" : "Patient"
       }],
       "reference" : {
-        "reference" : "Patient/pat-martin"
+        "reference" : "Patient/pat-bernard"
       },
-      "name" : "Patient exemple — Jean Martin",
-      "description" : "Patient de test né en 1945, inclus dans le numérateur (>= 65 ans).",
+      "name" : "pat-bernard",
       "exampleBoolean" : true
     },
     {
@@ -901,8 +888,7 @@
       "reference" : {
         "reference" : "Patient/pat-dubois"
       },
-      "name" : "Patient exemple — Marie Dubois",
-      "description" : "Patient de test née en 1958, incluse dans le numérateur (>= 65 ans).",
+      "name" : "pat-dubois",
       "exampleBoolean" : true
     },
     {
@@ -911,22 +897,9 @@
         "valueString" : "Patient"
       }],
       "reference" : {
-        "reference" : "Patient/pat-bernard"
+        "reference" : "Patient/pat-martin"
       },
-      "name" : "Patient exemple — Pierre Bernard",
-      "description" : "Patient de test né en 1990, exclu du numérateur (< 65 ans).",
-      "exampleBoolean" : true
-    },
-    {
-      "extension" : [{
-        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
-        "valueString" : "Patient"
-      }],
-      "reference" : {
-        "reference" : "Patient/pat-thomas"
-      },
-      "name" : "Patient exemple — Lucie Thomas",
-      "description" : "Patient de test née en 1938, incluse dans le numérateur (>= 65 ans).",
+      "name" : "pat-martin",
       "exampleBoolean" : true
     },
     {
@@ -937,9 +910,30 @@
       "reference" : {
         "reference" : "Patient/pat-petit"
       },
-      "name" : "Patient exemple — Sophie Petit",
-      "description" : "Patient de test née en 2000, exclue du numérateur (< 65 ans).",
+      "name" : "pat-petit",
       "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Patient"
+      }],
+      "reference" : {
+        "reference" : "Patient/pat-thomas"
+      },
+      "name" : "pat-thomas",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Measure"
+      }],
+      "reference" : {
+        "reference" : "Measure/Patients65Plus"
+      },
+      "name" : "Proportion de patients âgés de 65 ans et plus",
+      "exampleBoolean" : false
     }],
     "page" : {
       "extension" : [{

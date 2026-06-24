@@ -19,7 +19,7 @@
   fhir:name [ fhir:v "TestCQL"] ; # 
   fhir:title [ fhir:v "POC CQL - ROR"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-06-24T08:33:06+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-06-24T08:34:08+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris" ] ;
@@ -1177,26 +1177,8 @@
          fhir:link <https://interop.esante.gouv.fr/ig/fhir/test-cql/Library/HelloCQL> ;
          fhir:reference [ fhir:v "Library/HelloCQL" ]
        ] ;
-       fhir:name [ fhir:v "Bibliothèque CQL — Hello CQL" ] ;
-       fhir:description [ fhir:v "Bibliothèque CQL de l'exemple générique (cas 01) — règle de proportion de patients âgés de 65 ans et plus." ] ;
-       fhir:example [
-         a fhir:boolean ;
-         fhir:v false
-       ]
-     ] [
-       fhir:extension ( [
-         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
-         fhir:value [
-           a fhir:string ;
-           fhir:v "Measure"
-         ]
-       ] ) ;
-       fhir:reference [
-         fhir:link <https://interop.esante.gouv.fr/ig/fhir/test-cql/Measure/Patients65Plus> ;
-         fhir:reference [ fhir:v "Measure/Patients65Plus" ]
-       ] ;
-       fhir:name [ fhir:v "Mesure — patients ≥ 65 ans" ] ;
-       fhir:description [ fhir:v "Mesure FHIR évaluant la proportion de patients âgés de 65 ans et plus dans la population." ] ;
+       fhir:name [ fhir:v "Hello CQL — exemple générique" ] ;
+       fhir:description [ fhir:v "Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus" ] ;
        fhir:example [
          a fhir:boolean ;
          fhir:v false
@@ -1210,11 +1192,10 @@
          ]
        ] ) ;
        fhir:reference [
-         fhir:link <https://interop.esante.gouv.fr/ig/fhir/test-cql/Patient/pat-martin> ;
-         fhir:reference [ fhir:v "Patient/pat-martin" ]
+         fhir:link <https://interop.esante.gouv.fr/ig/fhir/test-cql/Patient/pat-bernard> ;
+         fhir:reference [ fhir:v "Patient/pat-bernard" ]
        ] ;
-       fhir:name [ fhir:v "Patient exemple — Jean Martin" ] ;
-       fhir:description [ fhir:v "Patient de test né en 1945, inclus dans le numérateur (>= 65 ans)." ] ;
+       fhir:name [ fhir:v "pat-bernard" ] ;
        fhir:example [
          a fhir:boolean ;
          fhir:v true
@@ -1231,8 +1212,7 @@
          fhir:link <https://interop.esante.gouv.fr/ig/fhir/test-cql/Patient/pat-dubois> ;
          fhir:reference [ fhir:v "Patient/pat-dubois" ]
        ] ;
-       fhir:name [ fhir:v "Patient exemple — Marie Dubois" ] ;
-       fhir:description [ fhir:v "Patient de test née en 1958, incluse dans le numérateur (>= 65 ans)." ] ;
+       fhir:name [ fhir:v "pat-dubois" ] ;
        fhir:example [
          a fhir:boolean ;
          fhir:v true
@@ -1246,29 +1226,10 @@
          ]
        ] ) ;
        fhir:reference [
-         fhir:link <https://interop.esante.gouv.fr/ig/fhir/test-cql/Patient/pat-bernard> ;
-         fhir:reference [ fhir:v "Patient/pat-bernard" ]
+         fhir:link <https://interop.esante.gouv.fr/ig/fhir/test-cql/Patient/pat-martin> ;
+         fhir:reference [ fhir:v "Patient/pat-martin" ]
        ] ;
-       fhir:name [ fhir:v "Patient exemple — Pierre Bernard" ] ;
-       fhir:description [ fhir:v "Patient de test né en 1990, exclu du numérateur (< 65 ans)." ] ;
-       fhir:example [
-         a fhir:boolean ;
-         fhir:v true
-       ]
-     ] [
-       fhir:extension ( [
-         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
-         fhir:value [
-           a fhir:string ;
-           fhir:v "Patient"
-         ]
-       ] ) ;
-       fhir:reference [
-         fhir:link <https://interop.esante.gouv.fr/ig/fhir/test-cql/Patient/pat-thomas> ;
-         fhir:reference [ fhir:v "Patient/pat-thomas" ]
-       ] ;
-       fhir:name [ fhir:v "Patient exemple — Lucie Thomas" ] ;
-       fhir:description [ fhir:v "Patient de test née en 1938, incluse dans le numérateur (>= 65 ans)." ] ;
+       fhir:name [ fhir:v "pat-martin" ] ;
        fhir:example [
          a fhir:boolean ;
          fhir:v true
@@ -1285,11 +1246,44 @@
          fhir:link <https://interop.esante.gouv.fr/ig/fhir/test-cql/Patient/pat-petit> ;
          fhir:reference [ fhir:v "Patient/pat-petit" ]
        ] ;
-       fhir:name [ fhir:v "Patient exemple — Sophie Petit" ] ;
-       fhir:description [ fhir:v "Patient de test née en 2000, exclue du numérateur (< 65 ans)." ] ;
+       fhir:name [ fhir:v "pat-petit" ] ;
        fhir:example [
          a fhir:boolean ;
          fhir:v true
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:string ;
+           fhir:v "Patient"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <https://interop.esante.gouv.fr/ig/fhir/test-cql/Patient/pat-thomas> ;
+         fhir:reference [ fhir:v "Patient/pat-thomas" ]
+       ] ;
+       fhir:name [ fhir:v "pat-thomas" ] ;
+       fhir:example [
+         a fhir:boolean ;
+         fhir:v true
+       ]
+     ] [
+       fhir:extension ( [
+         fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/resource-information"^^xsd:anyURI ] ;
+         fhir:value [
+           a fhir:string ;
+           fhir:v "Measure"
+         ]
+       ] ) ;
+       fhir:reference [
+         fhir:link <https://interop.esante.gouv.fr/ig/fhir/test-cql/Measure/Patients65Plus> ;
+         fhir:reference [ fhir:v "Measure/Patients65Plus" ]
+       ] ;
+       fhir:name [ fhir:v "Proportion de patients âgés de 65 ans et plus" ] ;
+       fhir:example [
+         a fhir:boolean ;
+         fhir:v false
        ]
      ] ) ;
      fhir:page [

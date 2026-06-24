@@ -1,6 +1,6 @@
-# Patient exemple — Marie Dubois - POC CQL - ROR v0.1.0
+# pat-dubois - POC CQL - ROR v0.1.0
 
-## Exemple Patient: Patient exemple — Marie Dubois
+## Exemple Patient: pat-dubois
 
 -------
 

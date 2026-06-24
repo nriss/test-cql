@@ -1,6 +1,6 @@
-# Patient exemple — Pierre Bernard - POC CQL - ROR v0.1.0
+# pat-bernard - POC CQL - ROR v0.1.0
 
-## Example Patient: Patient exemple — Pierre Bernard
+## Example Patient: pat-bernard
 
 -------
 
