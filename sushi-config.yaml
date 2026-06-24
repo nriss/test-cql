@@ -35,6 +35,36 @@ parameters: #Parameters list - https://build.fhir.org/ig/FHIR/fhir-tools-ig/Code
       - input/translations/en
 
 
+resources:
+  Library/HelloCQL:
+    name: Bibliothèque CQL — Hello CQL
+    description: Bibliothèque CQL de l'exemple générique (cas 01) — règle de proportion de patients âgés de 65 ans et plus.
+    exampleBoolean: false
+  Measure/Patients65Plus:
+    name: Mesure — patients ≥ 65 ans
+    description: Mesure FHIR évaluant la proportion de patients âgés de 65 ans et plus dans la population.
+    exampleBoolean: false
+  Patient/pat-martin:
+    name: Patient exemple — Jean Martin
+    description: Patient de test né en 1945, inclus dans le numérateur (>= 65 ans).
+    exampleBoolean: true
+  Patient/pat-dubois:
+    name: Patient exemple — Marie Dubois
+    description: Patient de test née en 1958, incluse dans le numérateur (>= 65 ans).
+    exampleBoolean: true
+  Patient/pat-bernard:
+    name: Patient exemple — Pierre Bernard
+    description: Patient de test né en 1990, exclu du numérateur (< 65 ans).
+    exampleBoolean: true
+  Patient/pat-thomas:
+    name: Patient exemple — Lucie Thomas
+    description: Patient de test née en 1938, incluse dans le numérateur (>= 65 ans).
+    exampleBoolean: true
+  Patient/pat-petit:
+    name: Patient exemple — Sophie Petit
+    description: Patient de test née en 2000, exclue du numérateur (< 65 ans).
+    exampleBoolean: true
+
 pages:
     index.md:
         title: Accueil
