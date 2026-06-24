@@ -1,81 +1,71 @@
 {
-  "date" : "Wed, 24 Jun, 2026 08:11:50 +0000",
+  "date" : "Wed, 24 Jun, 2026 08:14:05 +0000",
   "doco" : "For each file: start is seconds after start activity occurred. Length = milliseconds activity took",
   "files" : [{
     "name" : "/fsh-generated/resources/ImplementationGuide-ans.fhir.fr.test-cql.json",
-    "size" : 2797,
+    "size" : 2949,
     "processes" : [{
       "activity" : "load",
       "start" : 31,
-      "length" : 169
+      "length" : 227
     },
     {
       "activity" : "checkR4R4B",
       "start" : 32,
-      "length" : 17
+      "length" : 20
     },
     {
       "activity" : "generateNarratives",
       "start" : 32,
-      "length" : 86
+      "length" : 113
     },
     {
       "activity" : "validate",
       "start" : 32,
-      "length" : 8858
-    },
-    {
-      "activity" : "checkConformanceResources3",
-      "start" : 41,
-      "length" : 1
+      "length" : 9354
     },
     {
       "activity" : "scanForUsageStats",
-      "start" : 41,
+      "start" : 42,
       "length" : 1
     },
     {
       "activity" : "validate",
-      "start" : 41,
+      "start" : 42,
       "length" : 1
     },
     {
       "activity" : "translate",
-      "start" : 41,
-      "length" : 13
+      "start" : 42,
+      "length" : 9
     },
     {
       "activity" : "generate1",
-      "start" : 41,
-      "length" : 130
+      "start" : 42,
+      "length" : 138
     },
     {
       "activity" : "generate2",
       "start" : 45,
-      "length" : 135
+      "length" : 160
     },
     {
       "activity" : "generateValidationPack",
-      "start" : 55,
-      "length" : 4
+      "start" : 56,
+      "length" : 2
     },
     {
       "activity" : "scanExamplesForR5",
-      "start" : 67,
-      "length" : 2
+      "start" : 68,
+      "length" : 1
     }]
   },
   {
     "name" : "/fsh-generated/includes/menu.xml",
-    "size" : 1186,
+    "size" : 1603,
     "processes" : [{
-      "activity" : "validate",
-      "start" : 41,
-      "length" : 1
-    },
-    {
       "activity" : "generate2",
-      "start" : 45,
+      "start" : 46,
       "length" : 1
     }]
   },
@@ -84,39 +74,48 @@
     "size" : 164,
     "processes" : [{
       "activity" : "validate",
-      "start" : 41,
+      "start" : 42,
       "length" : 1
     }]
   },
   {
-    "name" : "/input/pagecontent/poc-cql.md",
-    "size" : 2253,
+    "name" : "/input/pagecontent/cas-usage-02-ror.md",
+    "size" : 456,
     "processes" : [{
       "activity" : "validate",
-      "start" : 41,
+      "start" : 42,
       "length" : 1
     },
     {
       "activity" : "generate2",
-      "start" : 45,
+      "start" : 46,
       "length" : 1
     }]
+  },
+  {
+    "name" : "/input/pagecontent/cas-usage-01-generique.md",
+    "size" : 1023
   },
   {
     "name" : "/input/pagecontent/change-log.md",
-    "size" : 330
+    "size" : 330,
+    "processes" : [{
+      "activity" : "generate2",
+      "start" : 46,
+      "length" : 1
+    }]
   },
   {
     "name" : "/input/pagecontent/index.md",
-    "size" : 2090,
+    "size" : 2497,
     "processes" : [{
       "activity" : "validate",
-      "start" : 41,
+      "start" : 42,
       "length" : 1
     },
     {
       "activity" : "generate2",
-      "start" : 45,
+      "start" : 46,
       "length" : 1
     }]
   },
@@ -129,7 +128,7 @@
     "size" : 140,
     "processes" : [{
       "activity" : "validate",
-      "start" : 41,
+      "start" : 42,
       "length" : 1
     }]
   },
@@ -142,12 +141,12 @@
     "size" : 61365,
     "processes" : [{
       "activity" : "validate",
-      "start" : 41,
+      "start" : 42,
       "length" : 1
     },
     {
       "activity" : "generate2",
-      "start" : 45,
+      "start" : 46,
       "length" : 1
     }]
   },

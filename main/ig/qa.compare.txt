@@ -4,12 +4,10 @@ TestCQL : Validation Results
 err = 1, warn = 3, info = 0
 $--
 Generated $--. FHIR version $-- for ans.fhir.fr.test-cql#$-- (canonical = https://interop.esante.gouv.fr/ig/fhir/test-cql)
- Build Errors : 0 / 5 / 0
+ Build Errors : 0 / 3 / 0
  /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/ImplementationGuide-ans.fhir.fr.test-cql : 1 / 0 / 1
 </table>
 == n/a ==
-WARNING: en/index.html#/html/body/div/div/div/div/div/div/blockquote/p/a at Line 265, column 286: The link 'https://interop.esante.gouv.fr/ig/fhir/test-cql' for "https://interop.esante.gouv.fr/ig/fhir/test-cql" is a canonical link and is therefore unsafe with regard to versions
-WARNING: fr/index.html#/html/body/div/div/div/div/div/div/blockquote/p/a at Line 258, column 286: The link 'https://interop.esante.gouv.fr/ig/fhir/test-cql' for "https://interop.esante.gouv.fr/ig/fhir/test-cql" is a canonical link and is therefore unsafe with regard to versions
 WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml, cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 4: An HTML fragment from the set [globals-table.xhtml, globals-table.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 5: An HTML fragment from the set [expansion-params.xhtml, expansion-params.xhtml] is not included anywhere in the produced implementation guide

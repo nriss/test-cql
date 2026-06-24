@@ -11,7 +11,7 @@
   "name" : "TestCQL",
   "title" : "POC CQL - ROR",
   "status" : "draft",
-  "date" : "2026-06-24T08:11:50+00:00",
+  "date" : "2026-06-24T08:14:05+00:00",
   "publisher" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
   "contact" : [{
     "name" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
@@ -874,10 +874,19 @@
       {
         "extension" : [{
           "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
-          "valueUrl" : "poc-cql.html"
+          "valueUrl" : "cas-usage-01-generique.html"
         }],
-        "nameUrl" : "poc-cql.html",
-        "title" : "Documentation du POC CQL",
+        "nameUrl" : "cas-usage-01-generique.html",
+        "title" : "01 — Exemple générique",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "cas-usage-02-ror.html"
+        }],
+        "nameUrl" : "cas-usage-02-ror.html",
+        "title" : "02 — ROR",
         "generation" : "markdown"
       },
       {

@@ -104,11 +104,24 @@
   <li>
     <a href="index.html">Accueil</a>
   </li>
-  <li>
-    <a href="poc-cql.html">Documentation POC</a>
+  <li class="dropdown">
+    <a data-toggle="dropdown" href="#" class="dropdown-toggle">Cas d&apos;usages
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="cas-usage-01-generique.html">01 — Exemple générique</a>
+      </li>
+      <li>
+        <a href="cas-usage-02-ror.html">02 — ROR</a>
+      </li>
+    </ul>
   </li>
   <li>
     <a href="artifacts.html">Ressources de conformité</a>
+  </li>
+  <li>
+    <a target="_blank" href="https://interop.esante.gouv.fr/ig/documentation/">Documentation</a>
   </li>
   <li>
     <a href="change-log.html">Historique</a>
@@ -151,7 +164,7 @@
 
             <a href="#bottom">bottom</a>
 
-          | <a href="poc-cql.html">next &gt;</a>
+          | <a href="cas-usage-01-generique.html">next &gt;</a>
 
           </span>
 
@@ -248,8 +261,10 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div class="markdown-toc">
 <ul id="markdown-toc">
   <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
-  <li><a href="#périmètre" id="markdown-toc-périmètre">Périmètre</a></li>
-  <li><a href="#auteurs-et-contributeurs" id="markdown-toc-auteurs-et-contributeurs">Auteurs et contributeurs</a></li>
+  <li><a href="#architecture-technique" id="markdown-toc-architecture-technique">Architecture technique</a></li>
+  <li><a href="#cas-dusages" id="markdown-toc-cas-dusages">Cas d'usages</a></li>
+  <li><a href="#lancer-le-poc" id="markdown-toc-lancer-le-poc">Lancer le POC</a></li>
+  <li><a href="#modifier-le-cql" id="markdown-toc-modifier-le-cql">Modifier le CQL</a></li>
   <li><a href="#dépendances" id="markdown-toc-dépendances">Dépendances</a></li>
   <li><a href="#propriété-intellectuelle" id="markdown-toc-propriété-intellectuelle">Propriété intellectuelle</a></li>
 </ul>
@@ -262,46 +277,74 @@ Proof of concept exploring the use of CQL (Clinical Quality Language) on ROR (Fr
 
 <div style="width: 65%">
     <blockquote class="stu-note">
-    <p>Cet Implementation Guide n'est pas la version courante, il s'agit de la version en intégration continue soumise à des changements fréquents uniquement destinée à suivre les travaux en cours. La version courante sera accessible via l'URL canonique suite à la première release : <a href="https://interop.esante.gouv.fr/ig/fhir/test-cql">https://interop.esante.gouv.fr/ig/fhir/test-cql</a></p>
+    <p>Cet Implementation Guide n'est pas la version courante, il s'agit de la version en intégration continue soumise à des changements fréquents uniquement destinée à suivre les travaux en cours. La version courante sera accessible via l'URL canonique suite à la première release.</p>
     </blockquote>
 </div>
 
 <h3 id="introduction">Introduction</h3>
 
-<p>Ce POC explore la faisabilité d'utiliser CQL (Clinical Quality Language) pour exprimer des règles métier et des critères de qualité appliqués aux données du ROR (Répertoire de l'Offre et des Ressources en santé).</p>
+<p>Ce POC explore la faisabilité d'utiliser CQL (Clinical Quality Language) pour exprimer des règles métier et des indicateurs qualité appliqués aux données du ROR (Répertoire de l'Offre et des Ressources en santé).</p>
 
-<p>CQL est un langage standardisé par HL7, lisible et interopérable, permettant d'exprimer des expressions cliniques qui s'exécutent sur des ressources FHIR. Dans FHIR, il s'intègre via les ressources <code class="language-plaintext highlighter-rouge">Library</code> (contient le CQL compilé en ELM) et <code class="language-plaintext highlighter-rouge">Measure</code> / <code class="language-plaintext highlighter-rouge">PlanDefinition</code>.</p>
+<p>CQL est un langage standardisé par HL7, lisible et interopérable, qui s'exécute sur des ressources FHIR. Il s'intègre via les ressources <code class="language-plaintext highlighter-rouge">Library</code> (contient le CQL compilé en ELM) et <code class="language-plaintext highlighter-rouge">Measure</code> / <code class="language-plaintext highlighter-rouge">PlanDefinition</code>.</p>
 
-<h3 id="périmètre">Périmètre</h3>
+<h3 id="architecture-technique">Architecture technique</h3>
 
-<p>Ce POC inclut :</p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CQL source (.cql)
+    ↓ base64
+Library (FHIR resource)  ←── Measure (FHIR resource)
+    ↓                              ↓
+HAPI FHIR JPA Server  ←── POST $evaluate-measure
+    ↓
+MeasureReport (résultat)
+</code></pre></div></div>
 
-<ul>
-  <li>Des instances de ressources FHIR représentatives des données ROR (<code class="language-plaintext highlighter-rouge">Organization</code>, <code class="language-plaintext highlighter-rouge">Location</code>, <code class="language-plaintext highlighter-rouge">HealthcareService</code>, <code class="language-plaintext highlighter-rouge">Practitioner</code>, <code class="language-plaintext highlighter-rouge">PractitionerRole</code>)</li>
-  <li>Des bibliothèques CQL (<code class="language-plaintext highlighter-rouge">Library</code>) exprimant des règles métier ou des indicateurs de qualité sur ces données</li>
-  <li>Le tout packagé dans un IG pour faciliter la reproductibilité et la diffusion</li>
-</ul>
+<p>Le moteur CQL est intégré à HAPI FHIR via le module <strong>Clinical Reasoning</strong> (<code class="language-plaintext highlighter-rouge">hapi.fhir.cr.enabled: true</code>).</p>
 
-<h3 id="auteurs-et-contributeurs">Auteurs et contributeurs</h3>
+<h3 id="cas-dusages">Cas d'usages</h3>
 
 <table>
   <thead>
     <tr>
-      <th>Role</th>
-      <th>Nom</th>
-      <th>Organisation</th>
-      <th>Contact</th>
+      <th>#</th>
+      <th>Description</th>
+      <th>Données</th>
+      <th>Règle CQL</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><strong>Primary Editor</strong></td>
-      <td>Nicolas Riss</td>
-      <td>Agence du Numérique en Santé</td>
-      <td>nicolas.riss@esante.gouv.fr</td>
+      <td><a href="cas-usage-01-generique.html">01 — Exemple générique</a></td>
+      <td>Validation de la stack</td>
+      <td>Patients fictifs</td>
+      <td>Proportion de patients ≥ 65 ans</td>
+    </tr>
+    <tr>
+      <td>02 — ROR</td>
+      <td><em>(à venir)</em></td>
+      <td>Données ROR</td>
+      <td>Règles qualité ROR</td>
     </tr>
   </tbody>
 </table>
+
+<h3 id="lancer-le-poc">Lancer le POC</h3>
+
+<p><strong>Prérequis</strong> : Docker, curl</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>poc/01-exemple-generique
+docker compose up <span class="nt">-d</span>   <span class="c"># démarre HAPI FHIR v8 (port 8080)</span>
+./evaluate.sh          <span class="c"># charge les données et évalue la Measure</span>
+docker compose down
+</code></pre></div></div>
+
+<h3 id="modifier-le-cql">Modifier le CQL</h3>
+
+<ol>
+  <li>Éditer <code class="language-plaintext highlighter-rouge">poc/01-exemple-generique/cql/HelloCQL.cql</code></li>
+  <li>Régénérer le base64 : <code class="language-plaintext highlighter-rouge">base64 -i cql/HelloCQL.cql | tr -d '\n'</code></li>
+  <li>Remplacer la valeur <code class="language-plaintext highlighter-rouge">data</code> dans <code class="language-plaintext highlighter-rouge">fhir/library-hello-cql.json</code></li>
+  <li>Relancer <code class="language-plaintext highlighter-rouge">./evaluate.sh</code></li>
+</ol>
 
 <h3 id="dépendances">Dépendances</h3>
 
@@ -355,7 +398,7 @@ Proof of concept exploring the use of CQL (Clinical Quality Language) on ROR (Fr
               </td>
               <td style="text-align:var(--ig-right);">&#xA0;
 
-                <a href="poc-cql.html">next ></a>
+                <a href="cas-usage-01-generique.html">next ></a>
 
               </td>
             </tr>
@@ -371,7 +414,7 @@ Proof of concept exploring the use of CQL (Clinical Quality Language) on ROR (Fr
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://esante.gouv.fr">Agence du Numérique en Santé (ANS) - 2-10 Rue d&#39;Oradour-sur-Glane, 75015 Paris</a>.  
           Package ans.fhir.fr.test-cql#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-06-24 08:11:00 +0000">
+  <span title="2026-06-24 08:14:00 +0000">
     2026-06-24
   </span>
 

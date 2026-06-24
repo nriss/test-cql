@@ -19,7 +19,7 @@
   fhir:name [ fhir:v "TestCQL"] ; # 
   fhir:title [ fhir:v "POC CQL - ROR"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-06-24T08:11:50+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-06-24T08:14:05+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris" ] ;
@@ -1198,14 +1198,28 @@
            fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name"^^xsd:anyURI ] ;
            fhir:value [
              a fhir:url ;
-             fhir:v "poc-cql.html"^^xsd:anyURI
+             fhir:v "cas-usage-01-generique.html"^^xsd:anyURI
            ]
          ] ) ;
          fhir:name [
            a fhir:url ;
-           fhir:v "poc-cql.html"^^xsd:anyURI
+           fhir:v "cas-usage-01-generique.html"^^xsd:anyURI
          ] ;
-         fhir:title [ fhir:v "Documentation du POC CQL" ] ;
+         fhir:title [ fhir:v "01 — Exemple générique" ] ;
+         fhir:generation [ fhir:v "markdown" ]
+       ] [
+         fhir:extension ( [
+           fhir:url [ fhir:v "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name"^^xsd:anyURI ] ;
+           fhir:value [
+             a fhir:url ;
+             fhir:v "cas-usage-02-ror.html"^^xsd:anyURI
+           ]
+         ] ) ;
+         fhir:name [
+           a fhir:url ;
+           fhir:v "cas-usage-02-ror.html"^^xsd:anyURI
+         ] ;
+         fhir:title [ fhir:v "02 — ROR" ] ;
          fhir:generation [ fhir:v "markdown" ]
        ] [
          fhir:extension ( [

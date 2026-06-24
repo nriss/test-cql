@@ -3,8 +3,9 @@
 ## Pages
 
 * [Accueil](index.md)
-* [Documentation du POC CQL](poc-cql.md)
+* [02 — ROR](cas-usage-02-ror.md)
 * [Artifacts Summary](artifacts.md)
+* [01 — Exemple générique](cas-usage-01-generique.md)
 * [Historique des versions](change-log.md)
 
 ## Resources
