@@ -1,0 +1,56 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "request": {"method": "PUT", "url": "Patient/pat-martin"},
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pat-martin",
+        "active": true,
+        "name": [{"family": "Martin", "given": ["Jean"]}],
+        "birthDate": "1945-03-12"
+      }
+    },
+    {
+      "request": {"method": "PUT", "url": "Patient/pat-dubois"},
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pat-dubois",
+        "active": true,
+        "name": [{"family": "Dubois", "given": ["Marie"]}],
+        "birthDate": "1958-07-22"
+      }
+    },
+    {
+      "request": {"method": "PUT", "url": "Patient/pat-bernard"},
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pat-bernard",
+        "active": true,
+        "name": [{"family": "Bernard", "given": ["Pierre"]}],
+        "birthDate": "1990-11-05"
+      }
+    },
+    {
+      "request": {"method": "PUT", "url": "Patient/pat-thomas"},
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pat-thomas",
+        "active": true,
+        "name": [{"family": "Thomas", "given": ["Lucie"]}],
+        "birthDate": "1938-01-30"
+      }
+    },
+    {
+      "request": {"method": "PUT", "url": "Patient/pat-petit"},
+      "resource": {
+        "resourceType": "Patient",
+        "id": "pat-petit",
+        "active": true,
+        "name": [{"family": "Petit", "given": ["Sophie"]}],
+        "birthDate": "2000-06-15"
+      }
+    }
+  ]
+}

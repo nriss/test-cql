@@ -1,0 +1,5 @@
+hapi:
+  fhir:
+    fhir_version: R4
+    cr:
+      enabled: true
