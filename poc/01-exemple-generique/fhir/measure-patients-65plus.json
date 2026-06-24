@@ -17,6 +17,7 @@
     "id": "seniors",
     "population": [
       {
+        "id": "initial-population",
         "code": {
           "coding": [{
             "system": "http://terminology.hl7.org/CodeSystem/measure-population",
@@ -29,6 +30,7 @@
         }
       },
       {
+        "id": "denominator",
         "code": {
           "coding": [{
             "system": "http://terminology.hl7.org/CodeSystem/measure-population",
@@ -41,6 +43,7 @@
         }
       },
       {
+        "id": "numerator",
         "code": {
           "coding": [{
             "system": "http://terminology.hl7.org/CodeSystem/measure-population",

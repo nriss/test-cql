@@ -38,11 +38,13 @@ parameters: #Parameters list - https://build.fhir.org/ig/FHIR/fhir-tools-ig/Code
 pages:
     index.md:
         title: Accueil
+    poc-cql.md:
+        title: Documentation du POC CQL
     change-log.md:
         title: Historique des versions
 
 menu:
     Accueil: index.html
+    Documentation POC: poc-cql.html
     Ressources de conformité: artifacts.html
-    Documentation: new-tab https://interop.esante.gouv.fr/ig/documentation/
     Historique: change-log.html
