@@ -3,7 +3,7 @@ TestCQL : Validation Results
 
 err = 0, warn = 14, info = 91
 IG Publisher Version: 2.2.9
-Generated Wed Jun 24 07:51:38 UTC 2026. FHIR version 4.0.1 for ans.fhir.fr.test-cql#0.1.0 (canonical = https://interop.esante.gouv.fr/ig/fhir/test-cql)
+Generated Wed Jun 24 08:06:29 UTC 2026. FHIR version 4.0.1 for ans.fhir.fr.test-cql#0.1.0 (canonical = https://interop.esante.gouv.fr/ig/fhir/test-cql)
  Build Errors : 0 / 5 / 0
  /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/CodeSystem-competence-code-system : 0 / 2 / 2
  /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/CodeSystem-type-carte-code-system : 0 / 2 / 2

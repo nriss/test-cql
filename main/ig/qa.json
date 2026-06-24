@@ -6,8 +6,8 @@
   "status" : "draft",
   "package-id" : "ans.fhir.fr.test-cql",
   "ig-ver" : "0.1.0",
-  "date" : "Wed, 24 Jun, 2026 07:50:25 +0000",
-  "dateISO8601" : "2026-06-24T07:50:25+00:00",
+  "date" : "Wed, 24 Jun, 2026 08:05:00 +0000",
+  "dateISO8601" : "2026-06-24T08:05:00+00:00",
   "errs" : 0,
   "warnings" : 14,
   "hints" : 91,
@@ -15,5 +15,5 @@
   "suppressed-warnings" : 0,
   "version" : "4.0.1",
   "tool" : "5.0.0 (3)",
-  "maxMemory" : 1798735872
+  "maxMemory" : 1482033072
 }
