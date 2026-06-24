@@ -13,3 +13,19 @@
 ### ImplementationGuides
 
 * [POC CQL - ROR](fr/ImplementationGuide-ans.fhir.fr.test-cql.md)
+
+### Libraries
+
+* [Hello CQL — exemple générique](fr/Library-HelloCQL.md)
+
+### Measures
+
+* [Proportion de patients âgés de 65 ans et plus](fr/Measure-Patients65Plus.md)
+
+### Examples
+
+* [pat-bernard (Patient)](fr/Patient-pat-bernard.md)
+* [pat-dubois (Patient)](fr/Patient-pat-dubois.md)
+* [pat-martin (Patient)](fr/Patient-pat-martin.md)
+* [pat-petit (Patient)](fr/Patient-pat-petit.md)
+* [pat-thomas (Patient)](fr/Patient-pat-thomas.md)

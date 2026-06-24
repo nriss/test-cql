@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patient xmlns="http://hl7.org/fhir">
+  <id value="pat-martin"/>
+  <language value="fr"/>
+  <text>
+    <status value="generated"/><div xml:lang="fr" lang="fr"><hr/><p><b>French</b></p><hr/><p class="res-header-id"><b>Narratif généré : Patient pat-martin</b></p><a name="pat-martin"> </a><a name="hcpat-martin"> </a><p style="border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;">Jean Martin  (sexe non précisé), Date de Naissance :1945-03-12</p><hr/><table class="grid"><tr><td style="background-color: #f3f5da" title="L'enregistrement est actif">Actif :</td><td colspan="3">true</td></tr></table></div>
+  </text>
+  <active value="true"/>
+  <name>
+    <family value="Martin"/>
+    <given value="Jean"/>
+  </name>
+  <birthDate value="1945-03-12"/>
+</Patient>

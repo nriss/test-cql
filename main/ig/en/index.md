@@ -58,5 +58,12 @@ docker compose down
 
 ### Propriété intellectuelle
 
-No use of external IP (other than from the FHIR specification)
+This publication includes IP covered under the following statements.
+
+* This material derives from the HL7 Terminology (THO). THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: [https://terminology.hl7.org/license.html](https://terminology.hl7.org/license.html)
+
+* [LibraryType](http://terminology.hl7.org/7.2.0/CodeSystem-library-type.html): [HelloCQL](Library-HelloCQL.md)
+* [Measure Population Type](http://terminology.hl7.org/7.2.0/CodeSystem-measure-population.html): [Patients65Plus](Measure-Patients65Plus.md)
+* [Measure Scoring](http://terminology.hl7.org/7.2.0/CodeSystem-measure-scoring.html): [Patients65Plus](Measure-Patients65Plus.md)
+
 

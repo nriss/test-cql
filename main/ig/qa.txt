@@ -1,15 +1,46 @@
 TestCQL : Validation Results
 =========================================
 
-err = 1, warn = 3, info = 0
+err = 4, warn = 16, info = 1
 IG Publisher Version: 2.2.9
-Generated Wed Jun 24 08:19:40 UTC 2026. FHIR version 4.0.1 for ans.fhir.fr.test-cql#0.1.0 (canonical = https://interop.esante.gouv.fr/ig/fhir/test-cql)
- Build Errors : 0 / 3 / 0
- /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/ImplementationGuide-ans.fhir.fr.test-cql : 1 / 0 / 1
+Generated Wed Jun 24 08:27:46 UTC 2026. FHIR version 4.0.1 for ans.fhir.fr.test-cql#0.1.0 (canonical = https://interop.esante.gouv.fr/ig/fhir/test-cql)
+ Build Errors : 0 / 10 / 0
+ /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/ImplementationGuide-ans.fhir.fr.test-cql : 0 / 0 / 1
+ /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Library-HelloCQL : 2 / 2 / 1
+ /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus : 2 / 4 / 2
+ /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-bernard : 0 / 0 / 1
+ /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-dubois : 0 / 0 / 1
+ /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-martin : 0 / 0 / 1
+ /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-petit : 0 / 0 / 1
+ /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-thomas : 0 / 0 / 1
 </table>
 == n/a ==
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Measure/Patients65Plus.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Library/HelloCQL.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-bernard.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-dubois.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-martin.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-petit.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-thomas.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
 WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml, cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 4: An HTML fragment from the set [globals-table.xhtml, globals-table.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 5: An HTML fragment from the set [expansion-params.xhtml, expansion-params.xhtml] is not included anywhere in the produced implementation guide
 == fsh-generated/resources/ImplementationGuide-ans.fhir.fr.test-cql.json ==
-ERROR: ImplementationGuide/ans.fhir.fr.test-cql: ImplementationGuide.definition: ImplementationGuide.definition.resource: minimum required = 1, but only found 0 (from http://hl7.org/fhir/StructureDefinition/ImplementationGuide|4.0.1)
+== fsh-generated/resources/Library-HelloCQL.json ==
+ERROR: Library.where(url = 'http://poc-cql/Library/HelloCQL'): Conformance resource /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Library-HelloCQL.json - the canonical URL (https://interop.esante.gouv.fr/ig/fhir/test-cql/Library/HelloCQL) does not match the URL (http://poc-cql/Library/HelloCQL). Use the special-url parameter if you really mean for it not to match
+WARNING: Library/HelloCQL: Library.text.div: The XHTML  the resource contains more than one node for each of the following node ids and anchor names: cql-content (2x), parameters (2x)
+ERROR: /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Library-HelloCQL: URL Mismatch https://interop.esante.gouv.fr/ig/fhir/test-cql/Library/HelloCQL vs http://poc-cql/Library/HelloCQL
+WARNING: IG: "The narrative includes custom content for the default language (fr), but does not include translated content for the en language, so the default language has been used
+== fsh-generated/resources/Measure-Patients65Plus.json ==
+ERROR: Measure.where(url = 'http://poc-cql/Measure/patients-65plus'): Conformance resource /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus.json - the canonical URL (https://interop.esante.gouv.fr/ig/fhir/test-cql/Measure/Patients65Plus) does not match the URL (http://poc-cql/Measure/patients-65plus). Use the special-url parameter if you really mean for it not to match
+WARNING: /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus.json: Artifact library could not be found so no data requirements were inferred.
+INFORMATION: Measure.library[0]: Pinned the version of http://poc-cql/Library/HelloCQL to 0.1.0
+WARNING: Measure/Patients65Plus: Measure: Published measures SHOULD conform to the ShareableMeasure profile, which says that the element Measure.experimental is mandatory, but it is not present
+WARNING: Measure/Patients65Plus: Measure: Published measures SHOULD conform to the ShareableMeasure profile, which says that the element Measure.description is mandatory, but it is not present
+ERROR: /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus: URL Mismatch https://interop.esante.gouv.fr/ig/fhir/test-cql/Measure/Patients65Plus vs http://poc-cql/Measure/patients-65plus
+WARNING: IG: "The narrative includes custom content for the default language (fr), but does not include translated content for the en language, so the default language has been used
+== fsh-generated/resources/Patient-pat-bernard.json ==
+== fsh-generated/resources/Patient-pat-dubois.json ==
+== fsh-generated/resources/Patient-pat-martin.json ==
+== fsh-generated/resources/Patient-pat-petit.json ==
+== fsh-generated/resources/Patient-pat-thomas.json ==

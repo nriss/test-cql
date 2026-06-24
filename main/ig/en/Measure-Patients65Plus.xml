@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Measure xmlns="http://hl7.org/fhir">
+  <id value="Patients65Plus"/>
+  <language value="en"/>
+  <text>
+    <status value="extensions"/><div xml:lang="en" lang="en"><hr/><p><b>English</b></p><hr/>
+  <table class="narrative-table">
+    <tbody>
+<tr>
+
+
+<th colspan="2" scope="row" class="row-header">Metadata</th>
+
+
+</tr>
+
+<tr>
+
+
+<th scope="row" class="row-header">Title</th>
+
+
+
+<td class="content-container">Proportion de patients âgés de 65 ans et plus</td>
+
+
+</tr>
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Version</th>
+
+
+
+<td class="content-container">0.1.0</td>
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Jurisdiction</th>
+
+
+
+<td class="content-container">
+    France (la)
+
+
+</td>
+
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Steward (Publisher)</th>
+
+
+
+<td class="content-container">Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris</td>
+
+
+</tr>
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Steward Contact</th>
+
+
+
+<td class="content-container">Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris</td>
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Measure Scoring</th>
+
+
+
+<td class="content-container">
+    proportion from <a href="http://terminology.hl7.org/7.2.0/CodeSystem-measure-scoring.html">http://terminology.hl7.org/CodeSystem/measure-scoring</a> 
+
+
+</td>
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+    <tr>
+
+
+<th colspan="2" scope="row" class="row-header">Measure Group (Rate) (ID: seniors)</th>
+
+
+</tr>
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<th colspan="2" scope="row" class="row-header">Measure Logic</th>
+
+
+</tr>
+
+<tr>
+
+
+<th scope="row" class="row-header">Primary Library</th>
+
+
+
+<td class="content-container"><a href="Library-HelloCQL.html">Hello CQL — exemple générique</a> version: 0.1.0</td>
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+  <th colspan="2" scope="row" class="row-header">Generated using version 0.5.4 of the sample-content-ig Liquid templates</th>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+  </text>
+  <url value="http://poc-cql/Measure/patients-65plus"/>
+  <version value="0.1.0"/>
+  <name value="Patients65Plus"/>
+  <title value="Proportion de patients âgés de 65 ans et plus"/>
+  <status value="active"/>
+  <date value="2026-06-24T08:26:43+00:00"/>
+  <publisher value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
+  <contact>
+    <name value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://esante.gouv.fr"/>
+    </telecom>
+  </contact>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="FR"/>
+      <display value="France (la)"/>
+    </coding>
+  </jurisdiction>
+  <library value="http://poc-cql/Library/HelloCQL|0.1.0"/>
+  <scoring>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"/>
+      <code value="proportion"/>
+    </coding>
+  </scoring>
+  <group id="seniors">
+    <population id="initial-population">
+      <code>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>
+          <code value="initial-population"/>
+        </coding>
+      </code>
+      <criteria>
+        <language value="text/cql-identifier"/>
+        <expression value="InitialPopulation"/>
+      </criteria>
+    </population>
+    <population id="denominator">
+      <code>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>
+          <code value="denominator"/>
+        </coding>
+      </code>
+      <criteria>
+        <language value="text/cql-identifier"/>
+        <expression value="Denominator"/>
+      </criteria>
+    </population>
+    <population id="numerator">
+      <code>
+        <coding>
+          <system value="http://terminology.hl7.org/CodeSystem/measure-population"/>
+          <code value="numerator"/>
+        </coding>
+      </code>
+      <criteria>
+        <language value="text/cql-identifier"/>
+        <expression value="Numerator"/>
+      </criteria>
+    </population>
+  </group>
+</Measure>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Patient xmlns="http://hl7.org/fhir">
+  <id value="pat-bernard"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xml:lang="en" lang="en"><hr/><p><b>English</b></p><hr/><p class="res-header-id"><b>Generated Narrative: Patient pat-bernard</b></p><a name="en-pat-bernard"> </a><a name="en-hcpat-bernard"> </a><p style="border: 1px #661aff solid; background-color: #e6e6ff; padding: 10px;">Pierre Bernard  (no stated gender), DoB: 1990-11-05</p><hr/><table class="grid"><tr><td style="background-color: #f3f5da" title="Record is active">Active:</td><td colspan="3">true</td></tr></table></div>
+  </text>
+  <active value="true"/>
+  <name>
+    <family value="Bernard"/>
+    <given value="Pierre"/>
+  </name>
+  <birthDate value="1990-11-05"/>
+</Patient>

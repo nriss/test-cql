@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Library xmlns="http://hl7.org/fhir">
+  <id value="HelloCQL"/>
+  <language value="en"/>
+  <text>
+    <status value="extensions"/><div xml:lang="en" lang="en"><hr/><p><b>English</b></p><hr/>
+  <table class="narrative-table">
+    <tbody>
+<tr>
+
+
+<th colspan="2" scope="row" class="row-header">Metadata</th>
+
+
+</tr>
+
+<tr>
+
+
+<th scope="row" class="row-header">Title</th>
+
+
+
+<td class="content-container">Hello CQL — exemple générique</td>
+
+
+</tr>
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Version</th>
+
+
+
+<td class="content-container">0.1.0</td>
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Jurisdiction</th>
+
+
+
+<td class="content-container">
+    France (la)
+
+
+</td>
+
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Steward (Publisher)</th>
+
+
+
+<td class="content-container">Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris</td>
+
+
+</tr>
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Steward Contact</th>
+
+
+
+<td class="content-container">Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris</td>
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Type</th>
+
+
+
+<td class="content-container">
+    logic-library from <a href="http://terminology.hl7.org/7.2.0/CodeSystem-library-type.html">http://terminology.hl7.org/CodeSystem/library-type</a> 
+
+
+</td>
+
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+
+
+<th colspan="2" scope="row" class="row-header"><a name="parameters"> </a>Parameters</th>
+
+
+</tr>
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Parameter</th>
+
+
+
+<td class="content-container">None</td>
+
+
+</tr>
+
+
+
+
+
+
+
+  <tr>
+
+
+<th colspan="2" scope="row" class="row-header">Library Content</th>
+
+
+</tr>
+  
+    
+    <tr>
+      <th scope="row" class="row-header">CQL Content</th>
+      <td>
+        <a name="cql-content"> </a>
+        <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">library HelloCQL version '1.0.0'
+
+using FHIR version '4.0.1'
+include FHIRHelpers version '4.0.1'
+
+context Patient
+
+// Population initiale : tous les patients
+define &quot;InitialPopulation&quot;:
+  true
+
+define &quot;Denominator&quot;:
+  true
+
+// Numérateur : patients de 65 ans et plus
+define &quot;Numerator&quot;:
+  AgeInYears() &gt;= 65
+</code></pre>
+      </td>
+    </tr>
+    
+  
+
+<tr>
+  <th colspan="2" scope="row" class="row-header">Generated using version 0.5.4 of the sample-content-ig Liquid templates</th>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+  </text>
+  <url value="http://poc-cql/Library/HelloCQL"/>
+  <version value="0.1.0"/>
+  <name value="HelloCQL"/>
+  <title value="Hello CQL — exemple générique"/>
+  <status value="active"/>
+  <type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/library-type"/>
+      <code value="logic-library"/>
+    </coding>
+  </type>
+  <date value="2026-06-24T08:26:43+00:00"/>
+  <publisher value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
+  <contact>
+    <name value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://esante.gouv.fr"/>
+    </telecom>
+  </contact>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="FR"/>
+      <display value="France (la)"/>
+    </coding>
+  </jurisdiction>
+  <content>
+    <contentType value="text/cql"/>
+    <data value="bGlicmFyeSBIZWxsb0NRTCB2ZXJzaW9uICcxLjAuMCcKCnVzaW5nIEZISVIgdmVyc2lvbiAnNC4wLjEnCmluY2x1ZGUgRkhJUkhlbHBlcnMgdmVyc2lvbiAnNC4wLjEnCgpjb250ZXh0IFBhdGllbnQKCi8vIFBvcHVsYXRpb24gaW5pdGlhbGUgOiB0b3VzIGxlcyBwYXRpZW50cwpkZWZpbmUgIkluaXRpYWxQb3B1bGF0aW9uIjoKICB0cnVlCgpkZWZpbmUgIkRlbm9taW5hdG9yIjoKICB0cnVlCgovLyBOdW3DqXJhdGV1ciA6IHBhdGllbnRzIGRlIDY1IGFucyBldCBwbHVzCmRlZmluZSAiTnVtZXJhdG9yIjoKICBBZ2VJblllYXJzKCkgPj0gNjUK"/>
+  </content>
+</Library>

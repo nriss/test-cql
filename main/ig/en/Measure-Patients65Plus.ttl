@@ -1,0 +1,90 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://interop.esante.gouv.fr/ig/fhir/test-cql/Measure/Patients65Plus> a fhir:Measure ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:id [ fhir:v "Patients65Plus"] ; # 
+  fhir:language [ fhir:v "en"] ; # 
+  fhir:text [
+     fhir:status [ fhir:v "extensions" ] ;
+     fhir:div [ fhir:v "<div xml:lang=\"en\" lang=\"en\"><hr/><p><b>English</b></p><hr/>\n  <table class=\"narrative-table\">\n    <tbody>\n<tr>\n\n\n<th colspan=\"2\" scope=\"row\" class=\"row-header\">Metadata</th>\n\n\n</tr>\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Title</th>\n\n\n\n<td class=\"content-container\">Proportion de patients âgés de 65 ans et plus</td>\n\n\n</tr>\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Version</th>\n\n\n\n<td class=\"content-container\">0.1.0</td>\n\n\n</tr>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Jurisdiction</th>\n\n\n\n<td class=\"content-container\">\n    France (la)\n\n\n</td>\n\n\n</tr>\n\n\n\n\n\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Steward (Publisher)</th>\n\n\n\n<td class=\"content-container\">Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris</td>\n\n\n</tr>\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Steward Contact</th>\n\n\n\n<td class=\"content-container\">Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris</td>\n\n\n</tr>\n\n\n\n\n\n\n\n\n\n\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Measure Scoring</th>\n\n\n\n<td class=\"content-container\">\n    proportion from <a href=\"http://terminology.hl7.org/7.2.0/CodeSystem-measure-scoring.html\">http://terminology.hl7.org/CodeSystem/measure-scoring</a> \n\n\n</td>\n\n\n</tr>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n  \n  \n    \n    <tr>\n\n\n<th colspan=\"2\" scope=\"row\" class=\"row-header\">Measure Group (Rate) (ID: seniors)</th>\n\n\n</tr>\n  \n  \n  \n\n\n\n\n\n\n\n\n\n\n\n  \n\n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<tr>\n\n\n<th colspan=\"2\" scope=\"row\" class=\"row-header\">Measure Logic</th>\n\n\n</tr>\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Primary Library</th>\n\n\n\n<td class=\"content-container\"><a href=\"Library-HelloCQL.html\">Hello CQL — exemple générique</a> version: 0.1.0</td>\n\n\n</tr>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<tr>\n  <th colspan=\"2\" scope=\"row\" class=\"row-header\">Generated using version 0.5.4 of the sample-content-ig Liquid templates</th>\n</tr>\n\n    </tbody>\n  </table>\n</div>"^^rdf:XMLLiteral ]
+  ] ; # 
+  fhir:url [ fhir:v "http://poc-cql/Measure/patients-65plus"^^xsd:anyURI] ; # 
+  fhir:version [ fhir:v "0.1.0"] ; # 
+  fhir:name [ fhir:v "Patients65Plus"] ; # 
+  fhir:title [ fhir:v "Proportion de patients âgés de 65 ans et plus"] ; # 
+  fhir:status [ fhir:v "active"] ; # 
+  fhir:date [ fhir:v "2026-06-24T08:26:43+00:00"^^xsd:dateTime] ; # 
+  fhir:publisher [ fhir:v "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"] ; # 
+  fhir:contact ( [
+     fhir:name [ fhir:v "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris" ] ;
+     fhir:telecom ( [
+       fhir:system [ fhir:v "url" ] ;
+       fhir:value [ fhir:v "https://esante.gouv.fr" ]
+     ] )
+  ] ) ; # 
+  fhir:jurisdiction ( [
+     fhir:coding ( [
+       fhir:system [ fhir:v "urn:iso:std:iso:3166"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "FR" ] ;
+       fhir:display [ fhir:v "France (la)" ]
+     ] )
+  ] ) ; # 
+  fhir:library ( [
+     fhir:v "http://poc-cql/Library/HelloCQL|0.1.0"^^xsd:anyURI ;
+     fhir:link <http://poc-cql/Library/HelloCQL|0.1.0>
+  ] ) ; # 
+  fhir:scoring [
+     fhir:coding ( [
+       fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/measure-scoring"^^xsd:anyURI ] ;
+       fhir:code [ fhir:v "proportion" ]
+     ] )
+  ] ; # 
+  fhir:group ( [
+     fhir:id [ fhir:v "seniors" ] ;
+     fhir:population ( [
+       fhir:id [ fhir:v "initial-population" ] ;
+       fhir:code [
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/measure-population"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "initial-population" ]
+         ] )
+       ] ;
+       fhir:criteria [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "InitialPopulation" ]
+       ]
+     ] [
+       fhir:id [ fhir:v "denominator" ] ;
+       fhir:code [
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/measure-population"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "denominator" ]
+         ] )
+       ] ;
+       fhir:criteria [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "Denominator" ]
+       ]
+     ] [
+       fhir:id [ fhir:v "numerator" ] ;
+       fhir:code [
+         fhir:coding ( [
+           fhir:system [ fhir:v "http://terminology.hl7.org/CodeSystem/measure-population"^^xsd:anyURI ] ;
+           fhir:code [ fhir:v "numerator" ]
+         ] )
+       ] ;
+       fhir:criteria [
+         fhir:language [ fhir:v "text/cql-identifier" ] ;
+         fhir:expression [ fhir:v "Numerator" ]
+       ]
+     ] )
+  ] ) . # 
+
+# -------------------------------------------------------------------------------------
+

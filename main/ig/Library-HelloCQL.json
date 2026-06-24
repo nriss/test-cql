@@ -1,0 +1,39 @@
+{
+  "resourceType" : "Library",
+  "id" : "HelloCQL",
+  "text" : {
+    "status" : "extensions",
+    "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div xml:lang=\"fr\" lang=\"fr\"><hr/><p><b>French</b></p><hr/>\n  <table class=\"narrative-table\">\n    <tbody>\n<tr>\n\n\n<th colspan=\"2\" scope=\"row\" class=\"row-header\">Metadata</th>\n\n\n</tr>\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Title</th>\n\n\n\n<td class=\"content-container\">Hello CQL — exemple générique</td>\n\n\n</tr>\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Version</th>\n\n\n\n<td class=\"content-container\">0.1.0</td>\n\n\n</tr>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Jurisdiction</th>\n\n\n\n<td class=\"content-container\">\n    France (la)\n\n\n</td>\n\n\n</tr>\n\n\n\n\n\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Steward (Publisher)</th>\n\n\n\n<td class=\"content-container\">Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris</td>\n\n\n</tr>\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Steward Contact</th>\n\n\n\n<td class=\"content-container\">Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris</td>\n\n\n</tr>\n\n\n\n\n\n\n\n\n\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Type</th>\n\n\n\n<td class=\"content-container\">\n    logic-library from <a href=\"http://terminology.hl7.org/7.2.0/CodeSystem-library-type.html\">http://terminology.hl7.org/CodeSystem/library-type</a> \n\n\n</td>\n\n\n</tr>\n\n\n\n\n\n\n\n\n<tr>\n\n\n<th colspan=\"2\" scope=\"row\" class=\"row-header\"><a name=\"parameters\"> </a>Parameters</th>\n\n\n</tr>\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Parameter</th>\n\n\n\n<td class=\"content-container\">None</td>\n\n\n</tr>\n\n\n\n\n\n\n\n  <tr>\n\n\n<th colspan=\"2\" scope=\"row\" class=\"row-header\">Library Content</th>\n\n\n</tr>\n  \n    \n    <tr>\n      <th scope=\"row\" class=\"row-header\">CQL Content</th>\n      <td>\n        <a name=\"cql-content\"> </a>\n        <pre style=\"border: none;\" class=\"content-container highlight language-cql\"><code class=\"language-cql\">library HelloCQL version '1.0.0'\n\nusing FHIR version '4.0.1'\ninclude FHIRHelpers version '4.0.1'\n\ncontext Patient\n\n// Population initiale : tous les patients\ndefine &quot;InitialPopulation&quot;:\n  true\n\ndefine &quot;Denominator&quot;:\n  true\n\n// Numérateur : patients de 65 ans et plus\ndefine &quot;Numerator&quot;:\n  AgeInYears() &gt;= 65\n</code></pre>\n      </td>\n    </tr>\n    \n  \n\n<tr>\n  <th colspan=\"2\" scope=\"row\" class=\"row-header\">Generated using version 0.5.4 of the sample-content-ig Liquid templates</th>\n</tr>\n\n    </tbody>\n  </table>\n</div><div xml:lang=\"en\" lang=\"en\"><hr/><p><b>English</b></p><hr/>\n  <table class=\"narrative-table\">\n    <tbody>\n<tr>\n\n\n<th colspan=\"2\" scope=\"row\" class=\"row-header\">Metadata</th>\n\n\n</tr>\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Title</th>\n\n\n\n<td class=\"content-container\">Hello CQL — exemple générique</td>\n\n\n</tr>\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Version</th>\n\n\n\n<td class=\"content-container\">0.1.0</td>\n\n\n</tr>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Jurisdiction</th>\n\n\n\n<td class=\"content-container\">\n    France (la)\n\n\n</td>\n\n\n</tr>\n\n\n\n\n\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Steward (Publisher)</th>\n\n\n\n<td class=\"content-container\">Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris</td>\n\n\n</tr>\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Steward Contact</th>\n\n\n\n<td class=\"content-container\">Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris</td>\n\n\n</tr>\n\n\n\n\n\n\n\n\n\n\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Type</th>\n\n\n\n<td class=\"content-container\">\n    logic-library from <a href=\"http://terminology.hl7.org/7.2.0/CodeSystem-library-type.html\">http://terminology.hl7.org/CodeSystem/library-type</a> \n\n\n</td>\n\n\n</tr>\n\n\n\n\n\n\n\n\n<tr>\n\n\n<th colspan=\"2\" scope=\"row\" class=\"row-header\"><a name=\"parameters\"> </a>Parameters</th>\n\n\n</tr>\n\n\n<tr>\n\n\n<th scope=\"row\" class=\"row-header\">Parameter</th>\n\n\n\n<td class=\"content-container\">None</td>\n\n\n</tr>\n\n\n\n\n\n\n\n  <tr>\n\n\n<th colspan=\"2\" scope=\"row\" class=\"row-header\">Library Content</th>\n\n\n</tr>\n  \n    \n    <tr>\n      <th scope=\"row\" class=\"row-header\">CQL Content</th>\n      <td>\n        <a name=\"cql-content\"> </a>\n        <pre style=\"border: none;\" class=\"content-container highlight language-cql\"><code class=\"language-cql\">library HelloCQL version '1.0.0'\n\nusing FHIR version '4.0.1'\ninclude FHIRHelpers version '4.0.1'\n\ncontext Patient\n\n// Population initiale : tous les patients\ndefine &quot;InitialPopulation&quot;:\n  true\n\ndefine &quot;Denominator&quot;:\n  true\n\n// Numérateur : patients de 65 ans et plus\ndefine &quot;Numerator&quot;:\n  AgeInYears() &gt;= 65\n</code></pre>\n      </td>\n    </tr>\n    \n  \n\n<tr>\n  <th colspan=\"2\" scope=\"row\" class=\"row-header\">Generated using version 0.5.4 of the sample-content-ig Liquid templates</th>\n</tr>\n\n    </tbody>\n  </table>\n</div></div>"
+  },
+  "url" : "http://poc-cql/Library/HelloCQL",
+  "version" : "0.1.0",
+  "name" : "HelloCQL",
+  "title" : "Hello CQL — exemple générique",
+  "status" : "active",
+  "type" : {
+    "coding" : [{
+      "system" : "http://terminology.hl7.org/CodeSystem/library-type",
+      "code" : "logic-library"
+    }]
+  },
+  "date" : "2026-06-24T08:26:43+00:00",
+  "publisher" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
+  "contact" : [{
+    "name" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
+    "telecom" : [{
+      "system" : "url",
+      "value" : "https://esante.gouv.fr"
+    }]
+  }],
+  "jurisdiction" : [{
+    "coding" : [{
+      "system" : "urn:iso:std:iso:3166",
+      "code" : "FR",
+      "display" : "France (la)"
+    }]
+  }],
+  "content" : [{
+    "contentType" : "text/cql",
+    "data" : "bGlicmFyeSBIZWxsb0NRTCB2ZXJzaW9uICcxLjAuMCcKCnVzaW5nIEZISVIgdmVyc2lvbiAnNC4wLjEnCmluY2x1ZGUgRkhJUkhlbHBlcnMgdmVyc2lvbiAnNC4wLjEnCgpjb250ZXh0IFBhdGllbnQKCi8vIFBvcHVsYXRpb24gaW5pdGlhbGUgOiB0b3VzIGxlcyBwYXRpZW50cwpkZWZpbmUgIkluaXRpYWxQb3B1bGF0aW9uIjoKICB0cnVlCgpkZWZpbmUgIkRlbm9taW5hdG9yIjoKICB0cnVlCgovLyBOdW3DqXJhdGV1ciA6IHBhdGllbnRzIGRlIDY1IGFucyBldCBwbHVzCmRlZmluZSAiTnVtZXJhdG9yIjoKICBBZ2VJblllYXJzKCkgPj0gNjUK"
+  }]
+}
