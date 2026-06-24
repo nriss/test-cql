@@ -13,7 +13,7 @@
   <name value="TestCQL"/>
   <title value="POC CQL - ROR"/>
   <status value="draft"/>
-  <date value="2026-06-24T08:25:55+00:00"/>
+  <date value="2026-06-24T08:30:10+00:00"/>
   <publisher value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
   <contact>
     <name value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
@@ -642,6 +642,7 @@
         <reference value="Library/HelloCQL"/>
       </reference>
       <name value="Hello CQL — exemple générique"/>
+      <description value="Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus"/>
       <exampleBoolean value="false"/>
     </resource>
     <resource>

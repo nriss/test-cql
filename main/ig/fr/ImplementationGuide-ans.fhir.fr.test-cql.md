@@ -14,7 +14,7 @@
   "name" : "TestCQL",
   "title" : "POC CQL - ROR",
   "status" : "draft",
-  "date" : "2026-06-24T08:25:55+00:00",
+  "date" : "2026-06-24T08:30:10+00:00",
   "publisher" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
   "contact" : [{
     "name" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
@@ -866,6 +866,7 @@
         "reference" : "Library/HelloCQL"
       },
       "name" : "Hello CQL — exemple générique",
+      "description" : "Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus",
       "exampleBoolean" : false
     },
     {

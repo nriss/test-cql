@@ -23,7 +23,7 @@
 * Metadata: Measure Group (Rate) (ID: seniors)
 * Metadata: Measure Logic
 * Metadata: Primary Library
-  * ?: [Hello CQL — exemple générique](Library-HelloCQL.md)version : 0.1.0
+  * ?: `http://poc-cql/Library/HelloCQL`
 * Metadata: Generated using version 0.5.4 of the sample-content-ig Liquid templates
 
 
@@ -39,7 +39,7 @@
   "name" : "Patients65Plus",
   "title" : "Proportion de patients âgés de 65 ans et plus",
   "status" : "active",
-  "date" : "2026-06-24T08:25:55+00:00",
+  "date" : "2026-06-24T08:30:10+00:00",
   "publisher" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
   "contact" : [{
     "name" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
@@ -55,7 +55,7 @@
       "display" : "France (la)"
     }]
   }],
-  "library" : ["http://poc-cql/Library/HelloCQL|0.1.0"],
+  "library" : ["http://poc-cql/Library/HelloCQL"],
   "scoring" : {
     "coding" : [{
       "system" : "http://terminology.hl7.org/CodeSystem/measure-scoring",

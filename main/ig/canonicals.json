@@ -1,11 +1,4 @@
 [{
-  "id" : "HelloCQL",
-  "type" : "Library",
-  "url" : "http://poc-cql/Library/HelloCQL",
-  "version" : "0.1.0",
-  "name" : "HelloCQL"
-},
-{
   "id" : "Patients65Plus",
   "type" : "Measure",
   "url" : "http://poc-cql/Measure/patients-65plus",
@@ -18,4 +11,11 @@
   "url" : "https://interop.esante.gouv.fr/ig/fhir/test-cql/ImplementationGuide/ans.fhir.fr.test-cql",
   "version" : "0.1.0",
   "name" : "TestCQL"
+},
+{
+  "id" : "HelloCQL",
+  "type" : "Library",
+  "url" : "https://interop.esante.gouv.fr/ig/fhir/test-cql/Library/HelloCQL",
+  "version" : "0.1.0",
+  "name" : "HelloCQL"
 }]

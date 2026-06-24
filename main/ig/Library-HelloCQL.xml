@@ -52,6 +52,20 @@
 
 
 
+<tr>
+
+
+<th scope="row" class="row-header">Experimental</th>
+
+
+
+<td class="content-container">true</td>
+
+
+</tr>
+
+
+
 
 
 <tr>
@@ -108,6 +122,19 @@
 
 
 
+
+<tr>
+
+
+<th scope="row" class="row-header">Description</th>
+
+
+
+<td class="content-container"><div><p>Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus</p>
+</div></td>
+
+
+</tr>
 
 
 
@@ -255,6 +282,20 @@ define &quot;Numerator&quot;:
 
 
 
+<tr>
+
+
+<th scope="row" class="row-header">Experimental</th>
+
+
+
+<td class="content-container">true</td>
+
+
+</tr>
+
+
+
 
 
 <tr>
@@ -311,6 +352,19 @@ define &quot;Numerator&quot;:
 
 
 
+
+<tr>
+
+
+<th scope="row" class="row-header">Description</th>
+
+
+
+<td class="content-container"><div><p>Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus</p>
+</div></td>
+
+
+</tr>
 
 
 
@@ -411,18 +465,19 @@ define &quot;Numerator&quot;:
   </table>
 </div></div>
   </text>
-  <url value="http://poc-cql/Library/HelloCQL"/>
+  <url value="https://interop.esante.gouv.fr/ig/fhir/test-cql/Library/HelloCQL"/>
   <version value="0.1.0"/>
   <name value="HelloCQL"/>
   <title value="Hello CQL — exemple générique"/>
   <status value="active"/>
+  <experimental value="true"/>
   <type>
     <coding>
       <system value="http://terminology.hl7.org/CodeSystem/library-type"/>
       <code value="logic-library"/>
     </coding>
   </type>
-  <date value="2026-06-24T08:25:55+00:00"/>
+  <date value="2026-06-24T08:30:10+00:00"/>
   <publisher value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
   <contact>
     <name value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
@@ -431,6 +486,7 @@ define &quot;Numerator&quot;:
       <value value="https://esante.gouv.fr"/>
     </telecom>
   </contact>
+  <description value="Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus"/>
   <jurisdiction>
     <coding>
       <system value="urn:iso:std:iso:3166"/>

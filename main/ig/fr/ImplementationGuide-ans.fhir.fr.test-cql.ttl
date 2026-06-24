@@ -19,7 +19,7 @@
   fhir:name [ fhir:v "TestCQL"] ; # 
   fhir:title [ fhir:v "POC CQL - ROR"] ; # 
   fhir:status [ fhir:v "draft"] ; # 
-  fhir:date [ fhir:v "2026-06-24T08:25:55+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-06-24T08:30:10+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris" ] ;
@@ -1178,6 +1178,7 @@
          fhir:reference [ fhir:v "Library/HelloCQL" ]
        ] ;
        fhir:name [ fhir:v "Hello CQL — exemple générique" ] ;
+       fhir:description [ fhir:v "Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus" ] ;
        fhir:example [
          a fhir:boolean ;
          fhir:v false

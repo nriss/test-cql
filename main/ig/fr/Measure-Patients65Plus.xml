@@ -210,7 +210,7 @@
 
 
 
-<td class="content-container"><a href="Library-HelloCQL.html">Hello CQL — exemple générique</a> version : 0.1.0</td>
+<td class="content-container"><code>http://poc-cql/Library/HelloCQL</code></td>
 
 
 </tr>
@@ -241,7 +241,7 @@
   <name value="Patients65Plus"/>
   <title value="Proportion de patients âgés de 65 ans et plus"/>
   <status value="active"/>
-  <date value="2026-06-24T08:25:55+00:00"/>
+  <date value="2026-06-24T08:30:10+00:00"/>
   <publisher value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
   <contact>
     <name value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
@@ -257,7 +257,7 @@
       <display value="France (la)"/>
     </coding>
   </jurisdiction>
-  <library value="http://poc-cql/Library/HelloCQL|0.1.0"/>
+  <library value="http://poc-cql/Library/HelloCQL"/>
   <scoring>
     <coding>
       <system value="http://terminology.hl7.org/CodeSystem/measure-scoring"/>

@@ -1,6 +1,9 @@
 # Hello CQL — exemple générique - POC CQL - ROR v0.1.0
 
-## Library: Hello CQL — exemple générique 
+## Library: Hello CQL — exemple générique (Expérimental) 
+
+ 
+Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus 
 
 -------
 
@@ -12,12 +15,16 @@
   * ?: Hello CQL — exemple générique
 * Metadata: Version
   * ?: 0.1.0
+* Metadata: Experimental
+  * ?: true
 * Metadata: Jurisdiction
   * ?: France (la)
 * Metadata: Steward (Publisher)
   * ?: Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris
 * Metadata: Steward Contact
   * ?: Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris
+* Metadata: Description
+  * ?: Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus
 * Metadata: Type
   * ?: logic-library from[http://terminology.hl7.org/CodeSystem/library-type](http://terminology.hl7.org/7.2.0/CodeSystem-library-type.html)
 * Metadata:  Parameters
@@ -36,18 +43,19 @@
 {
   "resourceType" : "Library",
   "id" : "HelloCQL",
-  "url" : "http://poc-cql/Library/HelloCQL",
+  "url" : "https://interop.esante.gouv.fr/ig/fhir/test-cql/Library/HelloCQL",
   "version" : "0.1.0",
   "name" : "HelloCQL",
   "title" : "Hello CQL — exemple générique",
   "status" : "active",
+  "experimental" : true,
   "type" : {
     "coding" : [{
       "system" : "http://terminology.hl7.org/CodeSystem/library-type",
       "code" : "logic-library"
     }]
   },
-  "date" : "2026-06-24T08:25:55+00:00",
+  "date" : "2026-06-24T08:30:10+00:00",
   "publisher" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
   "contact" : [{
     "name" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
@@ -56,6 +64,7 @@
       "value" : "https://esante.gouv.fr"
     }]
   }],
+  "description" : "Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus",
   "jurisdiction" : [{
     "coding" : [{
       "system" : "urn:iso:std:iso:3166",
