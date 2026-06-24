@@ -38,13 +38,18 @@ parameters: #Parameters list - https://build.fhir.org/ig/FHIR/fhir-tools-ig/Code
 pages:
     index.md:
         title: Accueil
-    poc-cql.md:
-        title: Documentation du POC CQL
+    cas-usage-01-generique.md:
+        title: "01 — Exemple générique"
+    cas-usage-02-ror.md:
+        title: "02 — ROR"
     change-log.md:
         title: Historique des versions
 
 menu:
     Accueil: index.html
-    Documentation POC: poc-cql.html
+    Cas d'usages:
+        "01 — Exemple générique": cas-usage-01-generique.html
+        "02 — ROR": cas-usage-02-ror.html
     Ressources de conformité: artifacts.html
+    Documentation: new-tab https://interop.esante.gouv.fr/ig/documentation/
     Historique: change-log.html
