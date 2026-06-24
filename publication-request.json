@@ -1,0 +1,16 @@
+{
+    "package-id" : "ans.fhir.fr.[todo]",
+    "version" : "[todo]",
+    "path" : "https://interop.esante.gouv.fr/ig/fhir/[todo]",
+    "mode" : "milestone",
+    "status" : "release",
+    "sequence" : "STU1",
+    "title" : "[todo]",
+    "first" : true,
+    "desc" : "[todo]",
+    "ci-build" : "https://ansforge.github.io/[todo]",
+    "category" : "[todo]",
+    "introduction" : "[todo]",
+    "changes": "change-log.html"
+
+  }
