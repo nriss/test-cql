@@ -43,7 +43,9 @@
   </head>
   <body onload="document.body.style.opacity='1'">
 
-	  <script src="assets/js/prism.js"></script>
+	  <script type="text/javascript" src="assets/js/prism.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-fhirpath.js"></script>
+	  <script type="text/javascript" src="assets/js/prism-cql.js"></script>
     <script type="text/javascript" src="assets/js/mermaid.js"></script>
     <script type="text/javascript" src="assets/js/mermaid-init.js"></script>
     <style type="text/css">h2{--heading-prefix:"2"}
@@ -177,6 +179,7 @@
       <div class="container">  <!-- container -->
         <div class="row">
           <div class="inner-wrapper">
+
 <style type="text/css">
 h2:before{color:silver;counter-increment:section;content:var(--heading-prefix) " ";}
 h3:before{color:silver;counter-increment:sub-section;content:var(--heading-prefix) "." counter(sub-section) " ";}
@@ -213,7 +216,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 
 <h4 id="données-de-test">Données de test</h4>
 
-<p>5 patients fictifs :</p>
+<p>5 patients fictifs définis dans <code class="language-plaintext highlighter-rouge">input/fsh/Examples/Patients-exemples.fsh</code> :</p>
 
 <table>
   <thead>
@@ -221,6 +224,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <th>Patient</th>
       <th>Date de naissance</th>
       <th>≥ 65 ans ?</th>
+      <th>Population</th>
     </tr>
   </thead>
   <tbody>
@@ -228,33 +232,38 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <td>Jean Martin</td>
       <td>1945-03-12</td>
       <td>✅ oui</td>
+      <td>Numérateur</td>
     </tr>
     <tr>
       <td>Marie Dubois</td>
       <td>1958-07-22</td>
       <td>✅ oui</td>
+      <td>Numérateur</td>
     </tr>
     <tr>
       <td>Pierre Bernard</td>
       <td>1990-11-05</td>
       <td>❌ non</td>
+      <td>Dénominateur seulement</td>
     </tr>
     <tr>
       <td>Lucie Thomas</td>
       <td>1938-01-30</td>
       <td>✅ oui</td>
+      <td>Numérateur</td>
     </tr>
     <tr>
       <td>Sophie Petit</td>
       <td>2000-06-15</td>
       <td>❌ non</td>
+      <td>Dénominateur seulement</td>
     </tr>
   </tbody>
 </table>
 
-<p><strong>Résultat attendu</strong> : numérateur = 3, dénominateur = 5, score = 0.6</p>
-
 <h4 id="cql">CQL</h4>
+
+<p>Source : <code class="language-plaintext highlighter-rouge">input/cql/HelloCQL.cql</code></p>
 
 <pre><code class="language-cql">library HelloCQL version '1.0.0'
 
@@ -263,23 +272,135 @@ include FHIRHelpers version '4.0.1'
 
 context Patient
 
+// Population initiale : tous les patients
 define "InitialPopulation":
   true
 
 define "Denominator":
   true
 
+// Numérateur : patients de 65 ans et plus
 define "Numerator":
   AgeInYears() &gt;= 65
 </code></pre>
 
-<h4 id="lancer">Lancer</h4>
+<h4 id="étapes-de-lancement">Étapes de lancement</h4>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>poc/01-exemple-generique
-docker compose up <span class="nt">-d</span>
-./evaluate.sh
-docker compose down
+<h5 id="1-démarrer-hapi-fhir">1. Démarrer HAPI FHIR</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose up <span class="nt">-d</span>
 </code></pre></div></div>
+
+<p>HAPI FHIR v8 démarre sur le port 8080 avec le module Clinical Reasoning activé (<code class="language-plaintext highlighter-rouge">hapi.fhir.cr.enabled: true</code>). Prévoir ~60 secondes au premier démarrage.</p>
+
+<h5 id="2-générer-les-ressources-fhir-avec-sushi">2. Générer les ressources FHIR avec SUSHI</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sushi <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>Compile les fichiers FSH en ressources FHIR JSON dans <code class="language-plaintext highlighter-rouge">fsh-generated/resources/</code> (Library, Measure, Patients).</p>
+
+<h5 id="3-charger-la-library">3. Charger la Library</h5>
+
+<p>La Library embarque le CQL encodé en base64. HAPI FHIR la compilera en ELM à l'évaluation.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> PUT http://localhost:8080/fhir/Library/HelloCQL <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/fhir+json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> @fsh-generated/resources/Library-HelloCQL.json
+</code></pre></div></div>
+
+<h5 id="4-charger-la-measure">4. Charger la Measure</h5>
+
+<p>La Measure référence la Library et définit les trois populations : <code class="language-plaintext highlighter-rouge">InitialPopulation</code>, <code class="language-plaintext highlighter-rouge">Denominator</code>, <code class="language-plaintext highlighter-rouge">Numerator</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> PUT http://localhost:8080/fhir/Measure/Patients65Plus <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/fhir+json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> @fsh-generated/resources/Measure-Patients65Plus.json
+</code></pre></div></div>
+
+<h5 id="5-charger-les-patients">5. Charger les patients</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for </span>patient <span class="k">in </span>pat-martin pat-dubois pat-bernard pat-thomas pat-petit<span class="p">;</span> <span class="k">do
+  </span>curl <span class="nt">-X</span> PUT http://localhost:8080/fhir/Patient/<span class="k">${</span><span class="nv">patient</span><span class="k">}</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Content-Type: application/fhir+json"</span> <span class="se">\</span>
+    <span class="nt">-d</span> @fsh-generated/resources/Patient-<span class="k">${</span><span class="nv">patient</span><span class="k">}</span>.json
+<span class="k">done</span>
+</code></pre></div></div>
+
+<h5 id="6-évaluer-la-measure">6. Évaluer la Measure</h5>
+
+<p>L'opération <code class="language-plaintext highlighter-rouge">$evaluate-measure</code> déclenche l'exécution du CQL contre toute la population Patient présente sur le serveur pour la période donnée.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-X</span> POST <span class="s2">"http://localhost:8080/fhir/Measure/Patients65Plus/</span><span class="se">\$</span><span class="s2">evaluate-measure"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/fhir+json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+    "resourceType": "Parameters",
+    "parameter": [
+      {"name": "periodStart", "valueDate": "2020-01-01"},
+      {"name": "periodEnd",   "valueDate": "2026-12-31"},
+      {"name": "reportType",  "valueCode": "population"}
+    ]
+  }'</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>Les étapes 3 à 6 sont automatisées par <code class="language-plaintext highlighter-rouge">./evaluate-01-generique.sh</code> (nécessite que <code class="language-plaintext highlighter-rouge">fsh-generated/</code> existe).</p>
+</blockquote>
+
+<h4 id="résultat--measurereport">Résultat — MeasureReport</h4>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MeasureReport"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"complete"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"summary"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"measure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://interop.esante.gouv.fr/ig/fhir/test-cql/Measure/Patients65Plus|1.0.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-01-01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"end"</span><span class="p">:</span><span class="w">   </span><span class="s2">"2026-12-31"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"group"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"seniors"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"population"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"initial-population"</span><span class="p">,</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"initial-population"</span><span class="w"> </span><span class="p">}]</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"denominator"</span><span class="p">,</span><span class="w">        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"denominator"</span><span class="w">        </span><span class="p">}]</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"numerator"</span><span class="p">,</span><span class="w">          </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"coding"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"numerator"</span><span class="w">          </span><span class="p">}]</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"measureScore"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Champ</th>
+      <th>Valeur</th>
+      <th>Signification</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">initial-population</code></td>
+      <td>5</td>
+      <td>Tous les patients du serveur</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">denominator</code></td>
+      <td>5</td>
+      <td>Même population (critère <code class="language-plaintext highlighter-rouge">true</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">numerator</code></td>
+      <td>3</td>
+      <td>Martin (1945), Dubois (1958), Thomas (1938)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">measureScore</code></td>
+      <td>0.6</td>
+      <td>3 / 5 = <strong>60 %</strong> de la population a ≥ 65 ans</td>
+    </tr>
+  </tbody>
+</table>
 
 
 
@@ -330,7 +451,7 @@ docker compose down
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://esante.gouv.fr">Agence du Numérique en Santé (ANS) - 2-10 Rue d&#39;Oradour-sur-Glane, 75015 Paris</a>.  
           Le package ans.fhir.fr.test-cql#0.1.0 est basé sur <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Date de génération : 
-  <span title="2026-06-24 08:34:00 +0000">
+  <span title="2026-06-24 08:58:00 +0000">
     2026-06-24
   </span>
 
