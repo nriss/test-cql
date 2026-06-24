@@ -9,7 +9,7 @@ context Patient
 define "InitialPopulation":
   true
 
-define "Denominator":JL
+define "Denominator":
   true
 
 // Numérateur : patients de 65 ans et plus
