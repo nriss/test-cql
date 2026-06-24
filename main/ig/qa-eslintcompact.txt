@@ -1,12 +1,6 @@
 TestCQL
 =========================================
 
-Generic: line 0, col 0, Warning - Unable to find ImplementationGuide.definition.resource.description for the resource Measure/Patients65Plus.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list. (INVARIANT)
-Generic: line 0, col 0, Warning - Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-bernard.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list. (INVARIANT)
-Generic: line 0, col 0, Warning - Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-dubois.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list. (INVARIANT)
-Generic: line 0, col 0, Warning - Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-martin.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list. (INVARIANT)
-Generic: line 0, col 0, Warning - Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-petit.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list. (INVARIANT)
-Generic: line 0, col 0, Warning - Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-thomas.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list. (INVARIANT)
 Generic: line 0, col 0, Warning - An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml, cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide (NOTFOUND)
 Generic: line 0, col 0, Warning - An HTML fragment from the set [globals-table.xhtml, globals-table.xhtml] is not included anywhere in the produced implementation guide (NOTFOUND)
 Generic: line 0, col 0, Warning - An HTML fragment from the set [expansion-params.xhtml, expansion-params.xhtml] is not included anywhere in the produced implementation guide (NOTFOUND)
@@ -21,5 +15,5 @@ Generic: line 0, col 0, Warning - An HTML fragment from the set [expansion-param
 /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus.json: line 0, col 0, Error - URL Mismatch https://interop.esante.gouv.fr/ig/fhir/test-cql/Measure/Patients65Plus vs http://poc-cql/Measure/patients-65plus (BUSINESSRULE)
 /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus.json: line 0, col 0, Warning - "The narrative includes custom content for the default language (fr), but does not include translated content for the en language, so the default language has been used (BUSINESSRULE)
 
-err = 2, warn = 16, info = 1
+err = 2, warn = 10, info = 1
 IG Publisher Version: 2.2.9

@@ -1,6 +1,6 @@
-# pat-martin - POC CQL - ROR v0.1.0
+# Patient exemple — Jean Martin - POC CQL - ROR v0.1.0
 
-## Exemple Patient: pat-martin
+## Exemple Patient: Patient exemple — Jean Martin
 
 -------
 

@@ -223,10 +223,13 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          <tr>
             <td style="column-width:30%">
                <a href="Measure-Patients65Plus.html" title="Measure/Patients65Plus">
-                  <span title="Measure/Patients65Plus">Proportion de patients âgés de 65 ans et plus
+                  <span title="Measure/Patients65Plus">Mesure — patients ≥ 65 ans
 </span>
                </a>
             </td>
+            <td>
+<p>Mesure FHIR évaluant la proportion de patients âgés de 65 ans et plus dans la population.</p>
+</td>
          </tr>
       </tbody>
    </table>
@@ -239,12 +242,12 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
          <tr>
             <td style="column-width:30%">
                <a href="Library-HelloCQL.html" title="Library/HelloCQL">
-                  <span title="Library/HelloCQL">Hello CQL — exemple générique
+                  <span title="Library/HelloCQL">Bibliothèque CQL — Hello CQL
 </span>
                </a>
             </td>
             <td>
-<p>Bibliothèque CQL — cas 01 : proportion de patients âgés de 65 ans et plus</p>
+<p>Bibliothèque CQL de l'exemple générique (cas 01) — règle de proportion de patients âgés de 65 ans et plus.</p>
 </td>
          </tr>
       </tbody>
@@ -257,43 +260,58 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
       <tbody>
          <tr>
             <td style="column-width:30%">
-               <a href="Patient-pat-bernard.html" title="Patient/pat-bernard">
-                  <span title="Patient/pat-bernard">pat-bernard
-</span>
-               </a>
-            </td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="Patient-pat-dubois.html" title="Patient/pat-dubois">
-                  <span title="Patient/pat-dubois">pat-dubois
-</span>
-               </a>
-            </td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
                <a href="Patient-pat-martin.html" title="Patient/pat-martin">
-                  <span title="Patient/pat-martin">pat-martin
+                  <span title="Patient/pat-martin">Patient exemple — Jean Martin
 </span>
                </a>
             </td>
-         </tr>
-         <tr>
-            <td style="column-width:30%">
-               <a href="Patient-pat-petit.html" title="Patient/pat-petit">
-                  <span title="Patient/pat-petit">pat-petit
-</span>
-               </a>
-            </td>
+            <td>
+<p>Patient de test né en 1945, inclus dans le numérateur (&gt;= 65 ans).</p>
+</td>
          </tr>
          <tr>
             <td style="column-width:30%">
                <a href="Patient-pat-thomas.html" title="Patient/pat-thomas">
-                  <span title="Patient/pat-thomas">pat-thomas
+                  <span title="Patient/pat-thomas">Patient exemple — Lucie Thomas
 </span>
                </a>
             </td>
+            <td>
+<p>Patient de test née en 1938, incluse dans le numérateur (&gt;= 65 ans).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Patient-pat-dubois.html" title="Patient/pat-dubois">
+                  <span title="Patient/pat-dubois">Patient exemple — Marie Dubois
+</span>
+               </a>
+            </td>
+            <td>
+<p>Patient de test née en 1958, incluse dans le numérateur (&gt;= 65 ans).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Patient-pat-bernard.html" title="Patient/pat-bernard">
+                  <span title="Patient/pat-bernard">Patient exemple — Pierre Bernard
+</span>
+               </a>
+            </td>
+            <td>
+<p>Patient de test né en 1990, exclu du numérateur (&lt; 65 ans).</p>
+</td>
+         </tr>
+         <tr>
+            <td style="column-width:30%">
+               <a href="Patient-pat-petit.html" title="Patient/pat-petit">
+                  <span title="Patient/pat-petit">Patient exemple — Sophie Petit
+</span>
+               </a>
+            </td>
+            <td>
+<p>Patient de test née en 2000, exclue du numérateur (&lt; 65 ans).</p>
+</td>
          </tr>
       </tbody>
    </table>
@@ -345,7 +363,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://esante.gouv.fr">Agence du Numérique en Santé (ANS) - 2-10 Rue d&#39;Oradour-sur-Glane, 75015 Paris</a>.  
           Le package ans.fhir.fr.test-cql#0.1.0 est basé sur <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Date de génération : 
-  <span title="2026-06-24 08:30:00 +0000">
+  <span title="2026-06-24 08:33:00 +0000">
     2026-06-24
   </span>
 
