@@ -1,16 +1,15 @@
 {
-    "package-id" : "ans.fhir.fr.[todo]",
-    "version" : "[todo]",
-    "path" : "https://interop.esante.gouv.fr/ig/fhir/[todo]",
-    "mode" : "milestone",
-    "status" : "release",
+    "package-id" : "ans.fhir.fr.test-cql",
+    "version" : "0.1.0",
+    "path" : "https://interop.esante.gouv.fr/ig/fhir/test-cql/0.1.0",
+    "mode" : "working",
+    "status" : "ci-build",
     "sequence" : "STU1",
-    "title" : "[todo]",
+    "title" : "POC CQL - ROR",
     "first" : true,
-    "desc" : "[todo]",
-    "ci-build" : "https://ansforge.github.io/[todo]",
-    "category" : "[todo]",
-    "introduction" : "[todo]",
+    "desc" : "Proof of concept d'utilisation de CQL appliqué aux données du ROR",
+    "ci-build" : "https://nriss.github.io/test-cql",
+    "category" : "Administration",
+    "introduction" : "POC explorant l'usage de CQL sur les données du ROR",
     "changes": "change-log.html"
-
-  }
+}

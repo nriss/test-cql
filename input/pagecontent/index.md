@@ -1,57 +1,35 @@
 <p style="padding: 5px; border-radius: 5px; border: 2px solid maroon; background: #ffffe6; width: 65%">
-<b>Brief description of this Implementation Guide</b><br>
-[Add a brief description of this IG in English]
+<b>Proof of concept — CQL appliqué aux données du ROR</b><br>
+Proof of concept exploring the use of CQL (Clinical Quality Language) on ROR (French healthcare offer repository) data.
 </p>
 
 {% if site.data.info.releaselabel == 'ci-build' %}
 <div style="width: 65%">
     <blockquote class="stu-note">
-    <p>Cet Implementation Guide n'est pas la version courante, il s'agit de la version en intégration continue soumise à des changements fréquents uniquement destinée à suivre les travaux en cours. La version courante sera accessible via l'URL canonique suite à la première release : http://interop.esante.gouv.fr/ig/fhir/[code - ig]</p>
+    <p>Cet Implementation Guide n'est pas la version courante, il s'agit de la version en intégration continue soumise à des changements fréquents uniquement destinée à suivre les travaux en cours. La version courante sera accessible via l'URL canonique suite à la première release : <a href="https://interop.esante.gouv.fr/ig/fhir/test-cql">https://interop.esante.gouv.fr/ig/fhir/test-cql</a></p>
     </blockquote>
 </div>
 {% endif %}
 
-
-{% if site.data.info.releaselabel == 'public-comment' %}
-<div style="width: 65%">
-<blockquote class="stu-note">
-<p>
-  <b>Attention !</b>
-  <br>
- Cet Implementation Guide est actuellement en concertation. La version courante est accessible à l'adresse : http://interop.esante.gouv.fr/ig/fhir/[code - ig]
-</p>
-</blockquote>
-</div>
-{% endif %}
-
-
-<!--  A décommenter si CI-SIS
-<div class="figure">
-    <img src="ci-sis-logo.png" alt="CI-SIS" title="Logo du CI-SIS" style="width:100%;">
-</div>
--->
-
 ### Introduction
 
-Définir ici de quoi parle l'IG (En termes non expert, compréhensible par un patient). Rajouter également les détails techniques sur le contexte et le besoin de cet IG
+Ce POC explore la faisabilité d'utiliser CQL (Clinical Quality Language) pour exprimer des règles métier et des critères de qualité appliqués aux données du ROR (Répertoire de l'Offre et des Ressources en santé).
 
-Les principales sections de l'IG  sont :
+CQL est un langage standardisé par HL7, lisible et interopérable, permettant d'exprimer des expressions cliniques qui s'exécutent sur des ressources FHIR. Dans FHIR, il s'intègre via les ressources `Library` (contient le CQL compilé en ELM) et `Measure` / `PlanDefinition`.
 
-* Le contexte de l'IG, quelle problématique il résout
-* Ce que les Implémenteurs doivent mettre en place
-* Un onglet "Ressources de conformité" pour s'assurer d'un schéma global entre tous les IGs
+### Périmètre
 
-### Périmètre du projet
+Ce POC inclut :
 
-Définir en quelques lignes quel est le périmètre du projet
+- Des instances de ressources FHIR représentatives des données ROR (`Organization`, `Location`, `HealthcareService`, `Practitioner`, `PractitionerRole`)
+- Des bibliothèques CQL (`Library`) exprimant des règles métier ou des indicateurs de qualité sur ces données
+- Le tout packagé dans un IG pour faciliter la reproductibilité et la diffusion
 
-Toujours laisser l'onglet "Ressources de conformité" pour s'assurer d'une cohérence globales entre tous les IGs
-
-### Auteurs et contributeurs (optionnel)
+### Auteurs et contributeurs
 
 | Role  | Nom | Organisation | Contact |
 | --- | --- | --- | --- |
-| **Primary Editor** | Prenom Nom | Agence du Numérique en Santé | prenom.nom@address.email |
+| **Primary Editor** | Nicolas Riss | Agence du Numérique en Santé | nicolas.riss@esante.gouv.fr |
 
 ### Dépendances
 
