@@ -24,7 +24,7 @@
        fhir:code [ fhir:v "logic-library" ]
      ] )
   ] ; # 
-  fhir:date [ fhir:v "2026-06-24T08:26:43+00:00"^^xsd:dateTime] ; # 
+  fhir:date [ fhir:v "2026-06-24T08:25:55+00:00"^^xsd:dateTime] ; # 
   fhir:publisher [ fhir:v "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"] ; # 
   fhir:contact ( [
      fhir:name [ fhir:v "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris" ] ;
