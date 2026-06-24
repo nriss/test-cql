@@ -19,17 +19,13 @@ CQL est un langage standardisé par HL7, lisible et interopérable, qui s'exécu
 
 ### Architecture technique
 
-```text
-CQL source (.cql)
-    ↓ base64
-Library (FHIR resource)  ←── Measure (FHIR resource)
-    ↓                              ↓
-HAPI FHIR JPA Server  ←── POST $evaluate-measure
-    ↓
-MeasureReport (résultat)
-```
+1. **Écriture** — le CQL est rédigé dans un fichier `.cql`
+2. **Packaging** — le CQL est encodé en base64 et embarqué dans une ressource `Library`
+3. **Référencement** — une ressource `Measure` référence la `Library` et définit les populations (`InitialPopulation`, `Denominator`, `Numerator`)
+4. **Évaluation** — l'opération `$evaluate-measure` déclenche l'exécution du CQL par le moteur Clinical Reasoning de HAPI FHIR
+5. **Résultat** — un `MeasureReport` retourne les comptes et le score
 
-Le moteur CQL est intégré à HAPI FHIR via le module **Clinical Reasoning** (`hapi.fhir.cr.enabled: true`).
+Le moteur CQL est intégré nativement à HAPI FHIR via le module **Clinical Reasoning** (`hapi.fhir.cr.enabled: true`), sans outil externe.
 
 ### Cas d'usages
 
