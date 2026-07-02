@@ -36,9 +36,11 @@ define "Denominator":
   "InitialPopulation"
 
 // Le nom (ou un alias) de l'Organization contient "urgence"
+// Note : l'opérateur `contains` de ce moteur CQL se comporte comme une égalité stricte sur les
+// chaînes (et non comme une recherche de sous-chaîne) — on utilise donc PositionOf(...) >= 0.
 define "NomContientUrgence":
-  (Organization.name is not null and Lower(Organization.name) contains 'urgence')
-    or exists (Organization.alias A where Lower(A) contains 'urgence')
+  (Organization.name is not null and PositionOf('urgence', Lower(Organization.name)) >= 0)
+    or exists (Organization.alias A where PositionOf('urgence', Lower(A)) >= 0)
 
 // Numérateur : Organization concernées et NON conformes (pas d'"urgence" dans le nom)
 define "Numerator":

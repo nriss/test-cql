@@ -342,9 +342,11 @@ define "Denominator":
   "InitialPopulation"
 
 // Le nom (ou un alias) de l'Organization contient "urgence"
+// Note : l'opérateur `contains` de ce moteur CQL se comporte comme une égalité stricte sur les
+// chaînes (et non comme une recherche de sous-chaîne) — on utilise donc PositionOf(...) &gt;= 0.
 define "NomContientUrgence":
-  (Organization.name is not null and Lower(Organization.name) contains 'urgence')
-    or exists (Organization.alias A where Lower(A) contains 'urgence')
+  (Organization.name is not null and PositionOf('urgence', Lower(Organization.name)) &gt;= 0)
+    or exists (Organization.alias A where PositionOf('urgence', Lower(A)) &gt;= 0)
 
 // Numérateur : Organization concernées et NON conformes (pas d'"urgence" dans le nom)
 define "Numerator":
@@ -352,6 +354,20 @@ define "Numerator":
 </code></pre>
 
 <p>Le <code class="language-plaintext highlighter-rouge">Numerator</code> correspond directement aux <code class="language-plaintext highlighter-rouge">Organization</code> non conformes recherchées par l'issue : pas besoin de post-traitement, il suffit de récupérer la liste des sujets du numérateur.</p>
+
+<h4 id="bug-trouvé-et-corrigé--contains-ne-fait-pas-de-recherche-de-sous-chaîne">Bug trouvé et corrigé : <code class="language-plaintext highlighter-rouge">contains</code> ne fait pas de recherche de sous-chaîne</h4>
+
+<p>Une première version de <code class="language-plaintext highlighter-rouge">NomContientUrgence</code> utilisait <code class="language-plaintext highlighter-rouge">Lower(Organization.name) contains 'urgence'</code>. En vérifiant cette règle en détail, ce test s'est révélé <strong>systématiquement faux</strong> dès que le nom n'est pas exactement égal à "urgence" — ce qui aurait fait classer en non-conforme la quasi-totalité des <code class="language-plaintext highlighter-rouge">Organization</code> réellement conformes (typiquement nommées "Service des Urgences de …", jamais juste "Urgence").</p>
+
+<p>Isolé avec une bibliothèque CQL minimale ne contenant que des littéraux (donc indépendante de toute donnée FHIR) :</p>
+
+<pre><code class="language-cql">define "T1": 'hello world' contains 'world'   // → false (attendu : true)
+define "T2": 'abc' contains 'abc'              // → true
+define "T3": Contains('hello world', 'world')  // → false (la fonction se comporte pareil)
+define "T4": PositionOf('world', 'hello world') // → 6 (la recherche de sous-chaîne, elle, fonctionne)
+</code></pre>
+
+<p>Sur ce moteur CQL (celui embarqué dans <code class="language-plaintext highlighter-rouge">hapiproject/hapi:v8.10.0-2</code>), l'opérateur <code class="language-plaintext highlighter-rouge">contains</code> et la fonction <code class="language-plaintext highlighter-rouge">Contains()</code> appliqués à des chaînes se comportent comme une <strong>égalité stricte</strong>, pas comme une recherche de sous-chaîne — <code class="language-plaintext highlighter-rouge">T1</code> et <code class="language-plaintext highlighter-rouge">T3</code> devraient valoir <code class="language-plaintext highlighter-rouge">true</code> selon la spécification CQL, mais valent <code class="language-plaintext highlighter-rouge">false</code> ici. <code class="language-plaintext highlighter-rouge">PositionOf</code>, en revanche, fonctionne correctement (retourne bien la position de la sous-chaîne, ou <code class="language-plaintext highlighter-rouge">-1</code> si absente). La règle a donc été corrigée pour utiliser <code class="language-plaintext highlighter-rouge">PositionOf(pattern, argument) &gt;= 0</code> plutôt que <code class="language-plaintext highlighter-rouge">contains</code>, et revérifiée sur les 3 <code class="language-plaintext highlighter-rouge">Organization</code> de test (résultats ci-dessous) ainsi que sur des cas isolés supplémentaires (nom contenant "urgence", alias contenant "urgence", activité/mode ne correspondant pas à la règle, Organization sans aucun <code class="language-plaintext highlighter-rouge">HealthcareService</code>) — tous conformes à l'attendu après correction.</p>
 
 <h4 id="données-de-test">Données de test</h4>
 
@@ -441,6 +457,65 @@ define "Numerator":
 
 <p><code class="language-plaintext highlighter-rouge">org-ch-exemple</code> est bien reconnue comme concernée (<code class="language-plaintext highlighter-rouge">InitialPopulation</code>/<code class="language-plaintext highlighter-rouge">Denominator</code> = true) et non conforme (<code class="language-plaintext highlighter-rouge">Numerator</code> = true, car <code class="language-plaintext highlighter-rouge">NomContientUrgence</code> = false) — la logique CQL (retrieve <code class="language-plaintext highlighter-rouge">HealthcareService</code> par <code class="language-plaintext highlighter-rouge">providedBy</code>, équivalence de code via <code class="language-plaintext highlighter-rouge">FHIRHelpers.ToConcept(...) ~ "..."</code>, test sur <code class="language-plaintext highlighter-rouge">name</code>/<code class="language-plaintext highlighter-rouge">alias</code>) fonctionne comme conçu.</p>
 
+<p>Les 3 <code class="language-plaintext highlighter-rouge">Organization</code> de test ont été revérifiées individuellement de cette façon (chacune comme première évaluation suivant un redémarrage propre du conteneur, cf. l'instabilité décrite plus bas), ainsi que des cas non couverts par ces 3 exemples (activité ou mode ne correspondant pas à la règle, "urgence" présent seulement dans <code class="language-plaintext highlighter-rouge">alias</code>, <code class="language-plaintext highlighter-rouge">Organization</code> sans aucun <code class="language-plaintext highlighter-rouge">HealthcareService</code>) :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Organization</th>
+      <th><code class="language-plaintext highlighter-rouge">ConcerneeParObligationDeNommage</code></th>
+      <th><code class="language-plaintext highlighter-rouge">NomContientUrgence</code></th>
+      <th><code class="language-plaintext highlighter-rouge">Numerator</code> (non conforme)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">org-ch-exemple</code> (activité 157, mode 33, name="CH Exemple")</td>
+      <td>true</td>
+      <td>false</td>
+      <td><strong>true</strong></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">org-service-urgences</code> (activité 249, mode 33, name="Service des Urgences du CH Exemple")</td>
+      <td>true</td>
+      <td>true</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">org-clinique-exemple</code> (activité 157, mode 33, name="Clinique Exemple")</td>
+      <td>true</td>
+      <td>false</td>
+      <td><strong>true</strong></td>
+    </tr>
+    <tr>
+      <td>activité 157, mode 99 (hors règle), name sans "urgence"</td>
+      <td>false</td>
+      <td>false</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td>activité 999 (hors règle), mode 33, name sans "urgence"</td>
+      <td>false</td>
+      <td>false</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td>pas de <code class="language-plaintext highlighter-rouge">HealthcareService</code> du tout</td>
+      <td>false</td>
+      <td>false</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td>alias contenant "urgence", name neutre</td>
+      <td>—</td>
+      <td>true</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Tous ces résultats correspondent à l'attendu.</p>
+
 <p><strong>Mais <code class="language-plaintext highlighter-rouge">$evaluate-measure</code> ne fonctionne pas correctement dès que plusieurs <code class="language-plaintext highlighter-rouge">Organization</code> sont présentes sur le serveur</strong> — ce qui est le cas d'usage réel (identifier les non-conformes <em>parmi</em> toutes les Organization du ROR) :</p>
 
 <ul>
@@ -481,6 +556,8 @@ define "Numerator":
 <blockquote>
   <p>Réserve : le code inspecté est celui de la branche <code class="language-plaintext highlighter-rouge">main</code> actuelle de <code class="language-plaintext highlighter-rouge">cqframework/clinical-reasoning</code> et <code class="language-plaintext highlighter-rouge">cqframework/cql-engine</code>, pas confirmé identique à la version exacte packagée dans l'image Docker <code class="language-plaintext highlighter-rouge">hapiproject/hapi:v8.10.0-2</code> utilisée ici. Aucune issue GitHub existante trouvée documentant précisément ce bug.</p>
 </blockquote>
+
+<p><strong>Instabilité supplémentaire observée sur <code class="language-plaintext highlighter-rouge">Library/$evaluate</code> (isolé, une seule Organization)</strong> : même dans le scénario de contournement (une seule <code class="language-plaintext highlighter-rouge">Organization</code> sur le serveur), les résultats se sont révélés fiables <strong>juste après un redémarrage du conteneur HAPI FHIR</strong>, mais parfois incorrects (<code class="language-plaintext highlighter-rouge">ConcerneeParObligationDeNommage</code> à <code class="language-plaintext highlighter-rouge">false</code> alors que les données chargées le justifiaient) lors d'appels répétés sur la même instance après plusieurs cycles de création/suppression de ressources — alors qu'une recherche FHIR classique (<code class="language-plaintext highlighter-rouge">GET /HealthcareService</code>) confirmait au même moment que la ressource attendue était bien présente et indexée. La cause exacte n'a pas été identifiée dans le code source (contrairement au bug de contexte ci-dessus) ; il est possible qu'un cache interne au module Clinical Reasoning ne soit pas invalidé correctement entre deux évaluations sur la même instance. Pour obtenir un résultat fiable dans ce POC, chaque cas a été revérifié comme première évaluation suivant un redémarrage propre du conteneur.</p>
 
 <p><strong>Conclusion du POC</strong> : la règle CQL exprimant la logique métier est correcte et validée unitairement (voir résultat <code class="language-plaintext highlighter-rouge">Library/$evaluate</code> ci-dessus). Ce qui bloque l'exécution en masse sur un contexte non-<code class="language-plaintext highlighter-rouge">Patient</code> est un bug identifié et sourcé dans <code class="language-plaintext highlighter-rouge">clinical-reasoning</code> (construction du paramètre de contexte à partir du <code class="language-plaintext highlighter-rouge">subject</code> REST, sans tenir compte du type de ressource réel), pas une limitation du moteur CQL lui-même. Pistes pour une itération ultérieure : ouvrir un signalement upstream sur <code class="language-plaintext highlighter-rouge">cqframework/clinical-reasoning</code> (la cause est identifiée avec fichiers/lignes précis) ; en attendant, reformuler la règle avec <code class="language-plaintext highlighter-rouge">context Unfiltered</code> (une seule évaluation qui parcourt elle-même tous les <code class="language-plaintext highlighter-rouge">Organization</code> du serveur et retourne la liste des non-conformes, sans dépendre du mécanisme de <code class="language-plaintext highlighter-rouge">subject</code> de <code class="language-plaintext highlighter-rouge">$evaluate-measure</code>) ; ou tester une version plus récente de HAPI FHIR si le correctif y est déjà intégré.</p>
 
@@ -533,7 +610,7 @@ define "Numerator":
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://esante.gouv.fr">Agence du Numérique en Santé (ANS) - 2-10 Rue d&#39;Oradour-sur-Glane, 75015 Paris</a>.  
           Package ans.fhir.fr.test-cql#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-07-02 10:02:00 +0000">
+  <span title="2026-07-02 12:02:00 +0000">
     2026-07-02
   </span>
 

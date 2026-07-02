@@ -543,9 +543,11 @@ define &quot;Denominator&quot;:
   &quot;InitialPopulation&quot;
 
 // Le nom (ou un alias) de l'Organization contient &quot;urgence&quot;
+// Note : l'opérateur `contains` de ce moteur CQL se comporte comme une égalité stricte sur les
+// chaînes (et non comme une recherche de sous-chaîne) — on utilise donc PositionOf(...) &gt;= 0.
 define &quot;NomContientUrgence&quot;:
-  (Organization.name is not null and Lower(Organization.name) contains 'urgence')
-    or exists (Organization.alias A where Lower(A) contains 'urgence')
+  (Organization.name is not null and PositionOf('urgence', Lower(Organization.name)) &gt;= 0)
+    or exists (Organization.alias A where PositionOf('urgence', Lower(A)) &gt;= 0)
 
 // Numérateur : Organization concernées et NON conformes (pas d'&quot;urgence&quot; dans le nom)
 define &quot;Numerator&quot;:
@@ -617,7 +619,7 @@ define &quot;Numerator&quot;:
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://esante.gouv.fr">Agence du Numérique en Santé (ANS) - 2-10 Rue d&#39;Oradour-sur-Glane, 75015 Paris</a>.  
           Package ans.fhir.fr.test-cql#0.1.0 based on <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Generated 
-  <span title="2026-07-02 10:02:00 +0000">
+  <span title="2026-07-02 12:02:00 +0000">
     2026-07-02
   </span>
 

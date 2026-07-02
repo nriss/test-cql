@@ -14,7 +14,7 @@
   "name" : "TestCQL",
   "title" : "POC CQL - ROR",
   "status" : "draft",
-  "date" : "2026-07-02T10:02:51+00:00",
+  "date" : "2026-07-02T12:02:22+00:00",
   "publisher" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
   "contact" : [{
     "name" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",

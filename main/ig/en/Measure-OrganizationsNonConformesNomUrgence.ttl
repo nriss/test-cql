@@ -25,7 +25,7 @@
        fhir:Coding.code [ fhir:value "Organization" ]
      ]
   ] ;
-  fhir:Measure.date [ fhir:value "2026-07-02T10:02:51+00:00"^^xsd:dateTime] ;
+  fhir:Measure.date [ fhir:value "2026-07-02T12:02:22+00:00"^^xsd:dateTime] ;
   fhir:Measure.publisher [ fhir:value "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"] ;
   fhir:Measure.contact [
      fhir:index -1 ;

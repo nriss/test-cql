@@ -3,7 +3,7 @@ TestCQL : Validation Results
 
 err = 7, warn = 37, info = 23
 IG Publisher Version: 2.2.10
-Generated Thu Jul 02 10:03:42 UTC 2026. FHIR version 4.0.1 for ans.fhir.fr.test-cql#0.1.0 (canonical = https://interop.esante.gouv.fr/ig/fhir/test-cql)
+Generated Thu Jul 02 12:03:06 UTC 2026. FHIR version 4.0.1 for ans.fhir.fr.test-cql#0.1.0 (canonical = https://interop.esante.gouv.fr/ig/fhir/test-cql)
  Build Errors : 0 / 16 / 0
  /__w/test-cql/test-cql/igSource/fsh-generated/resources/HealthcareService-hs-ch-exemple-urgences : 0 / 0 / 2
  /__w/test-cql/test-cql/igSource/fsh-generated/resources/HealthcareService-hs-clinique-exemple-urgences : 0 / 0 / 2
