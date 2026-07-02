@@ -11,7 +11,7 @@
   "name" : "TestCQL",
   "title" : "POC CQL - ROR",
   "status" : "draft",
-  "date" : "2026-06-24T08:58:37+00:00",
+  "date" : "2026-07-02T10:02:51+00:00",
   "publisher" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
   "contact" : [{
     "name" : "Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris",
@@ -869,6 +869,95 @@
     {
       "extension" : [{
         "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "HealthcareService"
+      }],
+      "reference" : {
+        "reference" : "HealthcareService/hs-ch-exemple-urgences"
+      },
+      "name" : "hs-ch-exemple-urgences",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "HealthcareService"
+      }],
+      "reference" : {
+        "reference" : "HealthcareService/hs-clinique-exemple-urgences"
+      },
+      "name" : "hs-clinique-exemple-urgences",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "HealthcareService"
+      }],
+      "reference" : {
+        "reference" : "HealthcareService/hs-service-urgences-pediatriques"
+      },
+      "name" : "hs-service-urgences-pediatriques",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
+        "reference" : "Organization/org-ch-exemple"
+      },
+      "name" : "org-ch-exemple",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
+        "reference" : "Organization/org-clinique-exemple"
+      },
+      "name" : "org-clinique-exemple",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Organization"
+      }],
+      "reference" : {
+        "reference" : "Organization/org-service-urgences"
+      },
+      "name" : "org-service-urgences",
+      "exampleBoolean" : true
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Library"
+      }],
+      "reference" : {
+        "reference" : "Library/OrganizationNomUrgence"
+      },
+      "name" : "Organization avec le nom Urgence — Règle #1 ROR",
+      "description" : "Bibliothèque CQL — cas 02 (ROR) : identifie les Organization qui, ayant un HealthcareService avec une activité opérationnelle 157 ou 249 et un mode de prise en charge 33, n'ont pas \"urgence\" dans leur nom.",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
+        "valueString" : "Measure"
+      }],
+      "reference" : {
+        "reference" : "Measure/OrganizationsNonConformesNomUrgence"
+      },
+      "name" : "Organization non conformes à la règle du nom Urgence",
+      "exampleBoolean" : false
+    },
+    {
+      "extension" : [{
+        "url" : "http://hl7.org/fhir/tools/StructureDefinition/resource-information",
         "valueString" : "Patient"
       }],
       "reference" : {
@@ -965,6 +1054,15 @@
         }],
         "nameUrl" : "cas-usage-02-ror.html",
         "title" : "02 — ROR",
+        "generation" : "markdown"
+      },
+      {
+        "extension" : [{
+          "url" : "http://hl7.org/fhir/tools/StructureDefinition/ig-page-name",
+          "valueUrl" : "cas-usage-03-ror-regle-01-recherche-fhir.html"
+        }],
+        "nameUrl" : "cas-usage-03-ror-regle-01-recherche-fhir.html",
+        "title" : "03 — ROR sans CQL",
         "generation" : "markdown"
       },
       {

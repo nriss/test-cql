@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<HealthcareService xmlns="http://hl7.org/fhir">
+  <id value="hs-service-urgences-pediatriques"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xml:lang="en" lang="en"><hr/><p><b>English</b></p><hr/><p class="res-header-id"><b>Generated Narrative: HealthcareService hs-service-urgences-pediatriques</b></p><a name="en-hs-service-urgences-pediatriques"> </a><a name="en-hchs-service-urgences-pediatriques"> </a><p><b>providedBy</b>: <a href="Organization-org-service-urgences.html">Organization Service des Urgences du CH Exemple</a></p><p><b>specialty</b>: <span title="Codes:{https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle 249}">Urgences pédiatriques hospitalières</span></p><p><b>characteristic</b>: <span title="Codes:{https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge 33}">Accueil des urgences</span></p></div>
+  </text>
+  <providedBy>
+    <reference value="Organization/org-service-urgences"/>
+  </providedBy>
+  <specialty>
+    <coding>
+      <system value="https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle"/>
+      <code value="249"/>
+      <display value="Urgences pédiatriques hospitalières"/>
+    </coding>
+  </specialty>
+  <characteristic>
+    <coding>
+      <system value="https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge"/>
+      <code value="33"/>
+      <display value="Accueil des urgences"/>
+    </coding>
+  </characteristic>
+</HealthcareService>

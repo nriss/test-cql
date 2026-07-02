@@ -1,0 +1,11 @@
+{
+  "resourceType" : "Organization",
+  "id" : "org-clinique-exemple",
+  "language" : "en",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xml:lang=\"en\" lang=\"en\"><hr/><p><b>English</b></p><hr/><p class=\"res-header-id\"><b>Generated Narrative: Organization org-clinique-exemple</b></p><a name=\"en-org-clinique-exemple\"> </a><a name=\"en-hcorg-clinique-exemple\"> </a><p><b>active</b>: true</p><p><b>name</b>: Clinique Exemple</p></div>"
+  },
+  "active" : true,
+  "name" : "Clinique Exemple"
+}

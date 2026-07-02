@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Organization xmlns="http://hl7.org/fhir">
+  <id value="org-service-urgences"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xml:lang="en" lang="en"><hr/><p><b>English</b></p><hr/><p class="res-header-id"><b>Generated Narrative: Organization org-service-urgences</b></p><a name="en-org-service-urgences"> </a><a name="en-hcorg-service-urgences"> </a><p><b>active</b>: true</p><p><b>name</b>: Service des Urgences du CH Exemple</p></div>
+  </text>
+  <active value="true"/>
+  <name value="Service des Urgences du CH Exemple"/>
+</Organization>

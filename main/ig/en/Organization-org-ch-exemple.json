@@ -1,0 +1,11 @@
+{
+  "resourceType" : "Organization",
+  "id" : "org-ch-exemple",
+  "language" : "en",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xml:lang=\"en\" lang=\"en\"><hr/><p><b>English</b></p><hr/><p class=\"res-header-id\"><b>Generated Narrative: Organization org-ch-exemple</b></p><a name=\"en-org-ch-exemple\"> </a><a name=\"en-hcorg-ch-exemple\"> </a><p><b>active</b>: true</p><p><b>name</b>: CH Exemple</p></div>"
+  },
+  "active" : true,
+  "name" : "CH Exemple"
+}

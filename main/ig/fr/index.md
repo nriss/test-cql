@@ -57,10 +57,15 @@ docker compose down
 
 This publication includes IP covered under the following statements.
 
+* ISO
+
+* [ISO 3166-1 Codes for the representation of names of countries and their subdivisions — Part 1: Country code](https://tx.hl7.org.au/fhir/ValueSet/ISO3166Part1): [HelloCQL](Library-HelloCQL.md), [OrganizationNomUrgence](Library-OrganizationNomUrgence.md), [OrganizationsNonConformesNomUrgence](Measure-OrganizationsNonConformesNomUrgence.md), [Patients65Plus](Measure-Patients65Plus.md) and [TestCQL](index.md)
+
+
 * This material derives from the HL7 Terminology (THO). THO is copyright ©1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: [https://terminology.hl7.org/license.html](https://terminology.hl7.org/license.html)
 
-* [LibraryType](http://terminology.hl7.org/7.2.0/CodeSystem-library-type.html): [HelloCQL](Library-HelloCQL.md)
-* [Measure Population Type](http://terminology.hl7.org/7.2.0/CodeSystem-measure-population.html): [Patients65Plus](Measure-Patients65Plus.md)
-* [Measure Scoring](http://terminology.hl7.org/7.2.0/CodeSystem-measure-scoring.html): [Patients65Plus](Measure-Patients65Plus.md)
+* [LibraryType](http://terminology.hl7.org/7.2.0/CodeSystem-library-type.html): [HelloCQL](Library-HelloCQL.md) and [OrganizationNomUrgence](Library-OrganizationNomUrgence.md)
+* [Measure Population Type](http://terminology.hl7.org/7.2.0/CodeSystem-measure-population.html): [OrganizationsNonConformesNomUrgence](Measure-OrganizationsNonConformesNomUrgence.md) and [Patients65Plus](Measure-Patients65Plus.md)
+* [Measure Scoring](http://terminology.hl7.org/7.2.0/CodeSystem-measure-scoring.html): [OrganizationsNonConformesNomUrgence](Measure-OrganizationsNonConformesNomUrgence.md) and [Patients65Plus](Measure-Patients65Plus.md)
 
 

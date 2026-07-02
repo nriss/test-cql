@@ -1,21 +1,36 @@
 TestCQL : Validation Results
 =========================================
 
-err = 2, warn = 16, info = 1
+err = 7, warn = 37, info = 23
 $--
 Generated $--. FHIR version $-- for ans.fhir.fr.test-cql#$-- (canonical = https://interop.esante.gouv.fr/ig/fhir/test-cql)
- Build Errors : 0 / 9 / 0
- /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/ImplementationGuide-ans.fhir.fr.test-cql : 0 / 0 / 1
- /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Library-HelloCQL : 0 / 2 / 1
- /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus : 2 / 5 / 2
- /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-bernard : 0 / 0 / 1
- /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-dubois : 0 / 0 / 1
- /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-martin : 0 / 0 / 1
- /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-petit : 0 / 0 / 1
- /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-thomas : 0 / 0 / 1
+ Build Errors : 0 / 16 / 0
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/HealthcareService-hs-ch-exemple-urgences : 0 / 0 / 2
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/HealthcareService-hs-clinique-exemple-urgences : 0 / 0 / 2
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/HealthcareService-hs-service-urgences-pediatriques : 0 / 0 / 2
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/ImplementationGuide-ans.fhir.fr.test-cql : 1 / 0 / 3
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/Library-HelloCQL : 1 / 3 / 4
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/Library-OrganizationNomUrgence : 1 / 3 / 4
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/Measure-OrganizationsNonConformesNomUrgence : 1 / 7 / 7
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus : 3 / 8 / 7
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/Organization-org-ch-exemple : 0 / 0 / 1
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/Organization-org-clinique-exemple : 0 / 0 / 1
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/Organization-org-service-urgences : 0 / 0 / 1
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-bernard : 0 / 0 / 1
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-dubois : 0 / 0 / 1
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-martin : 0 / 0 / 1
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-petit : 0 / 0 / 1
+ /__w/test-cql/test-cql/igSource/fsh-generated/resources/Patient-pat-thomas : 0 / 0 / 1
 </table>
 == n/a ==
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Measure/OrganizationsNonConformesNomUrgence.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
 WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Measure/Patients65Plus.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource HealthcareService/hs-ch-exemple-urgences.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource HealthcareService/hs-clinique-exemple-urgences.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource HealthcareService/hs-service-urgences-pediatriques.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Organization/org-ch-exemple.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Organization/org-clinique-exemple.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
+WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Organization/org-service-urgences.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
 WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-bernard.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
 WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-dubois.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
 WARNING: Unable to find ImplementationGuide.definition.resource.description for the resource Patient/pat-martin.  Descriptions are strongly encouraged if they cannot be inferred from the resource to allow proper population of the artifact list.
@@ -24,19 +39,68 @@ WARNING: Unable to find ImplementationGuide.definition.resource.description for 
 WARNING: 2: An HTML fragment from the set [cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml, cross-version-analysis.xhtml, cross-version-analysis-inline.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 4: An HTML fragment from the set [globals-table.xhtml, globals-table.xhtml] is not included anywhere in the produced implementation guide
 WARNING: 5: An HTML fragment from the set [expansion-params.xhtml, expansion-params.xhtml] is not included anywhere in the produced implementation guide
+== fsh-generated/resources/HealthcareService-hs-ch-exemple-urgences.json ==
+INFORMATION: HealthcareService/hs-ch-exemple-urgences: HealthcareService.specialty[0]: None of the codings provided are in the value set 'Practice Setting Code Value Set' (http://hl7.org/fhir/ValueSet/c80-practice-codes|4.0.1), and a coding is recommended to come from this value set (codes = https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle#157)
+== fsh-generated/resources/HealthcareService-hs-clinique-exemple-urgences.json ==
+INFORMATION: HealthcareService/hs-clinique-exemple-urgences: HealthcareService.specialty[0]: None of the codings provided are in the value set 'Practice Setting Code Value Set' (http://hl7.org/fhir/ValueSet/c80-practice-codes|4.0.1), and a coding is recommended to come from this value set (codes = https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle#157)
+== fsh-generated/resources/HealthcareService-hs-service-urgences-pediatriques.json ==
+INFORMATION: HealthcareService/hs-service-urgences-pediatriques: HealthcareService.specialty[0]: None of the codings provided are in the value set 'Practice Setting Code Value Set' (http://hl7.org/fhir/ValueSet/c80-practice-codes|4.0.1), and a coding is recommended to come from this value set (codes = https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle#249)
 == fsh-generated/resources/ImplementationGuide-ans.fhir.fr.test-cql.json ==
+INFORMATION: ImplementationGuide/ans.fhir.fr.test-cql: ImplementationGuide.jurisdiction[0]: Reference to draft CodeSystem urn:iso:std:iso:3166|1.0.0
+ERROR: ImplementationGuide/ans.fhir.fr.test-cql: ImplementationGuide.jurisdiction[0].coding[0].display: Wrong Display Name 'France (la)' for urn:iso:std:iso:3166#FR. Valid display is 'France' (for the language(s) 'fr')
+INFORMATION: Resource: The resource ImplementationGuide/ans.fhir.fr.test-cql could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 == fsh-generated/resources/Library-HelloCQL.json ==
 WARNING: Library/HelloCQL: Library.text.div: The XHTML  the resource contains more than one node for each of the following node ids and anchor names: cql-content (2x), parameters (2x)
+INFORMATION: Library/HelloCQL: Library.jurisdiction[0]: Reference to draft CodeSystem urn:iso:std:iso:3166|1.0.0
+ERROR: Library/HelloCQL: Library.jurisdiction[0].coding[0].display: Wrong Display Name 'France (la)' for urn:iso:std:iso:3166#FR. Valid display is 'France' (for the language(s) 'fr-FR')
+INFORMATION: Library/HelloCQL: Library.content[0].contentType: Reference to experimental CodeSystem urn:ietf:bcp:13|0.0.2
+WARNING: Library/HelloCQL: Library.content[0].contentType.code: Unknown Code 'text/cql' in the CodeSystem 'urn:ietf:bcp:13' version '0.0.2' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment
+INFORMATION: Resource: The resource Library/HelloCQL could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: IG: "The narrative includes custom content for the default language (fr), but does not include translated content for the en language, so the default language has been used
+== fsh-generated/resources/Library-OrganizationNomUrgence.json ==
+WARNING: Library/OrganizationNomUrgence: Library.text.div: The XHTML  the resource contains more than one node for each of the following node ids and anchor names: cql-content (2x), parameters (2x)
+INFORMATION: Library/OrganizationNomUrgence: Library.jurisdiction[0]: Reference to draft CodeSystem urn:iso:std:iso:3166|1.0.0
+ERROR: Library/OrganizationNomUrgence: Library.jurisdiction[0].coding[0].display: Wrong Display Name 'France (la)' for urn:iso:std:iso:3166#FR. Valid display is 'France' (for the language(s) 'fr-FR')
+INFORMATION: Library/OrganizationNomUrgence: Library.content[0].contentType: Reference to experimental CodeSystem urn:ietf:bcp:13|0.0.2
+WARNING: Library/OrganizationNomUrgence: Library.content[0].contentType.code: Unknown Code 'text/cql' in the CodeSystem 'urn:ietf:bcp:13' version '0.0.2' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment
+INFORMATION: Resource: The resource Library/OrganizationNomUrgence could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+WARNING: IG: "The narrative includes custom content for the default language (fr), but does not include translated content for the en language, so the default language has been used
+== fsh-generated/resources/Measure-OrganizationsNonConformesNomUrgence.json ==
+WARNING: /__w/test-cql/test-cql/igSource/fsh-generated/resources/Measure-OrganizationsNonConformesNomUrgence.json: Artifact library could not be found so no data requirements were inferred.
+INFORMATION: Measure.library[0]: Pinned the version of https://interop.esante.gouv.fr/ig/fhir/test-cql/Library/OrganizationNomUrgence to 0.1.0
+INFORMATION: Measure/OrganizationsNonConformesNomUrgence: Measure.jurisdiction[0]: Reference to draft CodeSystem urn:iso:std:iso:3166|1.0.0
+ERROR: Measure/OrganizationsNonConformesNomUrgence: Measure.jurisdiction[0].coding[0].display: Wrong Display Name 'France (la)' for urn:iso:std:iso:3166#FR. Valid display is 'France' (for the language(s) 'fr-FR')
+INFORMATION: Measure/OrganizationsNonConformesNomUrgence: Measure.group[0].population[0].criteria.language: Reference to experimental CodeSystem urn:ietf:bcp:13|0.0.2
+WARNING: Measure/OrganizationsNonConformesNomUrgence: Measure.group[0].population[0].criteria.language.code: Unknown Code 'text/cql-identifier' in the CodeSystem 'urn:ietf:bcp:13' version '0.0.2' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment
+INFORMATION: Measure/OrganizationsNonConformesNomUrgence: Measure.group[0].population[1].criteria.language: Reference to experimental CodeSystem urn:ietf:bcp:13|0.0.2
+WARNING: Measure/OrganizationsNonConformesNomUrgence: Measure.group[0].population[1].criteria.language.code: Unknown Code 'text/cql-identifier' in the CodeSystem 'urn:ietf:bcp:13' version '0.0.2' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment
+INFORMATION: Measure/OrganizationsNonConformesNomUrgence: Measure.group[0].population[2].criteria.language: Reference to experimental CodeSystem urn:ietf:bcp:13|0.0.2
+WARNING: Measure/OrganizationsNonConformesNomUrgence: Measure.group[0].population[2].criteria.language.code: Unknown Code 'text/cql-identifier' in the CodeSystem 'urn:ietf:bcp:13' version '0.0.2' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment
+WARNING: Measure/OrganizationsNonConformesNomUrgence: Measure: Published measures SHOULD conform to the ShareableMeasure profile, which says that the element Measure.experimental is mandatory, but it is not present
+WARNING: Measure/OrganizationsNonConformesNomUrgence: Measure: Published measures SHOULD conform to the ShareableMeasure profile, which says that the element Measure.description is mandatory, but it is not present
+INFORMATION: Resource: The resource Measure/OrganizationsNonConformesNomUrgence could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
 WARNING: IG: "The narrative includes custom content for the default language (fr), but does not include translated content for the en language, so the default language has been used
 == fsh-generated/resources/Measure-Patients65Plus.json ==
-ERROR: Measure.where(url = 'http://poc-cql/Measure/patients-65plus'): Conformance resource /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus.json - the canonical URL (https://interop.esante.gouv.fr/ig/fhir/test-cql/Measure/Patients65Plus) does not match the URL (http://poc-cql/Measure/patients-65plus). Use the special-url parameter if you really mean for it not to match
-WARNING: /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus.json: Artifact library could not be found so no data requirements were inferred.
+ERROR: Measure.where(url = 'http://poc-cql/Measure/patients-65plus'): Conformance resource /__w/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus.json - the canonical URL (https://interop.esante.gouv.fr/ig/fhir/test-cql/Measure/Patients65Plus) does not match the URL (http://poc-cql/Measure/patients-65plus). Use the special-url parameter if you really mean for it not to match
+WARNING: /__w/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus.json: Artifact library could not be found so no data requirements were inferred.
+INFORMATION: Measure/Patients65Plus: Measure.jurisdiction[0]: Reference to draft CodeSystem urn:iso:std:iso:3166|1.0.0
+ERROR: Measure/Patients65Plus: Measure.jurisdiction[0].coding[0].display: Wrong Display Name 'France (la)' for urn:iso:std:iso:3166#FR. Valid display is 'France' (for the language(s) 'fr-FR')
 WARNING: Measure/Patients65Plus: Measure.library[0]: A definition could not be found for Canonical URL 'http://poc-cql/Library/HelloCQL'
+INFORMATION: Measure/Patients65Plus: Measure.group[0].population[0].criteria.language: Reference to experimental CodeSystem urn:ietf:bcp:13|0.0.2
+WARNING: Measure/Patients65Plus: Measure.group[0].population[0].criteria.language.code: Unknown Code 'text/cql-identifier' in the CodeSystem 'urn:ietf:bcp:13' version '0.0.2' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment
+INFORMATION: Measure/Patients65Plus: Measure.group[0].population[1].criteria.language: Reference to experimental CodeSystem urn:ietf:bcp:13|0.0.2
+WARNING: Measure/Patients65Plus: Measure.group[0].population[1].criteria.language.code: Unknown Code 'text/cql-identifier' in the CodeSystem 'urn:ietf:bcp:13' version '0.0.2' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment
+INFORMATION: Measure/Patients65Plus: Measure.group[0].population[2].criteria.language: Reference to experimental CodeSystem urn:ietf:bcp:13|0.0.2
+WARNING: Measure/Patients65Plus: Measure.group[0].population[2].criteria.language.code: Unknown Code 'text/cql-identifier' in the CodeSystem 'urn:ietf:bcp:13' version '0.0.2' - note that the code system is labeled as a fragment, so the code may be valid in some other fragment
 INFORMATION: Measure/Patients65Plus: Measure: The Library http://poc-cql/Library/HelloCQL could not be resolved, so expression validation may not be correct
 WARNING: Measure/Patients65Plus: Measure: Published measures SHOULD conform to the ShareableMeasure profile, which says that the element Measure.experimental is mandatory, but it is not present
 WARNING: Measure/Patients65Plus: Measure: Published measures SHOULD conform to the ShareableMeasure profile, which says that the element Measure.description is mandatory, but it is not present
-ERROR: /home/runner/work/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus: URL Mismatch https://interop.esante.gouv.fr/ig/fhir/test-cql/Measure/Patients65Plus vs http://poc-cql/Measure/patients-65plus
+INFORMATION: Resource: The resource Measure/Patients65Plus could usefully have an OID assigned (OIDs are easy to assign - see https://build.fhir.org/ig/FHIR/fhir-tools-ig/CodeSystem-ig-parameters.html#ig-parameters-auto-oid-root)
+ERROR: /__w/test-cql/test-cql/igSource/fsh-generated/resources/Measure-Patients65Plus: URL Mismatch https://interop.esante.gouv.fr/ig/fhir/test-cql/Measure/Patients65Plus vs http://poc-cql/Measure/patients-65plus
 WARNING: IG: "The narrative includes custom content for the default language (fr), but does not include translated content for the en language, so the default language has been used
+== fsh-generated/resources/Organization-org-ch-exemple.json ==
+== fsh-generated/resources/Organization-org-clinique-exemple.json ==
+== fsh-generated/resources/Organization-org-service-urgences.json ==
 == fsh-generated/resources/Patient-pat-bernard.json ==
 == fsh-generated/resources/Patient-pat-dubois.json ==
 == fsh-generated/resources/Patient-pat-martin.json ==

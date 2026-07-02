@@ -8,8 +8,12 @@
     <h2>Unattributed Code Systems</h2>
     <ul>
       <li>
-        <a href="Measure-Patients65Plus.html">
-<code>urn:iso:std:iso:3166</code>        </a>
+        <a href="HealthcareService-hs-service-urgences-pediatriques.html">
+<code>https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle</code>        </a>
+      </li>
+      <li>
+        <a href="HealthcareService-hs-service-urgences-pediatriques.html">
+<code>https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge</code>        </a>
       </li>
     </ul>
     <h2>Copyright Fragment</h2>
@@ -22,8 +26,7 @@ This fragment is available on       <a href="fr/index.html">fr/index.html</a>
       <ul>
 
         <li>
-This material derives from the HL7 Terminology (THO). THO is copyright &copy;1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see:           <a href="https://terminology.hl7.org/license.html">https://terminology.hl7.org/license.html</a>
-          <div onClick="if (document.getElementById('ipp2_1').innerHTML != '') {document.getElementById('ipp_1').innerHTML = document.getElementById('ipp2_1').innerHTML; document.getElementById('ipp2_1').innerHTML = ''}" id="ipp_1" data-fhir="generated">
+ISO          <div onClick="if (document.getElementById('ipp2_1').innerHTML != '') {document.getElementById('ipp_1').innerHTML = document.getElementById('ipp2_1').innerHTML; document.getElementById('ipp2_1').innerHTML = ''}" id="ipp_1" data-fhir="generated">
              <span style="cursor: pointer; border: 1px grey solid; background-color: #fcdcb3; padding-left: 3px; padding-right: 3px; color: black">Show Usage</span>
           </div>
           <div style="display: none" id="ipp2_1">
@@ -31,18 +34,46 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
             <ul>
 
               <li>
+                <a href="https://tx.hl7.org.au/fhir/ValueSet/ISO3166Part1">ISO 3166-1 Codes for the representation of names of countries and their subdivisions — Part 1: Country code</a>
+:                 <a href="Library-HelloCQL.html">HelloCQL</a>
+,                 <a href="Library-OrganizationNomUrgence.html">OrganizationNomUrgence</a>
+,                 <a href="Measure-OrganizationsNonConformesNomUrgence.html">OrganizationsNonConformesNomUrgence</a>
+,                 <a href="Measure-Patients65Plus.html">Patients65Plus</a>
+ and                 <a href="index.html">TestCQL</a>
+              </li>
+
+
+            </ul>
+
+
+          </div>
+        </li>
+
+        <li>
+This material derives from the HL7 Terminology (THO). THO is copyright &copy;1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see:           <a href="https://terminology.hl7.org/license.html">https://terminology.hl7.org/license.html</a>
+          <div onClick="if (document.getElementById('ipp2_2').innerHTML != '') {document.getElementById('ipp_2').innerHTML = document.getElementById('ipp2_2').innerHTML; document.getElementById('ipp2_2').innerHTML = ''}" id="ipp_2" data-fhir="generated">
+             <span style="cursor: pointer; border: 1px grey solid; background-color: #fcdcb3; padding-left: 3px; padding-right: 3px; color: black">Show Usage</span>
+          </div>
+          <div style="display: none" id="ipp2_2">
+
+            <ul>
+
+              <li>
                 <a href="http://terminology.hl7.org/7.2.0/CodeSystem-library-type.html">LibraryType</a>
 :                 <a href="Library-HelloCQL.html">HelloCQL</a>
+ and                 <a href="Library-OrganizationNomUrgence.html">OrganizationNomUrgence</a>
               </li>
 
               <li>
                 <a href="http://terminology.hl7.org/7.2.0/CodeSystem-measure-population.html">Measure Population Type</a>
-:                 <a href="Measure-Patients65Plus.html">Patients65Plus</a>
+:                 <a href="Measure-OrganizationsNonConformesNomUrgence.html">OrganizationsNonConformesNomUrgence</a>
+ and                 <a href="Measure-Patients65Plus.html">Patients65Plus</a>
               </li>
 
               <li>
                 <a href="http://terminology.hl7.org/7.2.0/CodeSystem-measure-scoring.html">Measure Scoring</a>
-:                 <a href="Measure-Patients65Plus.html">Patients65Plus</a>
+:                 <a href="Measure-OrganizationsNonConformesNomUrgence.html">OrganizationsNonConformesNomUrgence</a>
+ and                 <a href="Measure-Patients65Plus.html">Patients65Plus</a>
               </li>
 
 
@@ -68,7 +99,7 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
           Le package ans.fhir.fr.test-cql#0.1.0 est basé sur FHIR 4.0.1.
           Date de génération : 
   
-    2026-06-24
+    2026-07-02
   
 
           
@@ -92,7 +123,7 @@ Documentation
           Package ans.fhir.fr.test-cql#0.1.0 based on FHIR 4.0.1.
           Generated 
   
-    2026-06-24
+    2026-07-02
   
 
           
@@ -119,16 +150,65 @@ POC CQL - ROR - version de développement local (intégration continue v0.1.0) c
 This material derives from the HL7 Terminology (THO). THO is copyright &copy;1989+ Health Level Seven International and is made available under the CC0 designation. For more licensing information see: https://terminology.hl7.org/license.html Show Usage
 
 
-* LibraryType: HelloCQL
+* LibraryType: HelloCQL and OrganizationNomUrgence
 
-* Measure Population Type: Patients65Plus
+* Measure Population Type: OrganizationsNonConformesNomUrgence and Patients65Plus
 
-* Measure Scoring: Patients65Plus
+* Measure Scoring: OrganizationsNonConformesNomUrgence and Patients65Plus
 
 
 
 
  (        <a href="fr/index.html">src</a>
+)
+      </li>
+      <li>
+library OrganizationNomUrgence version '1.0.0'
+
+using FHIR version '4.0.1'
+include FHIRHelpers version '4.0.1'
+
+codesystem "TRE_R211-ActiviteOperationnelle": 'https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle'
+codesystem "TRE_R213-ModePriseEnCharge": 'https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge'
+
+code "Urgences polyvalentes hospitalières": '157' from "TRE_R211-ActiviteOperationnelle"
+code "Urgences pédiatriques hospitalières": '249' from "TRE_R211-ActiviteOperationnelle"
+code "Accueil des urgences": '33' from "TRE_R213-ModePriseEnCharge"
+
+context Organization
+
+// HealthcareService rattachés à l'Organization courante
+define "HealthcareServicesLies":
+  [HealthcareService] HS
+    where HS.providedBy.reference = 'Organization/' + Organization.id
+
+// Concernée par l'obligation de nommage : au moins un HealthcareService avec une activité
+// opérationnelle "urgences" (157 ou 249) ET un mode de prise en charge "accueil des urgences" (33)
+define "ConcerneeParObligationDeNommage":
+  exists (
+    "HealthcareServicesLies" HS
+      where (
+        exists (HS.specialty S where FHIRHelpers.ToConcept(S) ~ "Urgences polyvalentes hospitalières")
+        or exists (HS.specialty S where FHIRHelpers.ToConcept(S) ~ "Urgences pédiatriques hospitalières")
+      )
+      and exists (HS.characteristic C where FHIRHelpers.ToConcept(C) ~ "Accueil des urgences")
+  )
+
+define "InitialPopulation":
+  "ConcerneeParObligationDeNommage"
+
+define "Denominator":
+  "InitialPopulation"
+
+// Le nom (ou un alias) de l'Organization contient "urgence"
+define "NomContientUrgence":
+  (Organization.name is not null and Lower(Organization.name) contains 'urgence')
+    or exists (Organization.alias A where Lower(A) contains 'urgence')
+
+// Numérateur : Organization concernées et NON conformes (pas d'"urgence" dans le nom)
+define "Numerator":
+  "InitialPopulation" and not "NomContientUrgence"
+ (        <a href="fr/cas-usage-02-ror.html">src</a>
 )
       </li>
     </ul>
@@ -147,7 +227,7 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
       </tr>
       <tr>
         <td>
-          <a href="en/Library-HelloCQL-testing.html">web</a>
+          <a href="en/HealthcareService-hs-ch-exemple-urgences.change.history.html">web</a>
         </td>
         <td>
           <a href="https://esante.gouv.fr/">esante.gouv.fr</a>
@@ -165,7 +245,7 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
       </tr>
       <tr>
         <td>
-          <a href="en/Library-HelloCQL-testing.html">web</a>
+          <a href="en/HealthcareService-hs-ch-exemple-urgences.change.history.html">web</a>
         </td>
         <td>
           <a href="https://interop.esante.gouv.fr/ig/documentation/">interop.esante.gouv.fr</a>
@@ -179,7 +259,7 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
       </tr>
       <tr>
         <td>
-          <a href="en/Library-HelloCQL-testing.html">web</a>
+          <a href="en/HealthcareService-hs-ch-exemple-urgences.change.history.html">web</a>
         </td>
         <td>
           <a href="https://esante.gouv.fr">esante.gouv.fr</a>
@@ -194,8 +274,8 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
           Package ans.fhir.fr.test-cql#0.1.0 based on           <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>
 .
           Generated 
-            <span title="2026-06-24 08:58:00 +0000">
-    2026-06-24
+            <span title="2026-07-02 10:02:00 +0000">
+    2026-07-02
   </span>
 
 
@@ -217,7 +297,7 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
       </tr>
       <tr>
         <td>
-          <a href="en/Library-HelloCQL-testing.html">web</a>
+          <a href="en/HealthcareService-hs-ch-exemple-urgences.change.history.html">web</a>
         </td>
         <td>
           <a href="https://interop.esante.gouv.fr/ig/documentation">interop.esante.gouv.fr</a>
@@ -240,7 +320,7 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
       </tr>
       <tr>
         <td>
-          <a href="en/Library-HelloCQL-testing.html">web</a>
+          <a href="en/HealthcareService-hs-ch-exemple-urgences.change.history.html">web</a>
         </td>
         <td>
           <a href="https://github.com/ansforge/FIG_ans-ig-sample/issues/new">github.com</a>
@@ -263,7 +343,7 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
       </tr>
       <tr>
         <td>
-          <a href="en/Library-HelloCQL-testing.html">web</a>
+          <a href="en/HealthcareService-hs-ch-exemple-urgences.change.history.html">web</a>
         </td>
         <td>
           <a href="https://solidarites-sante.gouv.fr">solidarites-sante.gouv.fr</a>
@@ -283,7 +363,7 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
       </tr>
       <tr>
         <td>
-          <a href="en/Library-HelloCQL-testing.html">web</a>
+          <a href="en/HealthcareService-hs-ch-exemple-urgences.change.history.html">web</a>
         </td>
         <td>
           <a href="https://esante.gouv.fr/">esante.gouv.fr</a>
@@ -298,6 +378,64 @@ This material derives from the HL7 Terminology (THO). THO is copyright &copy;198
           </a>
 
             
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="en/cas-usage-02-ror.html">web</a>
+        </td>
+        <td>
+          <a href="https://github.com/nriss/test-cql/issues/1">github.com</a>
+        </td>
+        <td>
+          <strong>Objectif</strong>
+ (          <a href="https://github.com/nriss/test-cql/issues/1">issue #1</a>
+) : identifier les           <code class="language-plaintext highlighter-rouge">Organization</code>
+ du ROR non conformes à la règle de nommage suivante :
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="en/cas-usage-02-ror.html">web</a>
+        </td>
+        <td>
+          <a href="https://interop.esante.gouv.fr/ig/fhir/ror/StructureDefinition-ror-organization.html">interop.esante.gouv.fr</a>
+        </td>
+        <td>
+D'après le profil           <a href="https://interop.esante.gouv.fr/ig/fhir/ror/StructureDefinition-ror-organization.html">ROROrganization</a>
+ et le profil           <code class="language-plaintext highlighter-rouge">RORHealthcareService</code>
+ de l'IG ROR :
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="en/cas-usage-02-ror.html">web</a>
+        </td>
+        <td>
+          <a href="https://mos.esante.gouv.fr/">mos.esante.gouv.fr</a>
+        </td>
+        <td>
+Codes utilisés (vérifiés sur le           <a href="https://mos.esante.gouv.fr/">serveur de terminologie MOS</a>
+) :
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <a href="en/cas-usage-03-ror-regle-01-recherche-fhir.html">web</a>
+        </td>
+        <td>
+          <a href="https://github.com/nriss/test-cql/issues/1">github.com</a>
+        </td>
+        <td>
+          <strong>Objectif</strong>
+ : implémenter exactement la même règle que le           <a href="cas-usage-02-ror.html">cas d'usage 02</a>
+ — identifier les           <code class="language-plaintext highlighter-rouge">Organization</code>
+ non conformes à la règle de nommage "urgence" (          <a href="https://github.com/nriss/test-cql/issues/1">issue #1</a>
+) — mais           <strong>sans CQL</strong>
+, uniquement avec des requêtes de recherche FHIR standard (chaînage inversé           <code class="language-plaintext highlighter-rouge">_has</code>
+,           <code class="language-plaintext highlighter-rouge">_summary=count</code>
+, modificateur           <code class="language-plaintext highlighter-rouge">:contains</code>
+) et un post-traitement minimal côté client.
         </td>
       </tr>
       <tr>
@@ -390,7 +528,7 @@ URL :           <a href="https://interop.esante.gouv.fr/ig/fhir/xxx">https://int
       </tr>
       <tr>
         <td>
-          <a href="fr/Library-HelloCQL-testing.html">web</a>
+          <a href="fr/HealthcareService-hs-ch-exemple-urgences.change.history.html">web</a>
         </td>
         <td>
           <a href="https://esante.gouv.fr">esante.gouv.fr</a>
@@ -405,8 +543,8 @@ URL :           <a href="https://interop.esante.gouv.fr/ig/fhir/xxx">https://int
           Le package ans.fhir.fr.test-cql#0.1.0 est basé sur           <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>
 .
           Date de génération : 
-            <span title="2026-06-24 08:58:00 +0000">
-    2026-06-24
+            <span title="2026-07-02 10:02:00 +0000">
+    2026-07-02
   </span>
 
 
@@ -428,7 +566,7 @@ URL :           <a href="https://interop.esante.gouv.fr/ig/fhir/xxx">https://int
       </tr>
       <tr>
         <td>
-          <a href="fr/Library-HelloCQL-testing.html">web</a>
+          <a href="fr/HealthcareService-hs-ch-exemple-urgences.change.history.html">web</a>
         </td>
         <td>
           <a href="https://interop.esante.gouv.fr/ig/documentation">interop.esante.gouv.fr</a>
@@ -451,7 +589,7 @@ URL :           <a href="https://interop.esante.gouv.fr/ig/fhir/xxx">https://int
       </tr>
       <tr>
         <td>
-          <a href="fr/Library-HelloCQL-testing.html">web</a>
+          <a href="fr/HealthcareService-hs-ch-exemple-urgences.change.history.html">web</a>
         </td>
         <td>
           <a href="https://github.com/ansforge/FIG_ans-ig-sample/issues/new">github.com</a>
@@ -474,13 +612,6 @@ URL :           <a href="https://interop.esante.gouv.fr/ig/fhir/xxx">https://int
       </tr>
     </table>
     <h2>Internal Images</h2>
-    <table class="grid">
-      <tr>
-        <td>
-../assets/images/fra.svg          <br/>
-          <img src="../assets/images/fra.svg" alt="../assets/images/fra.svg" width="600px" height="auto"/>
-        </td>
-      </tr>
-    </table>
+    <table class="grid"></table>
   </body>
 </html>

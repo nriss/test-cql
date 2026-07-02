@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Organization xmlns="http://hl7.org/fhir">
+  <id value="org-ch-exemple"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xml:lang="en" lang="en"><hr/><p><b>English</b></p><hr/><p class="res-header-id"><b>Generated Narrative: Organization org-ch-exemple</b></p><a name="en-org-ch-exemple"> </a><a name="en-hcorg-ch-exemple"> </a><p><b>active</b>: true</p><p><b>name</b>: CH Exemple</p></div>
+  </text>
+  <active value="true"/>
+  <name value="CH Exemple"/>
+</Organization>

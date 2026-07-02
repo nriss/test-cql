@@ -1,0 +1,11 @@
+{
+  "resourceType" : "Organization",
+  "id" : "org-service-urgences",
+  "language" : "en",
+  "text" : {
+    "status" : "generated",
+    "div" : "<div xml:lang=\"en\" lang=\"en\"><hr/><p><b>English</b></p><hr/><p class=\"res-header-id\"><b>Generated Narrative: Organization org-service-urgences</b></p><a name=\"en-org-service-urgences\"> </a><a name=\"en-hcorg-service-urgences\"> </a><p><b>active</b>: true</p><p><b>name</b>: Service des Urgences du CH Exemple</p></div>"
+  },
+  "active" : true,
+  "name" : "Service des Urgences du CH Exemple"
+}

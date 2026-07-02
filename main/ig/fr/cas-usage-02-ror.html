@@ -75,7 +75,7 @@
 
 
 
-  <img alt="France (la) drapeau" src="../assets/images/fra.svg" height="16" title="France (la)"/>
+  France (la)
 
 
             </span>
@@ -116,6 +116,9 @@
       </li>
       <li>
         <a href="cas-usage-02-ror.html">02 — ROR</a>
+      </li>
+      <li>
+        <a href="cas-usage-03-ror-regle-01-recherche-fhir.html">03 — ROR sans CQL</a>
       </li>
     </ul>
   </li>
@@ -166,7 +169,7 @@
 
             <a href="#bottom">bas de page</a>
 
-          | <a href="change-log.html">suivant &gt;</a>
+          | <a href="cas-usage-03-ror-regle-01-recherche-fhir.html">suivant &gt;</a>
 
           </span>
 
@@ -208,19 +211,271 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
 <div>
 <!-- do not remove - needed to prevent Jekyll from adding a p tag to any non block level element in the markdown.-->
 </div>
-<h3 id="cas-dusage-02--ror">Cas d'usage 02 — ROR</h3>
+<h3 id="cas-dusage-02--ror--règle-1--organization-avec-le-nom-urgence">Cas d'usage 02 — ROR : Règle #1 — Organization avec le nom "Urgence"</h3>
+
+<p><strong>Objectif</strong> (<a href="https://github.com/nriss/test-cql/issues/1">issue #1</a>) : identifier les <code class="language-plaintext highlighter-rouge">Organization</code> du ROR non conformes à la règle de nommage suivante :</p>
 
 <blockquote>
-  <p><strong>À venir</strong> : ce cas d'usage appliquera des règles CQL sur des données ROR réelles (<code class="language-plaintext highlighter-rouge">Organization</code>, <code class="language-plaintext highlighter-rouge">Location</code>, <code class="language-plaintext highlighter-rouge">HealthcareService</code>).</p>
+  <p>Une <code class="language-plaintext highlighter-rouge">Organization</code> doit obligatoirement avoir "urgence" dans son nom si elle propose un <code class="language-plaintext highlighter-rouge">HealthcareService</code> dont :</p>
+
+  <ul>
+    <li>l'activité opérationnelle est <strong>157</strong> ou <strong>249</strong>, ET</li>
+    <li>le mode de prise en charge est <strong>33</strong>.</li>
+  </ul>
 </blockquote>
 
-<h4 id="exemples-de-règles-envisagées">Exemples de règles envisagées</h4>
+<h4 id="modélisation-ror-utilisée">Modélisation ROR utilisée</h4>
+
+<p>D'après le profil <a href="https://interop.esante.gouv.fr/ig/fhir/ror/StructureDefinition-ror-organization.html">ROROrganization</a> et le profil <code class="language-plaintext highlighter-rouge">RORHealthcareService</code> de l'IG ROR :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Notion métier</th>
+      <th>Élément FHIR</th>
+      <th>ValueSet / CodeSystem</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nom de l'Organization</td>
+      <td><code class="language-plaintext highlighter-rouge">Organization.name</code> / <code class="language-plaintext highlighter-rouge">Organization.alias</code></td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Activité Opérationnelle</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.specialty</code> (slice <code class="language-plaintext highlighter-rouge">operationalActivity</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">JDV_J17_ActiviteOperationnelle_ROR</code> — codes issus de <code class="language-plaintext highlighter-rouge">TRE_R211-ActiviteOperationnelle</code></td>
+    </tr>
+    <tr>
+      <td>Mode de prise en charge</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.characteristic</code> (slice <code class="language-plaintext highlighter-rouge">careMode</code>)</td>
+      <td><code class="language-plaintext highlighter-rouge">JDV_J19_ModePriseEnCharge_ROR</code> — codes issus de <code class="language-plaintext highlighter-rouge">TRE_R213-ModePriseEnCharge</code></td>
+    </tr>
+    <tr>
+      <td>Lien HealthcareService → Organization</td>
+      <td><code class="language-plaintext highlighter-rouge">HealthcareService.providedBy</code></td>
+      <td>Reference(Organization)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Codes utilisés (vérifiés sur le <a href="https://mos.esante.gouv.fr/">serveur de terminologie MOS</a>) :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Système</th>
+      <th>Libellé</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">157</code></td>
+      <td><code class="language-plaintext highlighter-rouge">TRE_R211-ActiviteOperationnelle</code></td>
+      <td>Urgences polyvalentes hospitalières</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">249</code></td>
+      <td><code class="language-plaintext highlighter-rouge">TRE_R211-ActiviteOperationnelle</code></td>
+      <td>Urgences pédiatriques hospitalières</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">33</code></td>
+      <td><code class="language-plaintext highlighter-rouge">TRE_R213-ModePriseEnCharge</code></td>
+      <td>Accueil des urgences</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>Ce POC reste volontairement léger côté modélisation : les exemples sont des <code class="language-plaintext highlighter-rouge">Organization</code>/<code class="language-plaintext highlighter-rouge">HealthcareService</code> FHIR standard (pas de conformité aux profils <code class="language-plaintext highlighter-rouge">ROROrganization</code>/<code class="language-plaintext highlighter-rouge">RORHealthcareService</code>, pas de dépendance ajoutée à l'IG ROR dans <code class="language-plaintext highlighter-rouge">sushi-config.yaml</code>), comme pour le cas d'usage 01.</p>
+</blockquote>
+
+<h4 id="règle-cql">Règle CQL</h4>
+
+<p>Source : <code class="language-plaintext highlighter-rouge">input/cql/OrganizationNomUrgence.cql</code></p>
+
+<pre><code class="language-cql">library OrganizationNomUrgence version '1.0.0'
+
+using FHIR version '4.0.1'
+include FHIRHelpers version '4.0.1'
+
+codesystem "TRE_R211-ActiviteOperationnelle": 'https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle'
+codesystem "TRE_R213-ModePriseEnCharge": 'https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge'
+
+code "Urgences polyvalentes hospitalières": '157' from "TRE_R211-ActiviteOperationnelle"
+code "Urgences pédiatriques hospitalières": '249' from "TRE_R211-ActiviteOperationnelle"
+code "Accueil des urgences": '33' from "TRE_R213-ModePriseEnCharge"
+
+context Organization
+
+// HealthcareService rattachés à l'Organization courante
+define "HealthcareServicesLies":
+  [HealthcareService] HS
+    where HS.providedBy.reference = 'Organization/' + Organization.id
+
+// Concernée par l'obligation de nommage : au moins un HealthcareService avec une activité
+// opérationnelle "urgences" (157 ou 249) ET un mode de prise en charge "accueil des urgences" (33)
+define "ConcerneeParObligationDeNommage":
+  exists (
+    "HealthcareServicesLies" HS
+      where (
+        exists (HS.specialty S where FHIRHelpers.ToConcept(S) ~ "Urgences polyvalentes hospitalières")
+        or exists (HS.specialty S where FHIRHelpers.ToConcept(S) ~ "Urgences pédiatriques hospitalières")
+      )
+      and exists (HS.characteristic C where FHIRHelpers.ToConcept(C) ~ "Accueil des urgences")
+  )
+
+define "InitialPopulation":
+  "ConcerneeParObligationDeNommage"
+
+define "Denominator":
+  "InitialPopulation"
+
+// Le nom (ou un alias) de l'Organization contient "urgence"
+define "NomContientUrgence":
+  (Organization.name is not null and Lower(Organization.name) contains 'urgence')
+    or exists (Organization.alias A where Lower(A) contains 'urgence')
+
+// Numérateur : Organization concernées et NON conformes (pas d'"urgence" dans le nom)
+define "Numerator":
+  "InitialPopulation" and not "NomContientUrgence"
+</code></pre>
+
+<p>Le <code class="language-plaintext highlighter-rouge">Numerator</code> correspond directement aux <code class="language-plaintext highlighter-rouge">Organization</code> non conformes recherchées par l'issue : pas besoin de post-traitement, il suffit de récupérer la liste des sujets du numérateur.</p>
+
+<h4 id="données-de-test">Données de test</h4>
+
+<p>3 <code class="language-plaintext highlighter-rouge">Organization</code> fictives et leur <code class="language-plaintext highlighter-rouge">HealthcareService</code> associé, définis dans <code class="language-plaintext highlighter-rouge">input/fsh/Examples/Organizations-ror-regle-01.fsh</code> et <code class="language-plaintext highlighter-rouge">input/fsh/Examples/HealthcareServices-ror-regle-01.fsh</code> :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Organization</th>
+      <th>Nom</th>
+      <th>HealthcareService lié</th>
+      <th>Activité</th>
+      <th>Mode</th>
+      <th>Concernée ?</th>
+      <th>Conforme ?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">org-ch-exemple</code></td>
+      <td>CH Exemple</td>
+      <td><code class="language-plaintext highlighter-rouge">hs-ch-exemple-urgences</code></td>
+      <td>157</td>
+      <td>33</td>
+      <td>✅ oui</td>
+      <td>❌ <strong>non</strong> (pas "urgence" dans le nom)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">org-service-urgences</code></td>
+      <td>Service des Urgences du CH Exemple</td>
+      <td><code class="language-plaintext highlighter-rouge">hs-service-urgences-pediatriques</code></td>
+      <td>249</td>
+      <td>33</td>
+      <td>✅ oui</td>
+      <td>✅ oui</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">org-clinique-exemple</code></td>
+      <td>Clinique Exemple</td>
+      <td><code class="language-plaintext highlighter-rouge">hs-clinique-exemple-urgences</code></td>
+      <td>157</td>
+      <td>33</td>
+      <td>✅ oui</td>
+      <td>❌ <strong>non</strong> (pas "urgence" dans le nom)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="étapes-de-lancement">Étapes de lancement</h4>
+
+<h5 id="1-démarrer-hapi-fhir">1. Démarrer HAPI FHIR</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker compose up <span class="nt">-d</span>
+</code></pre></div></div>
+
+<h5 id="2-générer-les-ressources-fhir-avec-sushi">2. Générer les ressources FHIR avec SUSHI</h5>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sushi <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>Compile les fichiers FSH en ressources FHIR JSON dans <code class="language-plaintext highlighter-rouge">fsh-generated/resources/</code> (Library, Measure, Organization, HealthcareService).</p>
+
+<h5 id="3-à-6-charger-la-library-la-measure-les-organization-les-healthcareservice-et-évaluer">3 à 6. Charger la Library, la Measure, les Organization, les HealthcareService, et évaluer</h5>
+
+<p>Ces étapes sont automatisées par <code class="language-plaintext highlighter-rouge">./evaluate-02-ror-regle-01.sh</code> (nécessite que <code class="language-plaintext highlighter-rouge">fsh-generated/</code> existe) :</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./evaluate-02-ror-regle-01.sh
+</code></pre></div></div>
+
+<p>Le script charge <code class="language-plaintext highlighter-rouge">Library/OrganizationNomUrgence</code>, <code class="language-plaintext highlighter-rouge">Measure/OrganizationsNonConformesNomUrgence</code>, les 3 <code class="language-plaintext highlighter-rouge">Organization</code> et les 3 <code class="language-plaintext highlighter-rouge">HealthcareService</code>, puis appelle <code class="language-plaintext highlighter-rouge">$evaluate-measure</code> avec <code class="language-plaintext highlighter-rouge">reportType=subject-list</code>.</p>
+
+<h4 id="résultat-observé">Résultat observé</h4>
+
+<p><strong>La règle CQL elle-même est correcte</strong> : en isolant un seul <code class="language-plaintext highlighter-rouge">Organization</code> sur le serveur et en appelant <code class="language-plaintext highlighter-rouge">Library/OrganizationNomUrgence/$evaluate</code> avec <code class="language-plaintext highlighter-rouge">subject=Organization/org-ch-exemple</code>, chaque <code class="language-plaintext highlighter-rouge">define</code> renvoie exactement le résultat attendu :</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parameters"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"parameter"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ConcerneeParObligationDeNommage"</span><span class="p">,</span><span class="w"> </span><span class="nl">"valueBoolean"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"InitialPopulation"</span><span class="p">,</span><span class="w">                </span><span class="nl">"valueBoolean"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Denominator"</span><span class="p">,</span><span class="w">                      </span><span class="nl">"valueBoolean"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NomContientUrgence"</span><span class="p">,</span><span class="w">                </span><span class="nl">"valueBoolean"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Numerator"</span><span class="p">,</span><span class="w">                        </span><span class="nl">"valueBoolean"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">org-ch-exemple</code> est bien reconnue comme concernée (<code class="language-plaintext highlighter-rouge">InitialPopulation</code>/<code class="language-plaintext highlighter-rouge">Denominator</code> = true) et non conforme (<code class="language-plaintext highlighter-rouge">Numerator</code> = true, car <code class="language-plaintext highlighter-rouge">NomContientUrgence</code> = false) — la logique CQL (retrieve <code class="language-plaintext highlighter-rouge">HealthcareService</code> par <code class="language-plaintext highlighter-rouge">providedBy</code>, équivalence de code via <code class="language-plaintext highlighter-rouge">FHIRHelpers.ToConcept(...) ~ "..."</code>, test sur <code class="language-plaintext highlighter-rouge">name</code>/<code class="language-plaintext highlighter-rouge">alias</code>) fonctionne comme conçu.</p>
+
+<p><strong>Mais <code class="language-plaintext highlighter-rouge">$evaluate-measure</code> ne fonctionne pas correctement dès que plusieurs <code class="language-plaintext highlighter-rouge">Organization</code> sont présentes sur le serveur</strong> — ce qui est le cas d'usage réel (identifier les non-conformes <em>parmi</em> toutes les Organization du ROR) :</p>
 
 <ul>
-  <li>Proportion d'organisations actives sans adresse renseignée (qualité des données)</li>
-  <li>Proportion d'établissements sanitaires sans <code class="language-plaintext highlighter-rouge">HealthcareService</code> associé</li>
-  <li>Détection d'incohérences entre <code class="language-plaintext highlighter-rouge">Organization.active</code> et les <code class="language-plaintext highlighter-rouge">Location</code> rattachées</li>
+  <li>Sans paramètre <code class="language-plaintext highlighter-rouge">subject</code> explicite, la Measure évalue <code class="language-plaintext highlighter-rouge">subjectCount: 0</code> (log HAPI) et renvoie un <code class="language-plaintext highlighter-rouge">MeasureReport</code> avec tous les compteurs à <code class="language-plaintext highlighter-rouge">0</code>.</li>
+  <li>Avec un <code class="language-plaintext highlighter-rouge">subject</code> explicite (<code class="language-plaintext highlighter-rouge">reportType=subject</code>, <code class="language-plaintext highlighter-rouge">subject=Organization/org-ch-exemple</code>) et les 3 <code class="language-plaintext highlighter-rouge">Organization</code> présentes, <code class="language-plaintext highlighter-rouge">$evaluate-measure</code> répond sans erreur mais avec des compteurs à <code class="language-plaintext highlighter-rouge">0</code>.</li>
+  <li>
+    <p>Appeler directement <code class="language-plaintext highlighter-rouge">Library/OrganizationNomUrgence/$evaluate</code> avec un <code class="language-plaintext highlighter-rouge">subject</code> alors que plusieurs <code class="language-plaintext highlighter-rouge">Organization</code> existent renvoie une erreur explicite :</p>
+
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Parameters"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"parameter"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evaluation error"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"resource"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"resourceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OperationOutcome"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issue"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+        </span><span class="nl">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exception"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"diagnostics"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Expected a list with at most one element, but found a list with multiple elements."</span><span class="w">
+      </span><span class="p">}]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
 </ul>
+
+<p><strong>Cause racine identifiée dans le code source</strong> — ce n'est <strong>pas</strong> une limitation de conception "Patient uniquement" du moteur CQL (<code class="language-plaintext highlighter-rouge">cqframework/cql-engine</code> est générique sur le nom du contexte), mais un bug précis et localisé dans la couche <code class="language-plaintext highlighter-rouge">clinical-reasoning</code> de HAPI FHIR :</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">LibraryEngine.buildContextParameter(String patientId)</code> (<code class="language-plaintext highlighter-rouge">cqframework/clinical-reasoning</code>, module <code class="language-plaintext highlighter-rouge">cqf-fhir-cql</code>, <code class="language-plaintext highlighter-rouge">LibraryEngine.java</code> lignes ~68-78) <strong>hardcode le nom du contexte CQL à <code class="language-plaintext highlighter-rouge">"Patient"</code></strong>, quel que soit le type réel de la ressource passée en <code class="language-plaintext highlighter-rouge">subject</code>. Pour <code class="language-plaintext highlighter-rouge">subject=Organization/org-ch-exemple</code>, le moteur enregistre <code class="language-plaintext highlighter-rouge">contextValues["Patient"] = "Organization/org-ch-exemple"</code> au lieu de <code class="language-plaintext highlighter-rouge">contextValues["Organization"] = "org-ch-exemple"</code>.</li>
+  <li>Quand <code class="language-plaintext highlighter-rouge">cql-engine</code> évalue notre library (<code class="language-plaintext highlighter-rouge">context Organization</code>), il appelle <code class="language-plaintext highlighter-rouge">context.enterContext("Organization")</code> puis <code class="language-plaintext highlighter-rouge">Context.getCurrentContextValue()</code> (<code class="language-plaintext highlighter-rouge">cql-engine</code>, <code class="language-plaintext highlighter-rouge">Context.java</code> lignes ~769-791) : la clé <code class="language-plaintext highlighter-rouge">"Organization"</code> est absente de <code class="language-plaintext highlighter-rouge">contextValues</code> (seule <code class="language-plaintext highlighter-rouge">"Patient"</code> a été renseignée) → la valeur de contexte est <code class="language-plaintext highlighter-rouge">null</code>.</li>
+  <li>Ce <code class="language-plaintext highlighter-rouge">null</code> remonte dans <code class="language-plaintext highlighter-rouge">BaseRetrieveProvider.populateContextSearchParams(...)</code>, qui ne pose <strong>aucun filtre par id</strong> quand la valeur de contexte est <code class="language-plaintext highlighter-rouge">null</code> : <code class="language-plaintext highlighter-rouge">[Organization]</code> retourne alors toutes les <code class="language-plaintext highlighter-rouge">Organization</code> du serveur, sans filtrage.</li>
+  <li>Comme <code class="language-plaintext highlighter-rouge">context Organization</code> fait que toute référence non qualifiée à <code class="language-plaintext highlighter-rouge">Organization</code> est compilée en <code class="language-plaintext highlighter-rouge">singleton from [Organization]</code>, cette liste non filtrée déclenche <code class="language-plaintext highlighter-rouge">SingletonFromEvaluator</code> (<code class="language-plaintext highlighter-rouge">cql-engine</code>) dès qu'il y a plus d'une <code class="language-plaintext highlighter-rouge">Organization</code> — exactement l'erreur observée. Avec une seule <code class="language-plaintext highlighter-rouge">Organization</code> sur le serveur, le retrieve non filtré ne renvoie qu'1 élément par coïncidence : ça "marche", mais le filtrage par id n'a en réalité jamais fonctionné.</li>
+</ul>
+
+<p>Le même hardcoding explique vraisemblablement aussi le comportement silencieux de <code class="language-plaintext highlighter-rouge">$evaluate-measure</code> (contexte manquant → retrieves vides ou non filtrés → populations à <code class="language-plaintext highlighter-rouge">0</code>), mais ce second chemin de code n'a pas été vérifié aussi précisément dans les sources.</p>
+
+<blockquote>
+  <p>Réserve : le code inspecté est celui de la branche <code class="language-plaintext highlighter-rouge">main</code> actuelle de <code class="language-plaintext highlighter-rouge">cqframework/clinical-reasoning</code> et <code class="language-plaintext highlighter-rouge">cqframework/cql-engine</code>, pas confirmé identique à la version exacte packagée dans l'image Docker <code class="language-plaintext highlighter-rouge">hapiproject/hapi:v8.10.0-2</code> utilisée ici. Aucune issue GitHub existante trouvée documentant précisément ce bug.</p>
+</blockquote>
+
+<p><strong>Conclusion du POC</strong> : la règle CQL exprimant la logique métier est correcte et validée unitairement (voir résultat <code class="language-plaintext highlighter-rouge">Library/$evaluate</code> ci-dessus). Ce qui bloque l'exécution en masse sur un contexte non-<code class="language-plaintext highlighter-rouge">Patient</code> est un bug identifié et sourcé dans <code class="language-plaintext highlighter-rouge">clinical-reasoning</code> (construction du paramètre de contexte à partir du <code class="language-plaintext highlighter-rouge">subject</code> REST, sans tenir compte du type de ressource réel), pas une limitation du moteur CQL lui-même. Pistes pour une itération ultérieure : ouvrir un signalement upstream sur <code class="language-plaintext highlighter-rouge">cqframework/clinical-reasoning</code> (la cause est identifiée avec fichiers/lignes précis) ; en attendant, reformuler la règle avec <code class="language-plaintext highlighter-rouge">context Unfiltered</code> (une seule évaluation qui parcourt elle-même tous les <code class="language-plaintext highlighter-rouge">Organization</code> du serveur et retourne la liste des non-conformes, sans dépendre du mécanisme de <code class="language-plaintext highlighter-rouge">subject</code> de <code class="language-plaintext highlighter-rouge">$evaluate-measure</code>) ; ou tester une version plus récente de HAPI FHIR si le correctif y est déjà intégré.</p>
 
 
 
@@ -255,7 +510,7 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
               </td>
               <td style="text-align:var(--ig-right);">&#xA0;
 
-                <a href="change-log.html">suivant ></a>
+                <a href="cas-usage-03-ror-regle-01-recherche-fhir.html">suivant ></a>
 
               </td>
             </tr>
@@ -271,8 +526,8 @@ h6:before{color:silver;counter-increment:more-detail;content:var(--heading-prefi
           IG © 2025+ <a style="color:var(--footer-hyperlink-text-color)" href="https://esante.gouv.fr">Agence du Numérique en Santé (ANS) - 2-10 Rue d&#39;Oradour-sur-Glane, 75015 Paris</a>.  
           Le package ans.fhir.fr.test-cql#0.1.0 est basé sur <a style="color: var(--footer-hyperlink-text-color)" href="http://hl7.org/fhir/R4/">FHIR 4.0.1</a>.
           Date de génération : 
-  <span title="2026-06-24 08:58:00 +0000">
-    2026-06-24
+  <span title="2026-07-02 10:02:00 +0000">
+    2026-07-02
   </span>
 
           <br/>

@@ -18,4 +18,18 @@
   "url" : "https://interop.esante.gouv.fr/ig/fhir/test-cql/Library/HelloCQL",
   "version" : "0.1.0",
   "name" : "HelloCQL"
+},
+{
+  "id" : "OrganizationNomUrgence",
+  "type" : "Library",
+  "url" : "https://interop.esante.gouv.fr/ig/fhir/test-cql/Library/OrganizationNomUrgence",
+  "version" : "0.1.0",
+  "name" : "OrganizationNomUrgence"
+},
+{
+  "id" : "OrganizationsNonConformesNomUrgence",
+  "type" : "Measure",
+  "url" : "https://interop.esante.gouv.fr/ig/fhir/test-cql/Measure/OrganizationsNonConformesNomUrgence",
+  "version" : "0.1.0",
+  "name" : "OrganizationsNonConformesNomUrgence"
 }]

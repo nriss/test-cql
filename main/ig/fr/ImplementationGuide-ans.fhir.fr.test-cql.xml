@@ -12,7 +12,7 @@
   <name value="TestCQL"/>
   <title value="POC CQL - ROR"/>
   <status value="draft"/>
-  <date value="2026-06-24T08:58:37+00:00"/>
+  <date value="2026-07-02T10:02:51+00:00"/>
   <publisher value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
   <contact>
     <name value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
@@ -646,6 +646,87 @@
     </resource>
     <resource>
       <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="HealthcareService"/>
+      </extension>
+      <reference>
+        <reference value="HealthcareService/hs-ch-exemple-urgences"/>
+      </reference>
+      <name value="hs-ch-exemple-urgences"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="HealthcareService"/>
+      </extension>
+      <reference>
+        <reference value="HealthcareService/hs-clinique-exemple-urgences"/>
+      </reference>
+      <name value="hs-clinique-exemple-urgences"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="HealthcareService"/>
+      </extension>
+      <reference>
+        <reference value="HealthcareService/hs-service-urgences-pediatriques"/>
+      </reference>
+      <name value="hs-service-urgences-pediatriques"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/org-ch-exemple"/>
+      </reference>
+      <name value="org-ch-exemple"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/org-clinique-exemple"/>
+      </reference>
+      <name value="org-clinique-exemple"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Organization"/>
+      </extension>
+      <reference>
+        <reference value="Organization/org-service-urgences"/>
+      </reference>
+      <name value="org-service-urgences"/>
+      <exampleBoolean value="true"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Library"/>
+      </extension>
+      <reference>
+        <reference value="Library/OrganizationNomUrgence"/>
+      </reference>
+      <name value="Organization avec le nom Urgence — Règle #1 ROR"/>
+      <description value="Bibliothèque CQL — cas 02 (ROR) : identifie les Organization qui, ayant un HealthcareService avec une activité opérationnelle 157 ou 249 et un mode de prise en charge 33, n'ont pas &quot;urgence&quot; dans leur nom."/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
+        <valueString value="Measure"/>
+      </extension>
+      <reference>
+        <reference value="Measure/OrganizationsNonConformesNomUrgence"/>
+      </reference>
+      <name value="Organization non conformes à la règle du nom Urgence"/>
+      <exampleBoolean value="false"/>
+    </resource>
+    <resource>
+      <extension url="http://hl7.org/fhir/tools/StructureDefinition/resource-information">
         <valueString value="Patient"/>
       </extension>
       <reference>
@@ -733,6 +814,14 @@
         </extension>
         <nameUrl value="cas-usage-02-ror.html"/>
         <title value="02 — ROR"/>
+        <generation value="markdown"/>
+      </page>
+      <page>
+        <extension url="http://hl7.org/fhir/tools/StructureDefinition/ig-page-name">
+          <valueUrl value="cas-usage-03-ror-regle-01-recherche-fhir.html"/>
+        </extension>
+        <nameUrl value="cas-usage-03-ror-regle-01-recherche-fhir.html"/>
+        <title value="03 — ROR sans CQL"/>
         <generation value="markdown"/>
       </page>
       <page>

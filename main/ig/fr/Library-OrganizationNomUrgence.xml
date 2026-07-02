@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Library xmlns="http://hl7.org/fhir">
+  <id value="OrganizationNomUrgence"/>
+  <language value="fr"/>
+  <text>
+    <status value="extensions"/><div xml:lang="fr" lang="fr"><hr/><p><b>French</b></p><hr/>
+  <table class="narrative-table">
+    <tbody>
+<tr>
+
+
+<th colspan="2" scope="row" class="row-header">Metadata</th>
+
+
+</tr>
+
+<tr>
+
+
+<th scope="row" class="row-header">Title</th>
+
+
+
+<td class="content-container">Organization avec le nom Urgence — Règle #1 ROR</td>
+
+
+</tr>
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Version</th>
+
+
+
+<td class="content-container">0.1.0</td>
+
+
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Experimental</th>
+
+
+
+<td class="content-container">true</td>
+
+
+</tr>
+
+
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Jurisdiction</th>
+
+
+
+<td class="content-container">
+    France (la)
+
+
+</td>
+
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Steward (Publisher)</th>
+
+
+
+<td class="content-container">Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris</td>
+
+
+</tr>
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Steward Contact</th>
+
+
+
+<td class="content-container">Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris</td>
+
+
+</tr>
+
+
+
+
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Description</th>
+
+
+
+<td class="content-container"><div><p>Bibliothèque CQL — cas 02 (ROR) : identifie les Organization qui, ayant un HealthcareService avec une activité opérationnelle 157 ou 249 et un mode de prise en charge 33, n'ont pas &quot;urgence&quot; dans leur nom.</p>
+</div></td>
+
+
+</tr>
+
+
+
+
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Type</th>
+
+
+
+<td class="content-container">
+    logic-library from <a href="http://terminology.hl7.org/7.2.0/CodeSystem-library-type.html">http://terminology.hl7.org/CodeSystem/library-type</a> 
+
+
+</td>
+
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+
+
+<th colspan="2" scope="row" class="row-header"><a name="parameters"> </a>Parameters</th>
+
+
+</tr>
+
+
+<tr>
+
+
+<th scope="row" class="row-header">Parameter</th>
+
+
+
+<td class="content-container">None</td>
+
+
+</tr>
+
+
+
+
+
+
+
+  <tr>
+
+
+<th colspan="2" scope="row" class="row-header">Library Content</th>
+
+
+</tr>
+  
+    
+    <tr>
+      <th scope="row" class="row-header">CQL Content</th>
+      <td>
+        <a name="cql-content"> </a>
+        <pre style="border: none;" class="content-container highlight language-cql"><code class="language-cql">library OrganizationNomUrgence version '1.0.0'
+
+using FHIR version '4.0.1'
+include FHIRHelpers version '4.0.1'
+
+codesystem &quot;TRE_R211-ActiviteOperationnelle&quot;: 'https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle'
+codesystem &quot;TRE_R213-ModePriseEnCharge&quot;: 'https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge'
+
+code &quot;Urgences polyvalentes hospitalières&quot;: '157' from &quot;TRE_R211-ActiviteOperationnelle&quot;
+code &quot;Urgences pédiatriques hospitalières&quot;: '249' from &quot;TRE_R211-ActiviteOperationnelle&quot;
+code &quot;Accueil des urgences&quot;: '33' from &quot;TRE_R213-ModePriseEnCharge&quot;
+
+context Organization
+
+// HealthcareService rattachés à l'Organization courante
+define &quot;HealthcareServicesLies&quot;:
+  [HealthcareService] HS
+    where HS.providedBy.reference = 'Organization/' + Organization.id
+
+// Concernée par l'obligation de nommage : au moins un HealthcareService avec une activité
+// opérationnelle &quot;urgences&quot; (157 ou 249) ET un mode de prise en charge &quot;accueil des urgences&quot; (33)
+define &quot;ConcerneeParObligationDeNommage&quot;:
+  exists (
+    &quot;HealthcareServicesLies&quot; HS
+      where (
+        exists (HS.specialty S where FHIRHelpers.ToConcept(S) ~ &quot;Urgences polyvalentes hospitalières&quot;)
+        or exists (HS.specialty S where FHIRHelpers.ToConcept(S) ~ &quot;Urgences pédiatriques hospitalières&quot;)
+      )
+      and exists (HS.characteristic C where FHIRHelpers.ToConcept(C) ~ &quot;Accueil des urgences&quot;)
+  )
+
+define &quot;InitialPopulation&quot;:
+  &quot;ConcerneeParObligationDeNommage&quot;
+
+define &quot;Denominator&quot;:
+  &quot;InitialPopulation&quot;
+
+// Le nom (ou un alias) de l'Organization contient &quot;urgence&quot;
+define &quot;NomContientUrgence&quot;:
+  (Organization.name is not null and Lower(Organization.name) contains 'urgence')
+    or exists (Organization.alias A where Lower(A) contains 'urgence')
+
+// Numérateur : Organization concernées et NON conformes (pas d'&quot;urgence&quot; dans le nom)
+define &quot;Numerator&quot;:
+  &quot;InitialPopulation&quot; and not &quot;NomContientUrgence&quot;
+</code></pre>
+      </td>
+    </tr>
+    
+  
+
+<tr>
+  <th colspan="2" scope="row" class="row-header">Generated using version 0.5.4 of the sample-content-ig Liquid templates</th>
+</tr>
+
+    </tbody>
+  </table>
+</div>
+  </text>
+  <url value="https://interop.esante.gouv.fr/ig/fhir/test-cql/Library/OrganizationNomUrgence"/>
+  <version value="0.1.0"/>
+  <name value="OrganizationNomUrgence"/>
+  <title value="Organization avec le nom Urgence — Règle #1 ROR"/>
+  <status value="active"/>
+  <experimental value="true"/>
+  <type>
+    <coding>
+      <system value="http://terminology.hl7.org/CodeSystem/library-type"/>
+      <code value="logic-library"/>
+    </coding>
+  </type>
+  <date value="2026-07-02T10:02:51+00:00"/>
+  <publisher value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
+  <contact>
+    <name value="Agence du Numérique en Santé (ANS) - 2-10 Rue d'Oradour-sur-Glane, 75015 Paris"/>
+    <telecom>
+      <system value="url"/>
+      <value value="https://esante.gouv.fr"/>
+    </telecom>
+  </contact>
+  <description value="Bibliothèque CQL — cas 02 (ROR) : identifie les Organization qui, ayant un HealthcareService avec une activité opérationnelle 157 ou 249 et un mode de prise en charge 33, n'ont pas &quot;urgence&quot; dans leur nom."/>
+  <jurisdiction>
+    <coding>
+      <system value="urn:iso:std:iso:3166"/>
+      <code value="FR"/>
+      <display value="France (la)"/>
+    </coding>
+  </jurisdiction>
+  <content>
+    <contentType value="text/cql"/>
+    <data value="bGlicmFyeSBPcmdhbml6YXRpb25Ob21VcmdlbmNlIHZlcnNpb24gJzEuMC4wJwoKdXNpbmcgRkhJUiB2ZXJzaW9uICc0LjAuMScKaW5jbHVkZSBGSElSSGVscGVycyB2ZXJzaW9uICc0LjAuMScKCmNvZGVzeXN0ZW0gIlRSRV9SMjExLUFjdGl2aXRlT3BlcmF0aW9ubmVsbGUiOiAnaHR0cHM6Ly9tb3MuZXNhbnRlLmdvdXYuZnIvTk9TL1RSRV9SMjExLUFjdGl2aXRlT3BlcmF0aW9ubmVsbGUvRkhJUi9UUkUtUjIxMS1BY3Rpdml0ZU9wZXJhdGlvbm5lbGxlJwpjb2Rlc3lzdGVtICJUUkVfUjIxMy1Nb2RlUHJpc2VFbkNoYXJnZSI6ICdodHRwczovL21vcy5lc2FudGUuZ291di5mci9OT1MvVFJFX1IyMTMtTW9kZVByaXNlRW5DaGFyZ2UvRkhJUi9UUkUtUjIxMy1Nb2RlUHJpc2VFbkNoYXJnZScKCmNvZGUgIlVyZ2VuY2VzIHBvbHl2YWxlbnRlcyBob3NwaXRhbGnDqHJlcyI6ICcxNTcnIGZyb20gIlRSRV9SMjExLUFjdGl2aXRlT3BlcmF0aW9ubmVsbGUiCmNvZGUgIlVyZ2VuY2VzIHDDqWRpYXRyaXF1ZXMgaG9zcGl0YWxpw6hyZXMiOiAnMjQ5JyBmcm9tICJUUkVfUjIxMS1BY3Rpdml0ZU9wZXJhdGlvbm5lbGxlIgpjb2RlICJBY2N1ZWlsIGRlcyB1cmdlbmNlcyI6ICczMycgZnJvbSAiVFJFX1IyMTMtTW9kZVByaXNlRW5DaGFyZ2UiCgpjb250ZXh0IE9yZ2FuaXphdGlvbgoKLy8gSGVhbHRoY2FyZVNlcnZpY2UgcmF0dGFjaMOpcyDDoCBsJ09yZ2FuaXphdGlvbiBjb3VyYW50ZQpkZWZpbmUgIkhlYWx0aGNhcmVTZXJ2aWNlc0xpZXMiOgogIFtIZWFsdGhjYXJlU2VydmljZV0gSFMKICAgIHdoZXJlIEhTLnByb3ZpZGVkQnkucmVmZXJlbmNlID0gJ09yZ2FuaXphdGlvbi8nICsgT3JnYW5pemF0aW9uLmlkCgovLyBDb25jZXJuw6llIHBhciBsJ29ibGlnYXRpb24gZGUgbm9tbWFnZSA6IGF1IG1vaW5zIHVuIEhlYWx0aGNhcmVTZXJ2aWNlIGF2ZWMgdW5lIGFjdGl2aXTDqQovLyBvcMOpcmF0aW9ubmVsbGUgInVyZ2VuY2VzIiAoMTU3IG91IDI0OSkgRVQgdW4gbW9kZSBkZSBwcmlzZSBlbiBjaGFyZ2UgImFjY3VlaWwgZGVzIHVyZ2VuY2VzIiAoMzMpCmRlZmluZSAiQ29uY2VybmVlUGFyT2JsaWdhdGlvbkRlTm9tbWFnZSI6CiAgZXhpc3RzICgKICAgICJIZWFsdGhjYXJlU2VydmljZXNMaWVzIiBIUwogICAgICB3aGVyZSAoCiAgICAgICAgZXhpc3RzIChIUy5zcGVjaWFsdHkgUyB3aGVyZSBGSElSSGVscGVycy5Ub0NvbmNlcHQoUykgfiAiVXJnZW5jZXMgcG9seXZhbGVudGVzIGhvc3BpdGFsacOocmVzIikKICAgICAgICBvciBleGlzdHMgKEhTLnNwZWNpYWx0eSBTIHdoZXJlIEZISVJIZWxwZXJzLlRvQ29uY2VwdChTKSB+ICJVcmdlbmNlcyBww6lkaWF0cmlxdWVzIGhvc3BpdGFsacOocmVzIikKICAgICAgKQogICAgICBhbmQgZXhpc3RzIChIUy5jaGFyYWN0ZXJpc3RpYyBDIHdoZXJlIEZISVJIZWxwZXJzLlRvQ29uY2VwdChDKSB+ICJBY2N1ZWlsIGRlcyB1cmdlbmNlcyIpCiAgKQoKZGVmaW5lICJJbml0aWFsUG9wdWxhdGlvbiI6CiAgIkNvbmNlcm5lZVBhck9ibGlnYXRpb25EZU5vbW1hZ2UiCgpkZWZpbmUgIkRlbm9taW5hdG9yIjoKICAiSW5pdGlhbFBvcHVsYXRpb24iCgovLyBMZSBub20gKG91IHVuIGFsaWFzKSBkZSBsJ09yZ2FuaXphdGlvbiBjb250aWVudCAidXJnZW5jZSIKZGVmaW5lICJOb21Db250aWVudFVyZ2VuY2UiOgogIChPcmdhbml6YXRpb24ubmFtZSBpcyBub3QgbnVsbCBhbmQgTG93ZXIoT3JnYW5pemF0aW9uLm5hbWUpIGNvbnRhaW5zICd1cmdlbmNlJykKICAgIG9yIGV4aXN0cyAoT3JnYW5pemF0aW9uLmFsaWFzIEEgd2hlcmUgTG93ZXIoQSkgY29udGFpbnMgJ3VyZ2VuY2UnKQoKLy8gTnVtw6lyYXRldXIgOiBPcmdhbml6YXRpb24gY29uY2VybsOpZXMgZXQgTk9OIGNvbmZvcm1lcyAocGFzIGQnInVyZ2VuY2UiIGRhbnMgbGUgbm9tKQpkZWZpbmUgIk51bWVyYXRvciI6CiAgIkluaXRpYWxQb3B1bGF0aW9uIiBhbmQgbm90ICJOb21Db250aWVudFVyZ2VuY2UiCg=="/>
+  </content>
+</Library>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<HealthcareService xmlns="http://hl7.org/fhir">
+  <id value="hs-clinique-exemple-urgences"/>
+  <language value="en"/>
+  <text>
+    <status value="generated"/><div xml:lang="en" lang="en"><hr/><p><b>English</b></p><hr/><p class="res-header-id"><b>Generated Narrative: HealthcareService hs-clinique-exemple-urgences</b></p><a name="en-hs-clinique-exemple-urgences"> </a><a name="en-hchs-clinique-exemple-urgences"> </a><p><b>providedBy</b>: <a href="Organization-org-clinique-exemple.html">Organization Clinique Exemple</a></p><p><b>specialty</b>: <span title="Codes:{https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle 157}">Urgences polyvalentes hospitalières</span></p><p><b>characteristic</b>: <span title="Codes:{https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge 33}">Accueil des urgences</span></p></div>
+  </text>
+  <providedBy>
+    <reference value="Organization/org-clinique-exemple"/>
+  </providedBy>
+  <specialty>
+    <coding>
+      <system value="https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle"/>
+      <code value="157"/>
+      <display value="Urgences polyvalentes hospitalières"/>
+    </coding>
+  </specialty>
+  <characteristic>
+    <coding>
+      <system value="https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge"/>
+      <code value="33"/>
+      <display value="Accueil des urgences"/>
+    </coding>
+  </characteristic>
+</HealthcareService>

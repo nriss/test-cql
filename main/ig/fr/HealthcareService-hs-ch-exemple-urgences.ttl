@@ -1,0 +1,45 @@
+@prefix fhir: <http://hl7.org/fhir/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+# - resource -------------------------------------------------------------------
+
+<https://interop.esante.gouv.fr/ig/fhir/test-cql/HealthcareService/hs-ch-exemple-urgences> a fhir:HealthcareService ;
+  fhir:nodeRole fhir:treeRoot ;
+  fhir:Resource.id [ fhir:value "hs-ch-exemple-urgences"] ;
+  fhir:Resource.language [ fhir:value "fr"] ;
+  fhir:DomainResource.text [
+     fhir:Narrative.status [ fhir:value "generated" ] ;
+     fhir:Narrative.div "<div xml:lang=\"fr\" lang=\"fr\"><hr/><p><b>French</b></p><hr/><p class=\"res-header-id\"><b>Narratif généré : ServiceDeSanté hs-ch-exemple-urgences</b></p><a name=\"hs-ch-exemple-urgences\"> </a><a name=\"hchs-ch-exemple-urgences\"> </a><p><b>providedBy</b>: <a href=\"Organization-org-ch-exemple.html\">Organization CH Exemple</a></p><p><b>specialty</b>: <span title=\"Codes :{https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle 157}\">Urgences polyvalentes hospitalières</span></p><p><b>characteristic</b>: <span title=\"Codes :{https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge 33}\">Accueil des urgences</span></p></div>"
+  ] ;
+  fhir:HealthcareService.providedBy [
+     fhir:link <https://interop.esante.gouv.fr/ig/fhir/test-cql/Organization/org-ch-exemple> ;
+     fhir:Reference.reference [ fhir:value "Organization/org-ch-exemple" ]
+  ] ;
+  fhir:HealthcareService.specialty [
+     fhir:index -1 ;
+     fhir:CodeableConcept.coding [
+       fhir:index -1 ;
+       fhir:Coding.system [ fhir:value "https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle" ] ;
+       fhir:Coding.code [ fhir:value "157" ] ;
+       fhir:Coding.display [ fhir:value "Urgences polyvalentes hospitalières" ]
+     ]
+  ] ;
+  fhir:HealthcareService.characteristic [
+     fhir:index -1 ;
+     fhir:CodeableConcept.coding [
+       fhir:index -1 ;
+       fhir:Coding.system [ fhir:value "https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge" ] ;
+       fhir:Coding.code [ fhir:value "33" ] ;
+       fhir:Coding.display [ fhir:value "Accueil des urgences" ]
+     ]
+  ] .
+
+# - ontology header ------------------------------------------------------------
+
+<https://interop.esante.gouv.fr/ig/fhir/test-cql/HealthcareService/hs-ch-exemple-urgences.ttl> a owl:Ontology ;
+  owl:imports fhir:fhir.ttl .
+
+# -------------------------------------------------------------------------------------
+
