@@ -1,0 +1,276 @@
+### Cas 02 — ROR, Règle #1 : requêtes manuelles (format REST Client / JetBrains HTTP Client)
+### Prérequis : docker compose up -d (HAPI FHIR sur le port 8080)
+### Jouer les blocs dans l'ordre, un par un (Ctrl+Alt+R / clic sur "Send Request" selon le client).
+
+@baseUrl = http://localhost:8080/fhir
+
+### 1. Vérifier que HAPI FHIR est démarré
+GET {{baseUrl}}/metadata
+
+### 2. Charger la Library (CQL encodé en base64)
+PUT {{baseUrl}}/Library/OrganizationNomUrgence
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Library",
+  "id": "OrganizationNomUrgence",
+  "url": "https://interop.esante.gouv.fr/ig/fhir/test-cql/Library/OrganizationNomUrgence",
+  "version": "1.0.0",
+  "name": "OrganizationNomUrgence",
+  "title": "Organization avec le nom Urgence — Règle #1 ROR",
+  "description": "Bibliothèque CQL — cas 02 (ROR) : identifie les Organization qui, ayant un HealthcareService avec une activité opérationnelle 157 ou 249 et un mode de prise en charge 33, n'ont pas \"urgence\" dans leur nom.",
+  "status": "active",
+  "experimental": true,
+  "type": {
+    "coding": [
+      { "code": "logic-library", "system": "http://terminology.hl7.org/CodeSystem/library-type" }
+    ]
+  },
+  "content": [
+    {
+      "contentType": "text/cql",
+      "data": "bGlicmFyeSBPcmdhbml6YXRpb25Ob21VcmdlbmNlIHZlcnNpb24gJzEuMC4wJwoKdXNpbmcgRkhJUiB2ZXJzaW9uICc0LjAuMScKaW5jbHVkZSBGSElSSGVscGVycyB2ZXJzaW9uICc0LjAuMScKCmNvZGVzeXN0ZW0gIlRSRV9SMjExLUFjdGl2aXRlT3BlcmF0aW9ubmVsbGUiOiAnaHR0cHM6Ly9tb3MuZXNhbnRlLmdvdXYuZnIvTk9TL1RSRV9SMjExLUFjdGl2aXRlT3BlcmF0aW9ubmVsbGUvRkhJUi9UUkUtUjIxMS1BY3Rpdml0ZU9wZXJhdGlvbm5lbGxlJwpjb2Rlc3lzdGVtICJUUkVfUjIxMy1Nb2RlUHJpc2VFbkNoYXJnZSI6ICdodHRwczovL21vcy5lc2FudGUuZ291di5mci9OT1MvVFJFX1IyMTMtTW9kZVByaXNlRW5DaGFyZ2UvRkhJUi9UUkUtUjIxMy1Nb2RlUHJpc2VFbkNoYXJnZScKCmNvZGUgIlVyZ2VuY2VzIHBvbHl2YWxlbnRlcyBob3NwaXRhbGnDqHJlcyI6ICcxNTcnIGZyb20gIlRSRV9SMjExLUFjdGl2aXRlT3BlcmF0aW9ubmVsbGUiCmNvZGUgIlVyZ2VuY2VzIHDDqWRpYXRyaXF1ZXMgaG9zcGl0YWxpw6hyZXMiOiAnMjQ5JyBmcm9tICJUUkVfUjIxMS1BY3Rpdml0ZU9wZXJhdGlvbm5lbGxlIgpjb2RlICJBY2N1ZWlsIGRlcyB1cmdlbmNlcyI6ICczMycgZnJvbSAiVFJFX1IyMTMtTW9kZVByaXNlRW5DaGFyZ2UiCgpjb250ZXh0IE9yZ2FuaXphdGlvbgoKLy8gSGVhbHRoY2FyZVNlcnZpY2UgcmF0dGFjaMOpcyDDoCBsJ09yZ2FuaXphdGlvbiBjb3VyYW50ZQpkZWZpbmUgIkhlYWx0aGNhcmVTZXJ2aWNlc0xpZXMiOgogIFtIZWFsdGhjYXJlU2VydmljZV0gSFMKICAgIHdoZXJlIEhTLnByb3ZpZGVkQnkucmVmZXJlbmNlID0gJ09yZ2FuaXphdGlvbi8nICsgT3JnYW5pemF0aW9uLmlkCgovLyBDb25jZXJuw6llIHBhciBsJ29ibGlnYXRpb24gZGUgbm9tbWFnZSA6IGF1IG1vaW5zIHVuIEhlYWx0aGNhcmVTZXJ2aWNlIGF2ZWMgdW5lIGFjdGl2aXTDqQovLyBvcMOpcmF0aW9ubmVsbGUgInVyZ2VuY2VzIiAoMTU3IG91IDI0OSkgRVQgdW4gbW9kZSBkZSBwcmlzZSBlbiBjaGFyZ2UgImFjY3VlaWwgZGVzIHVyZ2VuY2VzIiAoMzMpCmRlZmluZSAiQ29uY2VybmVlUGFyT2JsaWdhdGlvbkRlTm9tbWFnZSI6CiAgZXhpc3RzICgKICAgICJIZWFsdGhjYXJlU2VydmljZXNMaWVzIiBIUwogICAgICB3aGVyZSAoCiAgICAgICAgZXhpc3RzIChIUy5zcGVjaWFsdHkgUyB3aGVyZSBGSElSSGVscGVycy5Ub0NvbmNlcHQoUykgfiAiVXJnZW5jZXMgcG9seXZhbGVudGVzIGhvc3BpdGFsacOocmVzIikKICAgICAgICBvciBleGlzdHMgKEhTLnNwZWNpYWx0eSBTIHdoZXJlIEZISVJIZWxwZXJzLlRvQ29uY2VwdChTKSB+ICJVcmdlbmNlcyBww6lkaWF0cmlxdWVzIGhvc3BpdGFsacOocmVzIikKICAgICAgKQogICAgICBhbmQgZXhpc3RzIChIUy5jaGFyYWN0ZXJpc3RpYyBDIHdoZXJlIEZISVJIZWxwZXJzLlRvQ29uY2VwdChDKSB+ICJBY2N1ZWlsIGRlcyB1cmdlbmNlcyIpCiAgKQoKZGVmaW5lICJJbml0aWFsUG9wdWxhdGlvbiI6CiAgIkNvbmNlcm5lZVBhck9ibGlnYXRpb25EZU5vbW1hZ2UiCgpkZWZpbmUgIkRlbm9taW5hdG9yIjoKICAiSW5pdGlhbFBvcHVsYXRpb24iCgovLyBMZSBub20gKG91IHVuIGFsaWFzKSBkZSBsJ09yZ2FuaXphdGlvbiBjb250aWVudCAidXJnZW5jZSIKZGVmaW5lICJOb21Db250aWVudFVyZ2VuY2UiOgogIChPcmdhbml6YXRpb24ubmFtZSBpcyBub3QgbnVsbCBhbmQgTG93ZXIoT3JnYW5pemF0aW9uLm5hbWUpIGNvbnRhaW5zICd1cmdlbmNlJykKICAgIG9yIGV4aXN0cyAoT3JnYW5pemF0aW9uLmFsaWFzIEEgd2hlcmUgTG93ZXIoQSkgY29udGFpbnMgJ3VyZ2VuY2UnKQoKLy8gTnVtw6lyYXRldXIgOiBPcmdhbml6YXRpb24gY29uY2VybsOpZXMgZXQgTk9OIGNvbmZvcm1lcyAocGFzIGQnInVyZ2VuY2UiIGRhbnMgbGUgbm9tKQpkZWZpbmUgIk51bWVyYXRvciI6CiAgIkluaXRpYWxQb3B1bGF0aW9uIiBhbmQgbm90ICJOb21Db250aWVudFVyZ2VuY2UiCg=="
+    }
+  ]
+}
+
+### 3. Charger la Measure (subjectType = Organization)
+PUT {{baseUrl}}/Measure/OrganizationsNonConformesNomUrgence
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Measure",
+  "id": "OrganizationsNonConformesNomUrgence",
+  "url": "https://interop.esante.gouv.fr/ig/fhir/test-cql/Measure/OrganizationsNonConformesNomUrgence",
+  "version": "1.0.0",
+  "name": "OrganizationsNonConformesNomUrgence",
+  "title": "Organization non conformes à la règle du nom Urgence",
+  "status": "active",
+  "subjectCodeableConcept": {
+    "coding": [{ "code": "Organization", "system": "http://hl7.org/fhir/resource-types" }]
+  },
+  "library": ["https://interop.esante.gouv.fr/ig/fhir/test-cql/Library/OrganizationNomUrgence"],
+  "scoring": {
+    "coding": [{ "code": "proportion", "system": "http://terminology.hl7.org/CodeSystem/measure-scoring" }]
+  },
+  "group": [
+    {
+      "id": "nom-urgence",
+      "population": [
+        {
+          "id": "initial-population",
+          "code": { "coding": [{ "code": "initial-population", "system": "http://terminology.hl7.org/CodeSystem/measure-population" }] },
+          "criteria": { "language": "text/cql-identifier", "expression": "InitialPopulation" }
+        },
+        {
+          "id": "denominator",
+          "code": { "coding": [{ "code": "denominator", "system": "http://terminology.hl7.org/CodeSystem/measure-population" }] },
+          "criteria": { "language": "text/cql-identifier", "expression": "Denominator" }
+        },
+        {
+          "id": "numerator",
+          "code": { "coding": [{ "code": "numerator", "system": "http://terminology.hl7.org/CodeSystem/measure-population" }] },
+          "criteria": { "language": "text/cql-identifier", "expression": "Numerator" }
+        }
+      ]
+    }
+  ]
+}
+
+### 4a. Charger Organization org-ch-exemple (non conforme attendue)
+PUT {{baseUrl}}/Organization/org-ch-exemple
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Organization",
+  "id": "org-ch-exemple",
+  "active": true,
+  "name": "CH Exemple"
+}
+
+### 4b. Charger Organization org-service-urgences (conforme attendue)
+PUT {{baseUrl}}/Organization/org-service-urgences
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Organization",
+  "id": "org-service-urgences",
+  "active": true,
+  "name": "Service des Urgences du CH Exemple"
+}
+
+### 4c. Charger Organization org-clinique-exemple (non conforme attendue)
+PUT {{baseUrl}}/Organization/org-clinique-exemple
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Organization",
+  "id": "org-clinique-exemple",
+  "active": true,
+  "name": "Clinique Exemple"
+}
+
+### 5a. Charger HealthcareService hs-ch-exemple-urgences (activité 157, mode 33)
+PUT {{baseUrl}}/HealthcareService/hs-ch-exemple-urgences
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "HealthcareService",
+  "id": "hs-ch-exemple-urgences",
+  "providedBy": { "reference": "Organization/org-ch-exemple" },
+  "specialty": [
+    { "coding": [{ "code": "157", "system": "https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle", "display": "Urgences polyvalentes hospitalières" }] }
+  ],
+  "characteristic": [
+    { "coding": [{ "code": "33", "system": "https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge", "display": "Accueil des urgences" }] }
+  ]
+}
+
+### 5b. Charger HealthcareService hs-service-urgences-pediatriques (activité 249, mode 33)
+PUT {{baseUrl}}/HealthcareService/hs-service-urgences-pediatriques
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "HealthcareService",
+  "id": "hs-service-urgences-pediatriques",
+  "providedBy": { "reference": "Organization/org-service-urgences" },
+  "specialty": [
+    { "coding": [{ "code": "249", "system": "https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle", "display": "Urgences pédiatriques hospitalières" }] }
+  ],
+  "characteristic": [
+    { "coding": [{ "code": "33", "system": "https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge", "display": "Accueil des urgences" }] }
+  ]
+}
+
+### 5c. Charger HealthcareService hs-clinique-exemple-urgences (activité 157, mode 33)
+PUT {{baseUrl}}/HealthcareService/hs-clinique-exemple-urgences
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "HealthcareService",
+  "id": "hs-clinique-exemple-urgences",
+  "providedBy": { "reference": "Organization/org-clinique-exemple" },
+  "specialty": [
+    { "coding": [{ "code": "157", "system": "https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle", "display": "Urgences polyvalentes hospitalières" }] }
+  ],
+  "characteristic": [
+    { "coding": [{ "code": "33", "system": "https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge", "display": "Accueil des urgences" }] }
+  ]
+}
+
+### 6. $evaluate-measure SANS subject — reproduit "subjectCount: 0" et tous les compteurs à 0
+POST {{baseUrl}}/Measure/OrganizationsNonConformesNomUrgence/$evaluate-measure
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    { "name": "periodStart", "valueDate": "2020-01-01" },
+    { "name": "periodEnd", "valueDate": "2026-12-31" },
+    { "name": "reportType", "valueCode": "subject-list" }
+  ]
+}
+
+### 7. $evaluate-measure AVEC subject explicite (3 Organization présentes) — répond sans erreur mais compteurs à 0
+POST {{baseUrl}}/Measure/OrganizationsNonConformesNomUrgence/$evaluate-measure
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    { "name": "periodStart", "valueDate": "2020-01-01" },
+    { "name": "periodEnd", "valueDate": "2026-12-31" },
+    { "name": "reportType", "valueCode": "subject" },
+    { "name": "subject", "valueString": "Organization/org-ch-exemple" }
+  ]
+}
+
+### 8. Library/$evaluate AVEC subject, 3 Organization présentes — reproduit l'erreur de cardinalité
+### "Expected a list with at most one element, but found a list with multiple elements."
+POST {{baseUrl}}/Library/OrganizationNomUrgence/$evaluate
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    { "name": "subject", "valueString": "Organization/org-ch-exemple" }
+  ]
+}
+
+### 9a. Isoler une seule Organization — supprimer les HealthcareService liés aux 2 autres Organization
+DELETE {{baseUrl}}/HealthcareService/hs-service-urgences-pediatriques
+
+### 9b.
+DELETE {{baseUrl}}/HealthcareService/hs-clinique-exemple-urgences
+
+### 9c. Puis supprimer les 2 autres Organization (doit renvoyer 200, pas 409, une fois les HS supprimés)
+DELETE {{baseUrl}}/Organization/org-service-urgences
+
+### 9d.
+DELETE {{baseUrl}}/Organization/org-clinique-exemple
+
+### 10. Rejouer Library/$evaluate — avec 1 seule Organization sur le serveur, ça fonctionne (résultat attendu ci-dessous)
+### InitialPopulation=true, Denominator=true, NomContientUrgence=false, Numerator=true
+POST {{baseUrl}}/Library/OrganizationNomUrgence/$evaluate
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Parameters",
+  "parameter": [
+    { "name": "subject", "valueString": "Organization/org-ch-exemple" }
+  ]
+}
+
+### 11a. Restaurer org-service-urgences
+PUT {{baseUrl}}/Organization/org-service-urgences
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Organization",
+  "id": "org-service-urgences",
+  "active": true,
+  "name": "Service des Urgences du CH Exemple"
+}
+
+### 11b. Restaurer org-clinique-exemple
+PUT {{baseUrl}}/Organization/org-clinique-exemple
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "Organization",
+  "id": "org-clinique-exemple",
+  "active": true,
+  "name": "Clinique Exemple"
+}
+
+### 11c. Restaurer hs-service-urgences-pediatriques
+PUT {{baseUrl}}/HealthcareService/hs-service-urgences-pediatriques
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "HealthcareService",
+  "id": "hs-service-urgences-pediatriques",
+  "providedBy": { "reference": "Organization/org-service-urgences" },
+  "specialty": [
+    { "coding": [{ "code": "249", "system": "https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle", "display": "Urgences pédiatriques hospitalières" }] }
+  ],
+  "characteristic": [
+    { "coding": [{ "code": "33", "system": "https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge", "display": "Accueil des urgences" }] }
+  ]
+}
+
+### 11d. Restaurer hs-clinique-exemple-urgences
+PUT {{baseUrl}}/HealthcareService/hs-clinique-exemple-urgences
+Content-Type: application/fhir+json
+
+{
+  "resourceType": "HealthcareService",
+  "id": "hs-clinique-exemple-urgences",
+  "providedBy": { "reference": "Organization/org-clinique-exemple" },
+  "specialty": [
+    { "coding": [{ "code": "157", "system": "https://mos.esante.gouv.fr/NOS/TRE_R211-ActiviteOperationnelle/FHIR/TRE-R211-ActiviteOperationnelle", "display": "Urgences polyvalentes hospitalières" }] }
+  ],
+  "characteristic": [
+    { "coding": [{ "code": "33", "system": "https://mos.esante.gouv.fr/NOS/TRE_R213-ModePriseEnCharge/FHIR/TRE-R213-ModePriseEnCharge", "display": "Accueil des urgences" }] }
+  ]
+}
